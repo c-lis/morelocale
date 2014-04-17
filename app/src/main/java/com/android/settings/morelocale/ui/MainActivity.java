@@ -97,11 +97,6 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
 
     private Cursor mCursor = null;
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see android.app.Activity#onCreate(android.os.Bundle)
-     */
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -425,22 +420,12 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
         return Character.toUpperCase(s.charAt(0)) + s.substring(1);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see android.app.Activity#onResume()
-     */
     @Override
     public void onResume() {
         super.onResume();
         mLvLocales.requestFocus();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
-     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -702,13 +687,6 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
         mCustomLocaleDialog.show();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * android.view.MenuItem.OnMenuItemClickListener#onMenuItemClick(android
-     * .view.MenuItem)
-     */
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.main_menu_custom_locale:
@@ -789,11 +767,6 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
 
     private TextView mTvCustomLocale = null;
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see android.view.View.OnClickListener#onClick(android.view.View)
-     */
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.locale_header_tv_custom_locale:

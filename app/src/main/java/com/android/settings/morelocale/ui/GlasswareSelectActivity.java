@@ -87,7 +87,6 @@ public class GlasswareSelectActivity extends Activity implements OnLocaleSelecte
                 break;
         }
 
-
         return super.onCreateOptionsMenu(menu);
     }
 }
