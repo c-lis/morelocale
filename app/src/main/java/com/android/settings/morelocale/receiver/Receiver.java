@@ -32,16 +32,13 @@
 
 package com.android.settings.morelocale.receiver;
 
-import java.util.Locale;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.os.RemoteException;
-import android.util.Log;
 
 import com.android.settings.morelocale.lang.MoreLocale;
+
+import java.util.Locale;
 
 public class Receiver extends BroadcastReceiver {
     private static final boolean DEBUG_FLG = false;

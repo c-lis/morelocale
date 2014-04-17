@@ -32,15 +32,6 @@
 
 package com.android.settings.morelocale.ui;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.TimeoutException;
-
-import jp.co.c_lis.ccl.morelocale.R;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -81,6 +72,16 @@ import com.android.settings.morelocale.util.DBHelper;
 import com.stericson.RootTools.CommandCapture;
 import com.stericson.RootTools.RootTools;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.TimeoutException;
+
+import jp.co.c_lis.ccl.morelocale.R;
+
 public class MainActivity extends Activity implements OnItemClickListener, OnMenuItemClickListener,
         OnItemLongClickListener, OnClickListener {
 
@@ -106,7 +107,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
         super.onCreate(icicle);
         setContentView(R.layout.main);
 
-        mTvCustomLocale = (TextView)findViewById(R.id.locale_header_tv_custom_locale);
+        mTvCustomLocale = (TextView) findViewById(R.id.locale_header_tv_custom_locale);
         mTvCustomLocale.setOnClickListener(this);
 
         DBHelper helper = new DBHelper(this, DBHelper.FILE_NAME, null, DBHelper.VERSION);
@@ -129,7 +130,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
                         new OnMenuItemClickListener() {
                             public boolean onMenuItemClick(MenuItem item) {
 
-                                if(isCustomLocale(mSelectedRowId)) {
+                                if (isCustomLocale(mSelectedRowId)) {
 
                                     // 削除確認ダイアログの初期化
                                     initConfirmDeleteDialog(mSelectedRowId);
@@ -140,7 +141,8 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
                                 }
                                 return false;
                             }
-                        });
+                        }
+                );
             }
         });
 
@@ -157,13 +159,14 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
         msg.setData(data);
         mHandler.sendMessage(msg);
 
-        if(mCursor.getCount() == 0) {
+        if (mCursor.getCount() == 0) {
             new Thread(mInit).start();
         }
     }
 
     /**
      * カスタムロケールか判定
+     *
      * @param id
      * @return
      */
@@ -175,7 +178,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
                     null,
                     null,
                     "row_order desc");
-            if(cursor.getCount() > 0) {
+            if (cursor.getCount() > 0) {
                 return true;
             }
         }
@@ -199,8 +202,9 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         int rows = mDb.delete(DBHelper.TABLE_LOCALES, "_id = ? AND preset_flg = ?",
-                                new String[] { String.valueOf(selectedRowId),
-                                        String.valueOf(PRESET_FLG_FALSE) });
+                                new String[]{String.valueOf(selectedRowId),
+                                        String.valueOf(PRESET_FLG_FALSE)}
+                        );
                         if (rows > 0) {
                             Toast.makeText(MainActivity.this, R.string.locale_was_deleted,
                                     Toast.LENGTH_LONG).show();
@@ -210,13 +214,15 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
                                     Toast.LENGTH_LONG).show();
                         }
                     }
-                });
+                }
+        );
         mConfirmDeleteDialog.setButton2(getText(R.string.cancel),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
-                });
+                }
+        );
     }
 
     /*
@@ -271,8 +277,8 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
         }
     }
 
-    public static final String[] PROJECTION = new String[] { "_id", "label", "language", "country",
-            "variant", "preset_flg" };
+    public static final String[] PROJECTION = new String[]{"_id", "label", "language", "country",
+            "variant", "preset_flg"};
     public static final int COLUMN_INDEX_LOCALES_ID = 0;
     public static final int COLUMN_INDEX_LOCALES_LABEL = 1;
     public static final int COLUMN_INDEX_LOCALES_LANGUAGE = 2;
@@ -333,7 +339,9 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
             ((TextView) view.findViewById(R.id.preset_flg)).setBackgroundColor(bgColor);
 
         }
-    };
+    }
+
+    ;
 
     private static final String KEY_LOCALE_DATA = "loc";
 
@@ -350,7 +358,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
 
             if (mDb.isOpen()) {
                 int rows = mDb.delete(DBHelper.TABLE_LOCALES, "preset_flg = ?",
-                        new String[] { String.valueOf(PRESET_FLG_TRUE) });
+                        new String[]{String.valueOf(PRESET_FLG_TRUE)});
                 if (DEBUG_FLG) {
                     Log.d(LOG_TAG, "row " + rows + "are deleted.");
                 }
@@ -374,12 +382,11 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
     private static final int PRESET_FLG_FALSE = 0;
 
     /**
-     * 
      * @param l
      */
     private void insertLocale(Loc l, long rowOrder, int presetFlg) {
         ContentValues values = new ContentValues();
-        int id = ((Object)l).hashCode();
+        int id = ((Object) l).hashCode();
 
         values.put("_id", id);
         values.put("label", l.label);
@@ -393,8 +400,8 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
             Log.d(LOG_TAG, "row " + l.label);
         }
 
-        int rows = mDb.update(DBHelper.TABLE_LOCALES, values, "_id = ?", new String[] { String
-                .valueOf(id) });
+        int rows = mDb.update(DBHelper.TABLE_LOCALES, values, "_id = ?", new String[]{String
+                .valueOf(id)});
         if (DEBUG_FLG) {
             Log.d(LOG_TAG, "row " + rows + " updated.");
         }
@@ -406,7 +413,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
 
     /**
      * 先頭文字を大文字にする
-     * 
+     *
      * @param s
      * @return 先頭が大文字になった文字列
      */
@@ -446,7 +453,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
 
     /**
      * ヘッダの表示を変更する
-     * 
+     *
      * @param loc
      */
     private void setLocaleHeader(Loc loc) {
@@ -621,7 +628,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
         final Button btnIso3166 = (Button) mCustomLocaleDialog
                 .findViewById(R.id.custom_locale_btn_3166);
 
-        Button setBtn = (Button)mCustomLocaleDialog.findViewById(R.id.custom_locale_btn_set);
+        Button setBtn = (Button) mCustomLocaleDialog.findViewById(R.id.custom_locale_btn_set);
         if (!saveMode) {
             mCustomLocaleDialog.setTitle(R.string.custom_locale);
             setBtn.setText(getText(R.string.set));
@@ -638,7 +645,8 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
                                 mCustomLocaleDialog.dismiss();
                             }
                         }
-                    });
+                    }
+            );
         } else {
             mCustomLocaleDialog.setTitle(R.string.custom_locale_add);
             setBtn.setText(getText(R.string.add));
@@ -650,12 +658,13 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
                             Loc loc = new Loc(mLabel.getText().toString(), locale);
                             insertLocale(loc, System.currentTimeMillis(), PRESET_FLG_FALSE);
                             reloadDb();
-                            
+
                             if (mCustomLocaleDialog.isShowing()) {
                                 mCustomLocaleDialog.dismiss();
                             }
                         }
-                    });
+                    }
+            );
         }
 
         mCustomLocaleDialog.findViewById(R.id.custom_locale_btn_cancel).setOnClickListener(
@@ -665,7 +674,8 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
                             mCustomLocaleDialog.dismiss();
                         }
                     }
-                });
+                }
+        );
         mCustomLocaleDialog.setOnDismissListener(new OnDismissListener() {
             public void onDismiss(DialogInterface dialog) {
                 mLabel.setText("");
@@ -690,7 +700,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
             mCustomLocaleDialog.findViewById(R.id.custom_locale_tr_label)
                     .setVisibility(View.GONE);
         }
-        
+
         mCustomLocaleDialog.setOnDismissListener(new OnDismissListener() {
             public void onDismiss(DialogInterface dialog) {
                 mTvCustomLocale.setTextColor(getResources().getColor(R.color.green));
@@ -772,7 +782,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
     };
 
     private OnClickListener mCustomLocaleDialogOnClickListener = new OnClickListener() {
-        
+
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.custom_locale_btn_639:
@@ -803,7 +813,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
 
     /**
      * 端末プリセットのロケール情報を取得する
-     * 
+     *
      * @return Locオブジェクトのリスト
      */
     private List<Loc> getPresetLocales() {
