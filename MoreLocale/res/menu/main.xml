@@ -1,0 +1,6 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/main_menu_custom_locale"
+		android:title="@string/custom_locale_add" />
+    <item android:id="@+id/main_menu_about"
+		android:title="@string/about" />
+</menu>

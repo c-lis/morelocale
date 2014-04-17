@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:orientation="vertical"
+    android:padding="5dip">
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1"
+    >
+    <TableRow android:id="@+id/custom_locale_tr_label"
+    >
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label"
+    />
+    <EditText android:id="@+id/custom_locale_et_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+    />
+    </TableRow>
+    <TableRow>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/language"
+    />
+    <EditText android:id="@+id/custom_locale_et_language"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+    />
+    <Button android:id="@+id/custom_locale_btn_639"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ISO639"
+    />
+    </TableRow>
+    <TableRow>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/country"
+    />
+    <EditText android:id="@+id/custom_locale_et_country"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+    />
+    <Button android:id="@+id/custom_locale_btn_3166"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ISO3166"
+    />
+    </TableRow>
+    <TableRow>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/variant"
+    />
+    <EditText android:id="@+id/custom_locale_et_variant"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+    />
+    </TableRow>
+    </TableLayout>
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0,1"
+    >
+    <TableRow>
+    <Button android:id="@+id/custom_locale_btn_set"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/set"
+    />
+    <Button android:id="@+id/custom_locale_btn_cancel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel"
+    />
+    </TableRow>
+    </TableLayout>
+
+</LinearLayout >
