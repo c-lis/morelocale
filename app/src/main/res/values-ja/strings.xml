@@ -52,7 +52,7 @@
     <string name="use_superuser_privilege">SuperUserとして実行する</string>
 
     <string name="how_to_use_pm_command">pmコマンドの使い方</string>
-    <string name="how_to_use_pm_command_message">1. PCで\'adb shell\'を実行します。\n2. 以下のコマンドを実行します。\n&gt; pm grant jp.co.c_lis.ccl.morelocale android.permission.CHANGE_CONFIGURATION\n3. ロケールをもう一度変更してください。</string>
+    <string name="how_to_use_pm_command_message">1. 端末のUSBデバッグをONにします。\n2. 端末を開発用PCに接続して以下のコマンドを実行します。\n&gt; adb shell pm grant jp.co.c_lis.ccl.morelocale android.permission.CHANGE_CONFIGURATION\n3. ロケールをもう一度変更してください。</string>
 
     <string name="could_not_get_su_privlege">MoreLocale 2は、SuperUser権限での実行に失敗しました。</string>
 

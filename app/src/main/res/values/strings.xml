@@ -68,7 +68,7 @@
     <string name="use_superuser_privilege">Use SuperUser privilege</string>
         
     <string name="how_to_use_pm_command">How to use \'pm\' command</string>
-    <string name="how_to_use_pm_command_message">1. Execute \'adb shell\' on your PC.\n2. type below command.\n&gt; pm grant jp.co.c_lis.ccl.morelocale android.permission.CHANGE_CONFIGURATION\n3. Retry changing locale.</string>
+    <string name="how_to_use_pm_command_message">1. Enable USB debug mode.\n2. Connect to your PC and type below command.\n&gt; adb shell pm grant jp.co.c_lis.ccl.morelocale android.permission.CHANGE_CONFIGURATION\n3. Retry changing locale.</string>
 
     <string name="could_not_get_su_privlege">MoreLocale 2 couldn\'t get SuperUser privilege...</string>
 </resources>
