@@ -3,7 +3,7 @@ package com.android.settings.morelocale.util;
 import android.content.Context;
 import android.content.pm.PackageManager;
 
-public class PermissionUtils {
+public class ApplicationUtils {
 
     private static final String PERMISSION_CHANGE_CONFIGURATION = "android.permission.CHANGE_CONFIGURATION";
 
