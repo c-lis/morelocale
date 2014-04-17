@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/about_iv_icon"
+            android:text="@string/permission_denied"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_tv_version"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/about_iv_icon"
+            android:text="@string/permission_denied_message_glass"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_tv_version"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/about_iv_icon"
+            android:text="@string/how_to_use_pm_command_message_glass"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+</ScrollView>

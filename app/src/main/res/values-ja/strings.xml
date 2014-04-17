@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright (C) 2009 The Android Open Source Project
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright (C) 2009 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,8 +12,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
     <string name="language_picker_title">MoreLocale 2</string>
     <string name="select_your_language">"全ての言語から選択"</string>
 
@@ -22,6 +20,10 @@
     <string name="custom_locale">ロケールの詳細な変更</string>
     <string name="custom_locale_add">ロケールの追加</string>
     <string name="add">追加</string>
+
+    <string name="change_language">言語の変更</string>
+    <string name="change_country">地域の変更</string>
+    <string name="tap_to_change_locale">タップしてロケールの変更</string>
 
     <string name="delete">削除</string>
     <string name="would_you_like_to_delete_this_custom_locale">このロケールを削除しますか？</string>
@@ -43,8 +45,8 @@
     <string name="url_iso_639">http://jp.wikipedia.org/wiki/ISO_639</string>
     <string name="url_iso_3166">http://ja.wikipedia.org/wiki/ISO_3166</string>
 
-	<string name="permission_change_locale_label">ロケールの変更</string>
-	<string name="permission_change_locale_description">ロケール（言語・地域）の設定を変更します。</string>
+    <string name="permission_change_locale_label">ロケールの変更</string>
+    <string name="permission_change_locale_description">ロケール（言語・地域）の設定を変更します。</string>
 
     <string name="permission_denied">権限がありません</string>
     <string name="permission_denied_message">CHANGE_CONFIGURATIONの権限が無効になっています。\n開発者であれば、pmコマンドで権限を追加できます。\n\nSuperUserであれば、権限を自動的に追加できます。</string>
@@ -53,6 +55,9 @@
 
     <string name="how_to_use_pm_command">pmコマンドの使い方</string>
     <string name="how_to_use_pm_command_message">1. 端末のUSBデバッグをONにします。\n2. 端末を開発用PCに接続して以下のコマンドを実行します。\n&gt; adb shell pm grant jp.co.c_lis.ccl.morelocale android.permission.CHANGE_CONFIGURATION\n3. ロケールをもう一度変更してください。</string>
+
+    <string name="permission_denied_message_glass">開発者であれば、pmコマンドで権限を追加できます。</string>
+    <string name="how_to_use_pm_command_message_glass">1. GlassのデバッグモードをONにします。\n2. Glassを開発用PCに接続して以下のコマンドを実行します。\n&gt; adb shell pm grant jp.co.c_lis.ccl.morelocale android.permission.CHANGE_CONFIGURATION\n3. MoreLocaleを再起動し、ロケールを変更してください。</string>
 
     <string name="could_not_get_su_privlege">MoreLocale 2は、SuperUser権限での実行に失敗しました。</string>
 

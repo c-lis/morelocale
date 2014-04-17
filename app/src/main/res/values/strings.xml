@@ -33,6 +33,10 @@
 
     <string name="custom_locale_title">Change Locale</string>
 
+    <string name="tap_to_change_locale">Tap to change locale</string>
+    <string name="change_language">Change Language</string>
+    <string name="change_country">Change Country</string>
+
     <string name="label">Label</string>
     <string name="language">Language</string>
     <string name="country">Country</string>
@@ -52,7 +56,7 @@
     <string name="version">version 2.2.2</string>
 
     <string name="developer">Copyright C-LIS Crazy Lab.</string>
-    <string name="developer_url">http://ccl.c-lis.co.jp</string>
+    <string name="developer_url">https://www.c-lis.co.jp</string>
 
     <string name="developed_in_osaka_japan">Developed in Osaka, Japan.</string>
 
@@ -63,12 +67,15 @@
 	<string name="permission_change_locale_description">This application will change system locale and country setting.</string>
 
     <string name="permission_denied">Permission Denied.</string>
-    <string name="permission_denied_message">MoreLocale 2 is not granted a CHANGE_CONFIGURATION permission.\nIf you\'re able to use development tools, you can grant the permission manually by \'pm\' command.\n\nIf you have SuperUser privilege on your device.\nMoreLocale 2 could get the permission automatically.</string>
+    <string name="permission_denied_message">MoreLocale is not granted a CHANGE_CONFIGURATION permission.\nIf you\'re able to use development tools, you can grant the permission manually by \'pm\' command.\n\nIf you have SuperUser privilege on your device.\nMoreLocale 2 could get the permission automatically.</string>
     <string name="show_how_to_use_pm_command">Show how to use \'pm\' command</string>
     <string name="use_superuser_privilege">Use SuperUser privilege</string>
         
     <string name="how_to_use_pm_command">How to use \'pm\' command</string>
     <string name="how_to_use_pm_command_message">1. Enable USB debug mode.\n2. Connect to your PC and type below command.\n&gt; adb shell pm grant jp.co.c_lis.ccl.morelocale android.permission.CHANGE_CONFIGURATION\n3. Retry changing locale.</string>
+
+    <string name="permission_denied_message_glass">If you\'re able to use development tools, you can grant the permission manually by \'pm\' command.</string>
+    <string name="how_to_use_pm_command_message_glass">1. Enable Debug mode.\n2. Connect to your PC and type below command.\n&gt; adb shell pm grant jp.co.c_lis.ccl.morelocale android.permission.CHANGE_CONFIGURATION\n3. Relaunch MoreLocale and change locale.</string>
 
     <string name="could_not_get_su_privlege">MoreLocale 2 couldn\'t get SuperUser privilege...</string>
 </resources>

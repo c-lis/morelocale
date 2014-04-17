@@ -69,6 +69,7 @@ import android.widget.Toast;
 import com.android.settings.morelocale.lang.MoreLocale;
 import com.android.settings.morelocale.lang.MoreLocale.Loc;
 import com.android.settings.morelocale.util.DBHelper;
+import com.android.settings.morelocale.util.PermissionUtils;
 import com.stericson.RootTools.CommandCapture;
 import com.stericson.RootTools.RootTools;
 
@@ -478,14 +479,6 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
         ((TextView) findViewById(R.id.locale_header_tv_locale_value)).setText(value);
     }
 
-    private static final String PERMISSION_CHANGE_CONFIGURATION = "android.permission.CHANGE_CONFIGURATION";
-
-    private boolean checkPermission() {
-        return (PackageManager.PERMISSION_GRANTED
-                == getPackageManager().checkPermission(PERMISSION_CHANGE_CONFIGURATION,
-                getPackageName()));
-    }
-
     /**
      * リストのクリック
      */
@@ -552,7 +545,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
         final Thread th = new Thread() {
             public void run() {
 
-                if (checkPermission()) {
+                if (PermissionUtils.checkPermission(MainActivity.this)) {
                     mHandler.sendMessage(msg);
                 } else {
                     // CHANGE_CONFIGURATIONのパーミッションがない場合
@@ -739,6 +732,24 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
         return false;
     }
 
+    private void setMenuItems(int titleArrayId, int valueArrayId, Menu menu, final TextView tv) {
+        String[] titles = getResources().getStringArray(titleArrayId);
+        final String[] values = getResources().getStringArray(valueArrayId);
+
+        int index = 0;
+        for (String title : titles) {
+            MenuItem item = menu.add(title);
+            final int idx = index;
+            item.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+                public boolean onMenuItemClick(MenuItem item) {
+                    tv.setText(values[idx]);
+                    return false;
+                }
+            });
+            index++;
+        }
+    }
+
     private OnCreateContextMenuListener mCustomLocaleContextMenuListener = new OnCreateContextMenuListener() {
 
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
@@ -746,35 +757,13 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
             int len = 0;
             switch (v.getId()) {
                 case R.id.custom_locale_btn_639:
-                    inflater.inflate(R.menu.menu_639, menu);
                     menu.setHeaderTitle(R.string.ISO639);
-                    len = menu.size();
-                    for (int i = 0; i < len; i++) {
-                        final int index = i;
-                        menu.getItem(i).setOnMenuItemClickListener(new OnMenuItemClickListener() {
-                            public boolean onMenuItemClick(MenuItem item) {
-                                mLanguage.setText(getResources().getStringArray(
-                                        R.array.iso_639_value)[index]);
-                                return false;
-                            }
-                        });
-                    }
+                    setMenuItems(R.array.iso_639_title, R.array.iso_639_value, menu, mLanguage);
                     break;
 
                 case R.id.custom_locale_btn_3166:
-                    inflater.inflate(R.menu.menu_3166, menu);
                     menu.setHeaderTitle(R.string.ISO3166);
-                    len = menu.size();
-                    for (int i = 0; i < len; i++) {
-                        final int index = i;
-                        menu.getItem(i).setOnMenuItemClickListener(new OnMenuItemClickListener() {
-                            public boolean onMenuItemClick(MenuItem item) {
-                                mCountry.setText(getResources().getStringArray(
-                                        R.array.iso_3166_value)[index]);
-                                return false;
-                            }
-                        });
-                    }
+                    setMenuItems(R.array.iso_3166_title, R.array.iso_3166_value, menu, mCountry);
                     break;
 
             }

@@ -1,0 +1,521 @@
+<resources>
+    <string-array name="iso_3166_title" >
+
+        <item>Japan</item>
+        <item>United States</item>
+
+        <item>Andorra</item>
+        <item>United Arab Emirates</item>
+        <item>Afghanistan</item>
+        <item>Antigua and Barbuda</item>
+        <item>Anguilla</item>
+        <item>Albania</item>
+        <item>Armenia</item>
+        <item>Netherlands Antilles</item>
+        <item>Angola</item>
+        <item>Antarctica</item>
+        <item>Argentina</item>
+        <item>American Samoa</item>
+        <item>Austria</item>
+        <item>Australia</item>
+        <item>Aruba</item>
+        <item>Aland Islands</item>
+        <item>Azerbaijan</item>
+        <item>Bosnia and Herzegovina</item>
+        <item>Barbados</item>
+        <item>Bangladesh</item>
+        <item>Belgium</item>
+        <item>Burkina Faso</item>
+        <item>Bulgaria</item>
+        <item>Bahrain</item>
+        <item>Burundi</item>
+        <item>Benin</item>
+        <item>Saint Barthelemy</item>
+        <item>Bermuda</item>
+        <item>Brunei Darussalam</item>
+        <item>Bolivia, Plurinational State of</item>
+        <item>Brazil</item>
+
+        <item>Bahamas</item>
+        <item>Bhutan</item>
+        <item>Bouvet Island</item>
+        <item>Botswana</item>
+        <item>Belarus</item>
+        <item>Belize</item>
+        <item>Canada</item>
+        <item>Cocos(Keeling) Islands</item>
+        <item>Congo, the Democratic Republic of the</item>
+        <item>Central African Republic</item>
+        <item>Congo</item>
+        <item>Switzerland</item>
+        <item>Cote d\'lvoire</item>
+        <item>Cook Islands</item>
+        <item>Chile</item>
+        <item>Cameroon</item>
+        <item>China</item>
+        <item>Colombia</item>
+        <item>Costa Rica</item>
+        <item>Cuba</item>
+        <item>Cape Verde</item>
+        <item>Christmas Island</item>
+        <item>Cyprus</item>
+        <item>Czech Republic</item>
+        <item>Germany</item>
+        <item>Djibouti</item>
+        <item>Denmark</item>
+        <item>Dominica</item>
+        <item>Dominican Republic</item>
+
+        <item>Algeria</item>
+        <item>Ecuador</item>
+        <item>Estonia</item>
+        <item>Egypt</item>
+        <item>Western Sahara</item>
+        <item>Eritrea</item>
+        <item>Spain</item>
+        <item>Ethiopia</item>
+        <item>Finland</item>
+        <item>Fiji</item>
+        <item>Falkland Islands(Malvinas)</item>
+        <item>Micronesia, Federated State of</item>
+        <item>Faroe Islands</item>
+        <item>France</item>
+        <item>Gabon</item>
+        <item>United Kingdom</item>
+        <item>Grenada</item>
+        <item>Georgia</item>
+        <item>French Guiana</item>
+        <item>Guernsey</item>
+        <item>Ghana</item>
+        <item>Gibraltar</item>
+        <item>Greenland</item>
+        <item>Gambia</item>
+        <item>Guinea</item>
+        <item>Guadeloupe</item>
+        <item>Equatorial Guinea</item>
+
+        <item>Greece</item>
+        <item>South Georgia and the South Sandwich Islands</item>
+        <item>Guatemala</item>
+        <item>Guam</item>
+        <item>Guinea-Bissau</item>
+        <item>Guyana</item>
+        <item>Hong Kong</item>
+        <item>Heard Island and McDonald Islands</item>
+        <item>Honduras</item>
+        <item>Croatia</item>
+        <item>Haiti</item>
+        <item>Hungary</item>
+        <item>Indonesia</item>
+        <item>Ireland</item>
+        <item>Israel</item>
+        <item>Isle of Man</item>
+        <item>India</item>
+        <item>British Indian Ocean Territory</item>
+        <item>Iraq</item>
+        <item>Iran, Islamic Republic of</item>
+        <item>Iceland</item>
+        <item>Italy</item>
+        <item>Jersey</item>
+        <item>Jamaica</item>
+        <item>Jordan</item>
+        <item>Japan</item>
+        <item>Kenya</item>
+        <item>Kyrgyzstan</item>
+        <item>Cambodia</item>
+        <item>Kiribati</item>
+        <item>Comoros</item>
+        <item>Saint Kitts and Nevis</item>
+
+        <item>Korea, Democratic People\'s Republic of</item>
+        <item>Korea, Republic of</item>
+        <item>Kuwait</item>
+        <item>Cayman Islands</item>
+        <item>Kazakhstan</item>
+        <item>Lao People\'s Democratic Republic</item>
+        <item>Lebanon</item>
+        <item>Saint Lucia</item>
+        <item>Liechtenstein</item>
+        <item>Sri Lanka</item>
+        <item>Liberia</item>
+        <item>Lesotho</item>
+        <item>Lithuania</item>
+        <item>Luxembourg</item>
+        <item>Latvia</item>
+        <item>Libyan Arab Jamahiriya</item>
+        <item>Morocco</item>
+        <item>Monaco</item>
+        <item>Moldova, Republic of</item>
+        <item>Montenegro</item>
+        <item>Saint Martin(French part)</item>
+        <item>Madagascar</item>
+        <item>Marchall Islands</item>
+        <item>Macedonia, the former Yugoslav Republic of</item>
+        <item>Mali</item>
+        <item>Myanmar</item>
+        <item>Mongolia</item>
+        <item>Macao</item>
+        <item>Northern Mariana Islands</item>
+        <item>Martinique</item>
+        <item>Mauritania</item>
+        <item>Montserrat</item>
+
+        <item>Malta</item>
+        <item>Mauritius</item>
+        <item>Maldives</item>
+        <item>Malawi</item>
+        <item>Mexico</item>
+        <item>Malaysia</item>
+        <item>Mozambique</item>
+        <item>Namibia</item>
+        <item>New Caledonia</item>
+        <item>Niger</item>
+        <item>Norfolk Island</item>
+        <item>Nigeria</item>
+        <item>Nicaragua</item>
+        <item>Netherlands</item>
+        <item>Norway</item>
+        <item>Nepal</item>
+        <item>Nauru</item>
+        <item>Niue</item>
+        <item>New Zealand</item>
+        <item>Oman</item>
+        <item>Panama</item>
+        <item>Peru</item>
+        <item>French Plynesia</item>
+        <item>Papua New Guinea</item>
+        <item>Philippines</item>
+        <item>Pakistan</item>
+        <item>Poland</item>
+        <item>Saint Pierre and Miquelon</item>
+        <item>Pitcairn</item>
+        <item>Puerto Rico</item>
+        <item>Palestinian Territory, Occupied</item>
+        <item>Portugal</item>
+        <item>Palau</item>
+        <item>Paraguay</item>
+        <item>Qatar</item>
+        <item>Reunion</item>
+        <item>Romania</item>
+
+        <item>Serbia</item>
+        <item>Russian Federation</item>
+        <item>Rwanda</item>
+        <item>Saudi Arabia</item>
+        <item>Solomon Islands</item>
+        <item>Seychelles</item>
+        <item>Sudan</item>
+        <item>Sweden</item>
+        <item>Singapore</item>
+        <item>Saint Helena, Ascension and Tristan da Cunha</item>
+        <item>Slovenia</item>
+        <item>Svalbard and Jan Mayen</item>
+        <item>Slovakia</item>
+        <item>Sierra Leone</item>
+        <item>San Marino</item>
+        <item>Senegal</item>
+        <item>Somalia</item>
+        <item>Suriname</item>
+        <item>Sao Tome and Principe</item>
+        <item>El Salvador</item>
+        <item>Syrian Arab Republic</item>
+        <item>Swaziland</item>
+        <item>Turks and Caicos Islands</item>
+        <item>Chad</item>
+        <item>French Southern Territories</item>
+        <item>Togo</item>
+        <item>Thailand</item>
+        <item>Tajikistan</item>
+
+        <item>Tokelau</item>
+        <item>Timor-Leste</item>
+        <item>Turkmenistan</item>
+        <item>Tunisia</item>
+        <item>Tonga</item>
+        <item>Turkey</item>
+        <item>Trinidad and Tobago</item>
+        <item>Tuvalu</item>
+        <item>Taiwan, Province of China</item>
+        <item>Tanzania, United Republic of</item>
+        <item>Ukraine</item>
+        <item>Uganda</item>
+        <item>United States Minor Outlying Islands</item>
+        <item>United States</item>
+        <item>Uruguay</item>
+        <item>Uzbekistan</item>
+        <item>Holy See</item>
+        <item>Saint Vincent and the Grenadines</item>
+        <item>Venezuela, Bolivarian Republic of</item>
+        <item>Virgin Islands, British</item>
+        <item>Virgin Islands, U.S.</item>
+        <item>Viet Nam</item>
+        <item>Vanuatu</item>
+        <item>Wallis and Futuna</item>
+
+        <item>Samoa</item>
+        <item>Yemen</item>
+        <item>Mayotte</item>
+        <item>South Africa</item>
+        <item>Zambia</item>
+        <item>Zimbabwe</item>
+    </string-array>
+
+	<string-array name="iso_3166_value" >
+		<item>JP</item>
+		<item>US</item>
+
+		<item>AD</item>
+		<item>AE</item>
+		<item>AF</item>
+		<item>AG</item>
+		<item>AI</item>
+		<item>AL</item>
+		<item>AM</item>
+		<item>AN</item>
+		<item>AO</item>
+		<item>AQ</item>
+		<item>AR</item>
+		<item>AS</item>
+		<item>AT</item>
+		<item>AU</item>
+		<item>AW</item>
+		<item>AX</item>
+		<item>AZ</item>
+		<item>BA</item>
+		<item>BB</item>
+		<item>BD</item>
+		<item>BE</item>
+		<item>BF</item>
+		<item>BG</item>
+		<item>BH</item>
+		<item>BI</item>
+		<item>BJ</item>
+		<item>BL</item>
+		<item>BM</item>
+		<item>BN</item>
+		<item>BO</item>
+		<item>BR</item>
+
+		<item>BS</item>
+		<item>BT</item>
+		<item>BV</item>
+		<item>BW</item>
+		<item>BY</item>
+		<item>BZ</item>
+		<item>CA</item>
+		<item>CC</item>
+		<item>CD</item>
+		<item>CF</item>
+		<item>CG</item>
+		<item>CH</item>
+		<item>CI</item>
+		<item>CK</item>
+		<item>CL</item>
+		<item>CM</item>
+		<item>CN</item>
+		<item>CO</item>
+		<item>CR</item>
+		<item>CU</item>
+		<item>CV</item>
+		<item>CX</item>
+		<item>CY</item>
+		<item>CZ</item>
+		<item>DE</item>
+		<item>DJ</item>
+		<item>DK</item>
+		<item>DM</item>
+		<item>DO</item>
+
+		<item>DZ</item>
+		<item>EC</item>
+		<item>EE</item>
+		<item>EG</item>
+		<item>EH</item>
+		<item>ER</item>
+		<item>ES</item>
+		<item>ET</item>
+		<item>FI</item>
+		<item>FJ</item>
+		<item>FK</item>
+		<item>FM</item>
+		<item>FO</item>
+		<item>FR</item>
+		<item>GA</item>
+		<item>GB</item>
+		<item>GD</item>
+		<item>GE</item>
+		<item>GF</item>
+		<item>GG</item>
+		<item>GH</item>
+		<item>GI</item>
+		<item>GL</item>
+		<item>GM</item>
+		<item>GN</item>
+		<item>GP</item>
+		<item>GQ</item>
+
+		<item>GR</item>
+		<item>GS</item>
+		<item>GT</item>
+		<item>GU</item>
+		<item>GW</item>
+		<item>GY</item>
+		<item>HK</item>
+		<item>HM</item>
+		<item>HN</item>
+		<item>HR</item>
+		<item>HT</item>
+		<item>HU</item>
+		<item>ID</item>
+		<item>IE</item>
+		<item>IL</item>
+		<item>IM</item>
+		<item>IN</item>
+		<item>IO</item>
+		<item>IQ</item>
+		<item>IR</item>
+		<item>IS</item>
+		<item>IT</item>
+		<item>JE</item>
+		<item>JM</item>
+		<item>JO</item>
+		<item>JP</item>
+		<item>KE</item>
+		<item>KG</item>
+		<item>KH</item>
+		<item>KI</item>
+		<item>KM</item>
+		<item>KN</item>
+
+		<item>KP</item>
+		<item>KR</item>
+		<item>KW</item>
+		<item>KY</item>
+		<item>KZ</item>
+		<item>LA</item>
+		<item>LB</item>
+		<item>LC</item>
+		<item>LI</item>
+		<item>LK</item>
+		<item>KR</item>
+		<item>LS</item>
+		<item>LT</item>
+		<item>LU</item>
+		<item>LV</item>
+		<item>LY</item>
+		<item>MA</item>
+		<item>MC</item>
+		<item>MD</item>
+		<item>ME</item>
+		<item>MF</item>
+		<item>MG</item>
+		<item>MH</item>
+		<item>MK</item>
+		<item>ML</item>
+		<item>MM</item>
+		<item>MN</item>
+		<item>MO</item>
+		<item>MP</item>
+		<item>MQ</item>
+		<item>MR</item>
+		<item>MS</item>
+
+		<item>MT</item>
+		<item>MU</item>
+		<item>MV</item>
+		<item>MW</item>
+		<item>MX</item>
+		<item>MY</item>
+		<item>MZ</item>
+		<item>NA</item>
+		<item>NC</item>
+		<item>NE</item>
+		<item>NF</item>
+		<item>NG</item>
+		<item>NI</item>
+		<item>NL</item>
+		<item>NO</item>
+		<item>NP</item>
+		<item>NR</item>
+		<item>NU</item>
+		<item>NZ</item>
+		<item>OM</item>
+		<item>PA</item>
+		<item>PE</item>
+		<item>PF</item>
+		<item>PG</item>
+		<item>PH</item>
+		<item>PK</item>
+		<item>PL</item>
+		<item>PM</item>
+		<item>PN</item>
+		<item>PR</item>
+		<item>PS</item>
+		<item>PT</item>
+		<item>PW</item>
+		<item>PY</item>
+		<item>QA</item>
+		<item>RE</item>
+		<item>RO</item>
+
+		<item>RS</item>
+		<item>RU</item>
+		<item>RW</item>
+		<item>SA</item>
+		<item>SB</item>
+		<item>SC</item>
+		<item>SD</item>
+		<item>SE</item>
+		<item>SG</item>
+		<item>SH</item>
+		<item>SI</item>
+		<item>SJ</item>
+		<item>SK</item>
+		<item>SL</item>
+		<item>SM</item>
+		<item>SN</item>
+		<item>SO</item>
+		<item>SR</item>
+		<item>ST</item>
+		<item>SV</item>
+		<item>SY</item>
+		<item>SZ</item>
+		<item>TC</item>
+		<item>TD</item>
+		<item>TF</item>
+		<item>TG</item>
+		<item>TH</item>
+		<item>TJ</item>
+
+		<item>TK</item>
+		<item>TL</item>
+		<item>TM</item>
+		<item>TN</item>
+		<item>TO</item>
+		<item>TR</item>
+		<item>TT</item>
+		<item>TV</item>
+		<item>TW</item>
+		<item>TZ</item>
+		<item>UA</item>
+		<item>UG</item>
+		<item>UM</item>
+		<item>US</item>
+		<item>UY</item>
+		<item>UZ</item>
+		<item>VA</item>
+		<item>VC</item>
+		<item>VE</item>
+		<item>VG</item>
+		<item>VI</item>
+		<item>VN</item>
+		<item>VU</item>
+		<item>WF</item>
+		<item>WS</item>
+		<item>YE</item>
+		<item>YT</item>
+		<item>ZA</item>
+		<item>ZM</item>
+		<item>ZW</item>
+	</string-array>
+</resources>

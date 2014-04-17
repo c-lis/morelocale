@@ -84,8 +84,8 @@ public class MoreLocale {
      *
      * @param loc
      */
-    public static void setLocale(MoreLocale.Loc loc) {
-        setLocale(loc.locale);
+    public static boolean setLocale(MoreLocale.Loc loc) {
+        return setLocale(loc.locale);
     }
 
     /**
@@ -93,7 +93,7 @@ public class MoreLocale {
      *
      * @param loc
      */
-    public static void setLocale(Locale loc) {
+    public static boolean setLocale(Locale loc) {
         try {
             Class<?> activityManagerNative = (Class<?>) Class.forName("android.app.ActivityManagerNative");
 
@@ -112,6 +112,8 @@ public class MoreLocale {
             Method updateConfiguration = am.getClass().getMethod("updateConfiguration", new Class[]{Configuration.class});
             updateConfiguration.invoke(am, new Object[]{config});
 
+            return true;
+
         } catch (ClassNotFoundException e) {
             if (DEBUG_FLG) {
                 Log.e(LOG_TAG, "ClassNotFoundException", e);
@@ -129,6 +131,7 @@ public class MoreLocale {
                 Log.e(LOG_TAG, "IllegalAccessException", e);
             }
         }
+        return false;
     }
 
 }

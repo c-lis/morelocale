@@ -4,10 +4,6 @@
     android:versionCode="7"
     android:versionName="2.2.2">
 
-    <uses-sdk
-        android:minSdkVersion="3"
-        android:targetSdkVersion="9" />
-
     <permission
         android:name="jp.co.c_lis.permission.CHANGE_LOCALE"
         android:description="@string/permission_change_locale_description"
@@ -22,6 +18,7 @@
         android:smallScreens="true" />
 
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="com.google.android.glass.permission.DEVELOPMENT" />
 
     <uses-feature
         android:name="android.hardware.touchscreen"
@@ -50,6 +47,28 @@
                 android:name="jp.co.c_lis.provider.apps_settings"
                 android:resource="@xml/setting_info" />
         </activity>
+
+        <activity
+            android:name="com.android.settings.morelocale.ui.GlasswareMainActivity"
+            android:immersive="true"
+            android:screenOrientation="nosensor">
+            <intent-filter>
+                <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
+            </intent-filter>
+            <meta-data
+                android:name="com.google.android.glass.VoiceTrigger"
+                android:resource="@xml/voice_trigger" />
+        </activity>
+
+        <activity
+            android:name="com.android.settings.morelocale.ui.GlasswareSelectActivity"
+            android:immersive="true"
+            android:screenOrientation="nosensor" />
+
+        <activity
+            android:name="com.android.settings.morelocale.ui.GlasswareAboutActivity"
+            android:immersive="true"
+            android:screenOrientation="nosensor" />
 
         <receiver
             android:name="com.android.settings.morelocale.receiver.Receiver"
