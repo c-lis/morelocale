@@ -157,7 +157,9 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
         msg.setData(data);
         mHandler.sendMessage(msg);
 
-        if(mCursor.getCount() == 0) new Thread(mInit).start();
+        if(mCursor.getCount() == 0) {
+            new Thread(mInit).start();
+        }
     }
 
     /**
@@ -167,9 +169,15 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
      */
     private boolean isCustomLocale(long id) {
         if (mDb.isOpen()) {
-            Cursor cursor = mDb.query(DBHelper.TABLE_LOCALES, PROJECTION, "_id = ? AND preset_flg = ?", new String[]{String.valueOf(id), String.valueOf(PRESET_FLG_FALSE)}, null, null,
+            Cursor cursor = mDb.query(DBHelper.TABLE_LOCALES, PROJECTION,
+                    "_id = ? AND preset_flg = ?",
+                    new String[]{String.valueOf(id), String.valueOf(PRESET_FLG_FALSE)},
+                    null,
+                    null,
                     "row_order desc");
-            if(cursor.getCount() > 0) return true;
+            if(cursor.getCount() > 0) {
+                return true;
+            }
         }
         return false;
     }
@@ -219,7 +227,9 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (DEBUG_FLG) Log.d(LOG_TAG, "onDestroy");
+        if (DEBUG_FLG) {
+            Log.d(LOG_TAG, "onDestroy");
+        }
         mDb.close();
     }
 
@@ -341,7 +351,9 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
             if (mDb.isOpen()) {
                 int rows = mDb.delete(DBHelper.TABLE_LOCALES, "preset_flg = ?",
                         new String[] { String.valueOf(PRESET_FLG_TRUE) });
-                if (DEBUG_FLG) Log.d(LOG_TAG, "row " + rows + "are deleted.");
+                if (DEBUG_FLG) {
+                    Log.d(LOG_TAG, "row " + rows + "are deleted.");
+                }
 
                 int rowOrder = 0;
                 for (Loc l : locs) {
@@ -377,12 +389,18 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
         values.put("row_order", rowOrder);
         values.put("preset_flg", presetFlg);
 
-        if (DEBUG_FLG) Log.d(LOG_TAG, "row " + l.label);
+        if (DEBUG_FLG) {
+            Log.d(LOG_TAG, "row " + l.label);
+        }
 
         int rows = mDb.update(DBHelper.TABLE_LOCALES, values, "_id = ?", new String[] { String
                 .valueOf(id) });
-        if (DEBUG_FLG) Log.d(LOG_TAG, "row " + rows + " updated.");
-        if (rows == 0) mDb.insert(DBHelper.TABLE_LOCALES, null, values);
+        if (DEBUG_FLG) {
+            Log.d(LOG_TAG, "row " + rows + " updated.");
+        }
+        if (rows == 0) {
+            mDb.insert(DBHelper.TABLE_LOCALES, null, values);
+        }
 
     }
 
@@ -438,9 +456,15 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
         String variant = loc.locale.getVariant();
 
         String NA = "N/A";
-        if (language.equals("")) language = NA;
-        if (country.equals("")) country = NA;
-        if (variant.equals("")) variant = NA;
+        if (language.equals("")) {
+            language = NA;
+        }
+        if (country.equals("")) {
+            country = NA;
+        }
+        if (variant.equals("")) {
+            variant = NA;
+        }
 
         String value = language + " " + country + " " + variant;
         ((TextView) findViewById(R.id.locale_header_tv_locale_name)).setText(name);
@@ -460,7 +484,9 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
      */
     public void onItemClick(AdapterView<?> arg0, View arg1, int position, long id) {
 
-        if (mStatus == STATUS_PROCESSING) return;
+        if (mStatus == STATUS_PROCESSING) {
+            return;
+        }
 
         mCursor.moveToPosition(position);
 
@@ -469,10 +495,18 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
         String country = mCursor.getString(COLUMN_INDEX_LOCALES_COUNTRY);
         String variant = mCursor.getString(COLUMN_INDEX_LOCALES_VARIANT);
 
-        if (label == null) label = "";
-        if (language == null) language = "";
-        if (country == null) country = "";
-        if (variant == null) variant = "";
+        if (label == null) {
+            label = "";
+        }
+        if (language == null) {
+            language = "";
+        }
+        if (country == null) {
+            country = "";
+        }
+        if (variant == null) {
+            variant = "";
+        }
 
         Loc loc = new Loc(label, new Locale(language, country, variant));
         changeLocale(loc);
@@ -600,7 +634,9 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
 
                             changeLocale(loc);
 
-                            if (mCustomLocaleDialog.isShowing()) mCustomLocaleDialog.dismiss();
+                            if (mCustomLocaleDialog.isShowing()) {
+                                mCustomLocaleDialog.dismiss();
+                            }
                         }
                     });
         } else {
@@ -615,7 +651,9 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
                             insertLocale(loc, System.currentTimeMillis(), PRESET_FLG_FALSE);
                             reloadDb();
                             
-                            if (mCustomLocaleDialog.isShowing()) mCustomLocaleDialog.dismiss();
+                            if (mCustomLocaleDialog.isShowing()) {
+                                mCustomLocaleDialog.dismiss();
+                            }
                         }
                     });
         }
@@ -623,7 +661,9 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
         mCustomLocaleDialog.findViewById(R.id.custom_locale_btn_cancel).setOnClickListener(
                 new OnClickListener() {
                     public void onClick(View v) {
-                        if (mCustomLocaleDialog.isShowing()) mCustomLocaleDialog.dismiss();
+                        if (mCustomLocaleDialog.isShowing()) {
+                            mCustomLocaleDialog.dismiss();
+                        }
                     }
                 });
         mCustomLocaleDialog.setOnDismissListener(new OnDismissListener() {
@@ -646,8 +686,10 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
         mCountry.setText(nowLocale.getCountry());
         mVariant.setText(nowLocale.getVariant());
 
-        if (!saveMode) mCustomLocaleDialog.findViewById(R.id.custom_locale_tr_label).setVisibility(
-                View.GONE);
+        if (!saveMode) {
+            mCustomLocaleDialog.findViewById(R.id.custom_locale_tr_label)
+                    .setVisibility(View.GONE);
+        }
         
         mCustomLocaleDialog.setOnDismissListener(new OnDismissListener() {
             public void onDismiss(DialogInterface dialog) {
@@ -780,7 +822,9 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
         for (int i = 0; i < origSize; i++) {
             String localeName = locales[i];
 
-            if (localeName.equals("ja")) localeName = "ja_JP";
+            if (localeName.equals("ja")) {
+                localeName = "ja_JP";
+            }
 
             int len = localeName.length();
 
