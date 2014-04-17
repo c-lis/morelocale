@@ -3,6 +3,9 @@ package com.android.settings.morelocale.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.widget.TextView;
+
+import com.android.settings.morelocale.util.ApplicationUtils;
 
 import jp.co.c_lis.ccl.morelocale.R;
 
@@ -16,6 +19,9 @@ public class GlasswareAboutActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.glass_about);
+
+        TextView versionName  = (TextView)findViewById(R.id.about_tv_version);
+        versionName.setText("Version " + ApplicationUtils.getVersionName(this));
     }
 
     @Override

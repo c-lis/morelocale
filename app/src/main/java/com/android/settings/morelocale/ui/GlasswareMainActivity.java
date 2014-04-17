@@ -11,9 +11,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.android.settings.morelocale.lang.MoreLocale;
-import com.android.settings.morelocale.util.PermissionUtils;
+import com.android.settings.morelocale.util.ApplicationUtils;
 
-import java.util.List;
 import java.util.Locale;
 
 import jp.co.c_lis.ccl.morelocale.R;
@@ -31,7 +30,7 @@ public class GlasswareMainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (PermissionUtils.checkPermission(this)) {
+        if (ApplicationUtils.checkPermission(this)) {
             setContentView(R.layout.glass_main);
 
             mLocaleView = (TextView) findViewById(R.id.tv_locale);
@@ -107,14 +106,13 @@ public class GlasswareMainActivity extends Activity {
             }
         }
 
-
         super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
     public boolean onKeyDown(int keycode, KeyEvent event) {
         if (keycode == KeyEvent.KEYCODE_DPAD_CENTER) {
-            if (PermissionUtils.checkPermission(this)) {
+            if (ApplicationUtils.checkPermission(this)) {
                 openOptionsMenu();
             }
             return true;

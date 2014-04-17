@@ -30,7 +30,6 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@id/about_tv_app_name"
         android:layout_below="@id/about_tv_app_name"
-        android:text="@string/version"
         android:textSize="14sp" />
 
     <TextView

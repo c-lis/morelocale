@@ -39,7 +39,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -68,8 +67,8 @@ import android.widget.Toast;
 
 import com.android.settings.morelocale.lang.MoreLocale;
 import com.android.settings.morelocale.lang.MoreLocale.Loc;
+import com.android.settings.morelocale.util.ApplicationUtils;
 import com.android.settings.morelocale.util.DBHelper;
-import com.android.settings.morelocale.util.PermissionUtils;
 import com.stericson.RootTools.CommandCapture;
 import com.stericson.RootTools.RootTools;
 
@@ -545,7 +544,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
         final Thread th = new Thread() {
             public void run() {
 
-                if (PermissionUtils.checkPermission(MainActivity.this)) {
+                if (ApplicationUtils.checkPermission(MainActivity.this)) {
                     mHandler.sendMessage(msg);
                 } else {
                     // CHANGE_CONFIGURATIONのパーミッションがない場合
@@ -719,6 +718,10 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
                 Dialog dialog = new Dialog(this);
                 dialog.setTitle(getText(R.string.about));
                 dialog.setContentView(R.layout.about);
+
+                TextView versionName = (TextView)dialog.findViewById(R.id.about_tv_version);
+                versionName.setText("Version " + ApplicationUtils.getVersionName(this));
+
                 dialog.show();
                 return true;
         }
