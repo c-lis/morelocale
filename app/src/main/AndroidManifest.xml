@@ -49,7 +49,7 @@
         </activity>
 
         <activity
-            android:name="com.android.settings.morelocale.ui.GlasswareMainActivity"
+            android:name="com.android.settings.morelocale.ui.glass.MainActivity"
             android:immersive="true"
             android:screenOrientation="nosensor">
             <intent-filter>
@@ -61,12 +61,12 @@
         </activity>
 
         <activity
-            android:name="com.android.settings.morelocale.ui.GlasswareSelectActivity"
+            android:name="com.android.settings.morelocale.ui.glass.SelectActivity"
             android:immersive="true"
             android:screenOrientation="nosensor" />
 
         <activity
-            android:name="com.android.settings.morelocale.ui.GlasswareAboutActivity"
+            android:name="com.android.settings.morelocale.ui.glass.AboutActivity"
             android:immersive="true"
             android:screenOrientation="nosensor" />
 

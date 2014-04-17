@@ -1,4 +1,4 @@
-package com.android.settings.morelocale.ui;
+package com.android.settings.morelocale.ui.glass;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import com.android.settings.morelocale.util.ApplicationUtils;
 
 import jp.co.c_lis.ccl.morelocale.R;
 
-public class GlasswareAboutActivity extends Activity {
+public class AboutActivity extends Activity {
 
     private static final boolean DEBUG_FLG = false;
     private static final String LOG_TAG = "MoreLocale";

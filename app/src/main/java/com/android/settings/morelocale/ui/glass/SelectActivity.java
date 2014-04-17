@@ -1,4 +1,4 @@
-package com.android.settings.morelocale.ui;
+package com.android.settings.morelocale.ui.glass;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,9 +7,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.android.settings.morelocale.ui.OnLocaleSelectedListener;
+
 import jp.co.c_lis.ccl.morelocale.R;
 
-public class GlasswareSelectActivity extends Activity implements OnLocaleSelectedListener {
+public class SelectActivity extends Activity implements OnLocaleSelectedListener {
 
     private static final boolean DEBUG_FLG = false;
     private static final String LOG_TAG = "MoreLocale";

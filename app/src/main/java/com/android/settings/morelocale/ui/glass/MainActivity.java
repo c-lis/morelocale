@@ -1,4 +1,4 @@
-package com.android.settings.morelocale.ui;
+package com.android.settings.morelocale.ui.glass;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,7 +16,7 @@ import java.util.Locale;
 
 import jp.co.c_lis.ccl.morelocale.R;
 
-public class GlasswareMainActivity extends Activity {
+public class MainActivity extends Activity {
 
     private static final boolean DEBUG_FLG = false;
     private static final String LOG_TAG = "MoreLocale";
@@ -60,18 +60,18 @@ public class GlasswareMainActivity extends Activity {
 
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
-        Intent intent = new Intent(this, GlasswareSelectActivity.class);
+        Intent intent = new Intent(this, SelectActivity.class);
         switch (item.getItemId()) {
             case R.id.main_menu_change_language:
-                intent.putExtra(GlasswareSelectActivity.KEY_MODE, GlasswareSelectActivity.MODE_LANGUAGE);
+                intent.putExtra(SelectActivity.KEY_MODE, SelectActivity.MODE_LANGUAGE);
                 startActivityForResult(intent, R.id.main_menu_change_language);
                 break;
             case R.id.main_menu_change_country:
-                intent.putExtra(GlasswareSelectActivity.KEY_MODE, GlasswareSelectActivity.MODE_COUNTRY);
+                intent.putExtra(SelectActivity.KEY_MODE, SelectActivity.MODE_COUNTRY);
                 startActivityForResult(intent, R.id.main_menu_change_country);
                 break;
             case R.id.main_menu_about:
-                Intent about = new Intent(this, GlasswareAboutActivity.class);
+                Intent about = new Intent(this, AboutActivity.class);
                 startActivity(about);
                 break;
         }
@@ -85,8 +85,8 @@ public class GlasswareMainActivity extends Activity {
             return;
         }
 
-        String title = data.getStringExtra(GlasswareSelectActivity.KEY_TITLE);
-        String value = data.getStringExtra(GlasswareSelectActivity.KEY_VALUE);
+        String title = data.getStringExtra(SelectActivity.KEY_TITLE);
+        String value = data.getStringExtra(SelectActivity.KEY_VALUE);
 
         switch (requestCode) {
             case R.id.main_menu_change_language: {
