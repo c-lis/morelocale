@@ -25,9 +25,11 @@
     <application
         android:icon="@mipmap/ic_menu_3d_globe"
         android:label="@string/language_picker_title">
+
         <activity
             android:name="com.android.settings.morelocale.ui.MainActivity"
             android:label="@string/language_picker_title"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             android:screenOrientation="nosensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,6 +46,18 @@
             <meta-data
                 android:name="jp.co.c_lis.provider.apps_settings"
                 android:resource="@xml/setting_info" />
+        </activity>
+
+        <activity
+            android:name="jp.co.c_lis.morelocale.ui.MainActivity2"
+            android:label="@string/language_picker_title"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="nosensor">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <receiver

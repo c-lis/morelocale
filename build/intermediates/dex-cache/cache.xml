@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/keiji_ariyama/.gradle/caches/modules-2/files-2.1/io.realm/realm-android/0.80.3/7979d05ba7b919c53766bf98e31aaf0e9feb0590/realm-android-0.80.3.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="7979d05ba7b919c53766bf98e31aaf0e9feb0590">
+        <dex dex="/Users/keiji_ariyama/Developments/repos/project/morelocale/app/build/intermediates/pre-dexed/debug/realm-android-0.80.3-cd68be35b27d5eb34f6ad710f00431ac639e91a8.jar" />
+    </item>
+
+</items>

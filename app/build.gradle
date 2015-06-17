@@ -28,6 +28,9 @@ android {
             }
         }
     }
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
 }
 
 if (project.hasProperty('storeFile')) {
@@ -47,5 +50,10 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile files('libs/RootTools-2.4.jar')
     compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.android.support:design:22.2.0'
+    compile 'com.android.support:recyclerview-v7:22.2.0'
+    compile 'com.jakewharton:butterknife:6.1.0'
+    compile 'de.greenrobot:eventbus:2.4.0'
+    compile 'io.realm:realm-android:0.80.3'
     compile project(':lib')
 }
