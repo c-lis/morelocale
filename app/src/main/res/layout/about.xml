@@ -14,7 +14,7 @@
         android:paddingBottom="10dp"
         android:paddingRight="10dp"
         android:paddingTop="10dp"
-        android:src="@drawable/ic_menu_3d_globe" />
+        android:src="@mipmap/ic_menu_3d_globe" />
 
     <TextView
         android:id="@+id/about_tv_app_name"

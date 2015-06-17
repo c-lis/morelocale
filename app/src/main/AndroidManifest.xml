@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="jp.co.c_lis.ccl.morelocale"
-    android:versionCode="7"
-    android:versionName="2.2.2">
+    package="jp.co.c_lis.ccl.morelocale">
 
     <permission
         android:name="jp.co.c_lis.permission.CHANGE_LOCALE"
         android:description="@string/permission_change_locale_description"
-        android:icon="@drawable/ic_menu_3d_globe"
+        android:icon="@mipmap/ic_menu_3d_globe"
         android:label="@string/permission_change_locale_label"
         android:protectionLevel="normal" />
 
@@ -25,7 +23,7 @@
         android:required="false" />
 
     <application
-        android:icon="@drawable/ic_menu_3d_globe"
+        android:icon="@mipmap/ic_menu_3d_globe"
         android:label="@string/language_picker_title">
         <activity
             android:name="com.android.settings.morelocale.ui.MainActivity"
@@ -47,28 +45,6 @@
                 android:name="jp.co.c_lis.provider.apps_settings"
                 android:resource="@xml/setting_info" />
         </activity>
-
-        <activity
-            android:name="com.android.settings.morelocale.ui.glass.MainActivity"
-            android:immersive="true"
-            android:screenOrientation="nosensor">
-            <intent-filter>
-                <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
-            </intent-filter>
-            <meta-data
-                android:name="com.google.android.glass.VoiceTrigger"
-                android:resource="@xml/voice_trigger" />
-        </activity>
-
-        <activity
-            android:name="com.android.settings.morelocale.ui.glass.SelectActivity"
-            android:immersive="true"
-            android:screenOrientation="nosensor" />
-
-        <activity
-            android:name="com.android.settings.morelocale.ui.glass.AboutActivity"
-            android:immersive="true"
-            android:screenOrientation="nosensor" />
 
         <receiver
             android:name="com.android.settings.morelocale.receiver.Receiver"

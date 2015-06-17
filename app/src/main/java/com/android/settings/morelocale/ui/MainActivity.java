@@ -65,9 +65,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.settings.morelocale.lang.MoreLocale;
-import com.android.settings.morelocale.lang.MoreLocale.Loc;
-import com.android.settings.morelocale.util.ApplicationUtils;
 import com.android.settings.morelocale.util.DBHelper;
 import com.stericson.RootTools.CommandCapture;
 import com.stericson.RootTools.RootTools;
@@ -81,6 +78,8 @@ import java.util.Locale;
 import java.util.concurrent.TimeoutException;
 
 import jp.co.c_lis.ccl.morelocale.R;
+import jp.co.c_lis.morelocale.MoreLocale;
+import jp.co.c_lis.morelocale.utils.ApplicationUtils;
 
 public class MainActivity extends Activity implements OnItemClickListener, OnMenuItemClickListener,
         OnItemLongClickListener, OnClickListener {
@@ -105,11 +104,9 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
         mTvCustomLocale = (TextView) findViewById(R.id.locale_header_tv_custom_locale);
         mTvCustomLocale.setOnClickListener(this);
 
-        DBHelper helper = new DBHelper(this, DBHelper.FILE_NAME, null, DBHelper.VERSION);
-        mDb = helper.getWritableDatabase();
+        mDb = new DBHelper(this, DBHelper.FILE_NAME).getWritableDatabase();
 
-        mCursor = mDb
-                .query(DBHelper.TABLE_LOCALES, PROJECTION, null, null, null, null, "row_order desc");
+        mCursor = mDb.query(DBHelper.TABLE_LOCALES, PROJECTION, null, null, null, null, "row_order asc");
         mAdapter = new Adapter(this, mCursor);
 
         mLvLocales = (ListView) findViewById(R.id.main_lv_locales);
@@ -143,7 +140,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
 
         // 現在の地域と言語
         Locale locale = getResources().getConfiguration().locale;
-        Loc loc = new Loc(getText(R.string.current_locale).toString(), locale);
+        MoreLocale.Loc loc = new MoreLocale.Loc(getText(R.string.current_locale).toString(), locale);
 
         // 現在の地域と言語を表示
         Bundle data = new Bundle();
@@ -244,19 +241,19 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
     private static final int HANDLE_UPDATE_LOCALE_HEADER = 0x424339;
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
-            Loc loc = null;
+            MoreLocale.Loc loc = null;
             switch (msg.what) {
                 case HANDLE_INIT_FINISH:
                     reloadDb();
                     break;
                 case HANDLE_UPDATE_LOCALE:
-                    loc = (Loc) msg.getData().getSerializable(KEY_LOCALE_DATA);
+                    loc = (MoreLocale.Loc) msg.getData().getSerializable(KEY_LOCALE_DATA);
                     MoreLocale.setLocale(loc);
                     setLocaleHeader(loc);
                     reloadDb();
                     break;
                 case HANDLE_UPDATE_LOCALE_HEADER:
-                    loc = (Loc) msg.getData().getSerializable(KEY_LOCALE_DATA);
+                    loc = (MoreLocale.Loc) msg.getData().getSerializable(KEY_LOCALE_DATA);
                     setLocaleHeader(loc);
                     break;
             }
@@ -349,7 +346,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
             mStatus = STATUS_PROCESSING;
 
             // 端末プリセットのロケール情報を取得する
-            List<Loc> locs = getPresetLocales();
+            List<MoreLocale.Loc> locs = getPresetLocales();
 
             if (mDb.isOpen()) {
                 int rows = mDb.delete(DBHelper.TABLE_LOCALES, "preset_flg = ?",
@@ -359,7 +356,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
                 }
 
                 int rowOrder = 0;
-                for (Loc l : locs) {
+                for (MoreLocale.Loc l : locs) {
                     rowOrder += 5;
 
                     // DBへ追加
@@ -379,7 +376,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
     /**
      * @param l
      */
-    private void insertLocale(Loc l, long rowOrder, int presetFlg) {
+    private void insertLocale(MoreLocale.Loc l, long rowOrder, int presetFlg) {
         ContentValues values = new ContentValues();
         int id = ((Object) l).hashCode();
 
@@ -441,7 +438,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
      *
      * @param loc
      */
-    private void setLocaleHeader(Loc loc) {
+    private void setLocaleHeader(MoreLocale.Loc loc) {
         String name = loc.locale.getDisplayName();
         String language = loc.locale.getLanguage();
         String country = loc.locale.getCountry();
@@ -492,11 +489,11 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
             variant = "";
         }
 
-        Loc loc = new Loc(label, new Locale(language, country, variant));
+        MoreLocale.Loc loc = new MoreLocale.Loc(label, new Locale(language, country, variant));
         changeLocale(loc);
     }
 
-    private void changeLocale(Loc loc) {
+    private void changeLocale(MoreLocale.Loc loc) {
         final Bundle data = new Bundle();
         data.putSerializable(KEY_LOCALE_DATA, loc);
 
@@ -614,7 +611,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
                         public void onClick(View v) {
                             Locale locale = new Locale(mLanguage.getText().toString(), mCountry
                                     .getText().toString(), mVariant.getText().toString());
-                            Loc loc = new Loc(getText(R.string.current_locale).toString(), locale);
+                            MoreLocale.Loc loc = new MoreLocale.Loc(getText(R.string.current_locale).toString(), locale);
 
                             changeLocale(loc);
 
@@ -632,7 +629,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
                         public void onClick(View v) {
                             Locale locale = new Locale(mLanguage.getText().toString(), mCountry
                                     .getText().toString(), mVariant.getText().toString());
-                            Loc loc = new Loc(mLabel.getText().toString(), locale);
+                            MoreLocale.Loc loc = new MoreLocale.Loc(mLabel.getText().toString(), locale);
                             insertLocale(loc, System.currentTimeMillis(), PRESET_FLG_FALSE);
                             reloadDb();
 
@@ -697,7 +694,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
                 dialog.setTitle(getText(R.string.about));
                 dialog.setContentView(R.layout.about);
 
-                TextView versionName = (TextView)dialog.findViewById(R.id.about_tv_version);
+                TextView versionName = (TextView) dialog.findViewById(R.id.about_tv_version);
                 versionName.setText("Version " + ApplicationUtils.getVersionName(this));
 
                 dialog.show();
@@ -734,8 +731,6 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
     private OnCreateContextMenuListener mCustomLocaleContextMenuListener = new OnCreateContextMenuListener() {
 
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
-            MenuInflater inflater = getMenuInflater();
-            int len = 0;
             switch (v.getId()) {
                 case R.id.custom_locale_btn_639:
                     menu.setHeaderTitle(R.string.ISO639);
@@ -781,12 +776,12 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
      *
      * @return Locオブジェクトのリスト
      */
-    private List<Loc> getPresetLocales() {
+    private List<MoreLocale.Loc> getPresetLocales() {
 
         // 返却する結果
-        ArrayList<Loc> result = new ArrayList<Loc>();
+        ArrayList<MoreLocale.Loc> result = new ArrayList<>();
 
-        Hashtable<String, Loc> arr = new Hashtable<String, Loc>();
+        Hashtable<String, MoreLocale.Loc> arr = new Hashtable<String, MoreLocale.Loc>();
 
         // プリセットのロケール名の一覧を取得する
         String[] locales = getAssets().getLocales();
@@ -807,7 +802,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
             if (len == 2) {
                 // ロケールオブジェクトの生成
                 Locale tmpLocale = new Locale(localeName);
-                arr.put(tmpLocale.getLanguage(), new Loc(
+                arr.put(tmpLocale.getLanguage(), new MoreLocale.Loc(
                         toTitleCase(tmpLocale.getDisplayLanguage()), tmpLocale));
 
                 // 取得したロケールが5文字(ja_JP)なら
@@ -823,12 +818,12 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
                 // 現在のindexが0なら
                 if (arr.size() == 0) {
                     // 先頭に入力
-                    Loc tmp = new Loc(toTitleCase(tmpLocale.getDisplayLanguage()), tmpLocale);
+                    MoreLocale.Loc tmp = new MoreLocale.Loc(toTitleCase(tmpLocale.getDisplayLanguage()), tmpLocale);
                     arr.put(tmpLocale.getLanguage(), tmp);
                 } else {
 
                     if (arr.containsKey(tmpLocale.getLanguage())) {
-                        Loc prevLoc = arr.get(tmpLocale.getLanguage());
+                        MoreLocale.Loc prevLoc = arr.get(tmpLocale.getLanguage());
 
                         // 現在のインデックスより前のロケール情報と指定言語が同じであれば、
                         if (prevLoc.locale.getLanguage().equals(language)) {
@@ -849,7 +844,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
                                 prevLoc.label = toTitleCase(prevLoc.locale.getDisplayName());
 
                                 // 新しいロケールを設定
-                                Loc tmp = new Loc(toTitleCase(tmpLocale.getDisplayName()),
+                                MoreLocale.Loc tmp = new MoreLocale.Loc(toTitleCase(tmpLocale.getDisplayName()),
                                         tmpLocale);
                                 arr.put(localeName, tmp);
                             }
@@ -866,7 +861,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
                         }
 
                         // 先頭に入力
-                        Loc tmp = new Loc(toTitleCase(displayName), tmpLocale);
+                        MoreLocale.Loc tmp = new MoreLocale.Loc(toTitleCase(displayName), tmpLocale);
                         arr.put(tmpLocale.getLanguage(), tmp);
 
                     }
@@ -874,7 +869,7 @@ public class MainActivity extends Activity implements OnItemClickListener, OnMen
             }
         }
 
-        result = new ArrayList<Loc>(arr.values());
+        result = new ArrayList<>(arr.values());
 
         // 結果の返却
         return result;
