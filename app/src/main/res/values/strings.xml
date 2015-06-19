@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2007 The Android Open Source Project
+<?xml version="1.0" encoding="utf-8"?><!-- Copyright (C) 2007 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,7 +13,7 @@
      limitations under the License.
 -->
 
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
 
     <string name="language_picker_title">MoreLocale 2</string>
     <string name="select_your_language">Select your language</string>
@@ -47,28 +46,27 @@
 
     <string name="ISO639">ISO639</string>
     <string name="ISO3166">ISO3166</string>
-    
+
     <string name="url_iso_639">http://en.wikipedia.org/wiki/ISO_639</string>
     <string name="url_iso_3166">http://en.wikipedia.org/wiki/ISO_3166</string>
 
     <string name="about">About</string>
+    <string name="open_source">Open Source</string>
 
     <string name="developer">Copyright C-LIS CO., LTD.</string>
+    <string name="version">Version </string>
     <string name="developer_url">https://www.c-lis.co.jp</string>
 
     <string name="developed_in_osaka_japan">Developed in Osaka, Japan.</string>
 
-    <string name="cc_title">CC</string>
-	<string name="creative_commons">This app is modifications based on work created and shared by the Android Open Source Project and used according to terms described in the Creative Commons 2.5 Attribution License.</string>
-
-	<string name="permission_change_locale_label">Change locale</string>
-	<string name="permission_change_locale_description">This application will change system locale and country setting.</string>
+    <string name="permission_change_locale_label">Change locale</string>
+    <string name="permission_change_locale_description">This application will change system locale and country setting.</string>
 
     <string name="permission_denied">Permission Denied.</string>
     <string name="permission_denied_message">MoreLocale is not granted a CHANGE_CONFIGURATION permission.\nIf you\'re able to use development tools, you can grant the permission manually by \'pm\' command.\n\nIf you have SuperUser privilege on your device.\nMoreLocale 2 could get the permission automatically.</string>
     <string name="show_how_to_use_pm_command">Show how to use \'pm\' command</string>
     <string name="use_superuser_privilege">Use SuperUser privilege</string>
-        
+
     <string name="how_to_use_pm_command">How to use \'pm\' command</string>
     <string name="how_to_use_pm_command_message">1. Enable USB debug mode.\n2. Connect to your PC and type below command.\n&gt; adb shell pm grant jp.co.c_lis.ccl.morelocale android.permission.CHANGE_CONFIGURATION\n3. Retry changing locale.</string>
 

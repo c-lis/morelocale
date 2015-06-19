@@ -69,6 +69,18 @@ public class MainActivity2 extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.main_menu_open_source:
+                OpenSourceDialogFragment.getInstance()
+                        .show(getSupportFragmentManager(), OpenSourceDialogFragment.class.getSimpleName());
+                break;
+            case R.id.main_menu_about:
+                AboutDialogFragment.getInstance()
+                        .show(getSupportFragmentManager(), AboutDialogFragment.class.getSimpleName());
+                break;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

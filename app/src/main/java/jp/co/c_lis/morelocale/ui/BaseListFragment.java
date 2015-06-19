@@ -27,10 +27,12 @@ import jp.co.c_lis.morelocale.event.SelectLocale;
 
 public abstract class BaseListFragment extends Fragment {
 
+    private static final String FILENAME_REALM = "locales.realm";
+
     Realm mRealm;
 
     static Realm getRealmInstance(Context context) {
-        return Realm.getInstance(context.getFilesDir(), "locales.realm");
+        return Realm.getInstance(context.getFilesDir(), FILENAME_REALM);
     }
 
     private LocaleRecyclerViewAdapter mAdapter;
@@ -68,10 +70,12 @@ public abstract class BaseListFragment extends Fragment {
         EventBus.getDefault().register(this);
 
         mRealm = getRealmInstance(getActivity());
-        mResult = mRealm.where(LocaleItem.class).findAllSorted("lastUsedDate", false);
+        mResult = mRealm.where(LocaleItem.class).greaterThan("lastUsedDate", 100).findAllSorted("lastUsedDate", false);
 
         mAdapter = new LocaleRecyclerViewAdapter(getActivity(), mResult);
         mRecyclerView.setAdapter(mAdapter);
+
+        reload();
     }
 
     @Override
@@ -101,11 +105,12 @@ public abstract class BaseListFragment extends Fragment {
     }
 
     void reload() {
-        updateResult(mResult);
+        mResult = updateResult();
+        mAdapter.setResult(mResult);
         mAdapter.notifyDataSetChanged();
     }
 
-    abstract void updateResult(RealmResults<LocaleItem> result);
+    abstract RealmResults<LocaleItem> updateResult();
 
     public static class LocaleRecyclerViewAdapter
             extends RecyclerView.Adapter<LocaleRecyclerViewAdapter.ViewHolder> {
@@ -113,6 +118,10 @@ public abstract class BaseListFragment extends Fragment {
         private final TypedValue mTypedValue = new TypedValue();
         private int mBackground;
         private RealmResults<LocaleItem> mValues;
+
+        public void setResult(RealmResults<LocaleItem> result) {
+            this.mValues = result;
+        }
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
             public String mBoundString;
@@ -150,7 +159,7 @@ public abstract class BaseListFragment extends Fragment {
         public void onBindViewHolder(final ViewHolder holder, int position) {
             final Locale locale = new Locale(mValues.get(position).getLanguage(), mValues.get(position).getCountry());
             holder.mBoundString = locale.getDisplayName();
-            holder.mTextView.setText(locale.getDisplayName() + mValues.get(position).getLastUsedDate());
+            holder.mTextView.setText(locale.getDisplayName());
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override

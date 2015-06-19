@@ -72,8 +72,10 @@ public class LocaleListFragment extends BaseListFragment {
     }
 
     @Override
-    void updateResult(RealmResults<LocaleItem> result) {
-        result.where().findAllSorted("lastUsedDate", false);
+    RealmResults<LocaleItem> updateResult() {
+        return mRealm
+                .where(LocaleItem.class)
+                .findAllSorted("lastUsedDate", false);
     }
 
     public LocaleListFragment() {
