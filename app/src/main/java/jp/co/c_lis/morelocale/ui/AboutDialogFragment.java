@@ -7,6 +7,8 @@ import android.support.v4.app.DialogFragment;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import jp.co.c_lis.ccl.morelocale.BuildConfig;
@@ -35,7 +37,7 @@ public class AboutDialogFragment extends DialogFragment {
         View view = View.inflate(getActivity(), R.layout.about, null);
         ButterKnife.inject(this, view);
 
-        mVersion.setText(getString(R.string.version) + BuildConfig.VERSION_NAME);
+        mVersion.setText(String.format(Locale.US, "%s %s", getString(R.string.version), BuildConfig.VERSION_NAME));
 
         Dialog dialog = new Dialog(getActivity());
         dialog.setTitle(R.string.language_picker_title);

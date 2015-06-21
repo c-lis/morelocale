@@ -1,5 +1,6 @@
-package com.android.settings.morelocale;
+package jp.co.c_lis.morelocale.util;
 
+import android.content.Context;
 import android.content.res.AssetManager;
 
 import java.util.ArrayList;
@@ -8,12 +9,31 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Locale;
 
+import io.realm.Realm;
+import jp.co.c_lis.morelocale.LocaleItem;
 import jp.co.c_lis.morelocale.MoreLocale;
 
 /**
  * Created by keiji_ariyama on 6/17/15.
  */
 public class Utils {
+
+    private static final String FILENAME_REALM = "locales.realm";
+
+    public static Realm getRealmInstance(Context context) {
+        return Realm.getInstance(context.getFilesDir(), FILENAME_REALM);
+    }
+
+    public static boolean equals(LocaleItem o1, LocaleItem o2) {
+        if (o1 == o2) return true;
+        if (o1 == null || o2 == null || o1.getClass() != o2.getClass()) return false;
+
+        if (o1.getLabel() != null ? !o1.getLabel().equals(o2.getLabel()) : o2.getLabel() != null) return false;
+        if (o1.getCountry() != null ? !o1.getCountry().equals(o2.getCountry()) : o2.getCountry() != null) return false;
+
+        return !(o1.getLanguage() != null ? !o1.getLanguage().equals(o2.getLanguage()) : o2.getLanguage() != null);
+    }
+
     /**
      * 端末プリセットのロケール情報を取得する
      *

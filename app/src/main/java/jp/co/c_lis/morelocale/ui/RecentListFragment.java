@@ -1,6 +1,6 @@
 package jp.co.c_lis.morelocale.ui;
 
-import com.android.settings.morelocale.LocaleItem;
+import jp.co.c_lis.morelocale.LocaleItem;
 
 import io.realm.RealmResults;
 

@@ -6,13 +6,12 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
 
-import com.android.settings.morelocale.LocaleItem;
-import com.android.settings.morelocale.Utils;
-
 import java.util.List;
 
 import io.realm.RealmResults;
+import jp.co.c_lis.morelocale.LocaleItem;
 import jp.co.c_lis.morelocale.MoreLocale;
+import jp.co.c_lis.morelocale.util.Utils;
 
 /**
  * Created by keiji_ariyama on 6/17/15.
@@ -34,6 +33,7 @@ public class LocaleListFragment extends BaseListFragment {
             mRealm.beginTransaction();
             for (MoreLocale.Loc loc : data) {
                 LocaleItem item = mRealm.createObject(LocaleItem.class);
+                item.setHasLabel(false);
                 item.setLanguage(loc.locale.getLanguage());
                 item.setCountry(loc.locale.getCountry());
                 item.setLastUsedDate(-1);
@@ -62,6 +62,9 @@ public class LocaleListFragment extends BaseListFragment {
 
     }
 
+    public LocaleListFragment() {
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -76,8 +79,5 @@ public class LocaleListFragment extends BaseListFragment {
         return mRealm
                 .where(LocaleItem.class)
                 .findAllSorted("lastUsedDate", false);
-    }
-
-    public LocaleListFragment() {
     }
 }

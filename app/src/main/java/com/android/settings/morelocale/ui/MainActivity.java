@@ -65,15 +65,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.settings.morelocale.Utils;
+import jp.co.c_lis.morelocale.util.Utils;
 import com.android.settings.morelocale.util.DBHelper;
 import com.stericson.RootTools.CommandCapture;
 import com.stericson.RootTools.RootTools;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeoutException;

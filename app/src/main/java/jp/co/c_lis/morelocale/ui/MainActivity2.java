@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,9 +21,25 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import de.greenrobot.event.EventBus;
+import io.realm.Realm;
 import jp.co.c_lis.ccl.morelocale.R;
+import jp.co.c_lis.morelocale.LocaleItem;
+import jp.co.c_lis.morelocale.event.EnterSelectionMode;
+import jp.co.c_lis.morelocale.event.ExitSelectionMode;
+import jp.co.c_lis.morelocale.event.LocaleAdded;
+import jp.co.c_lis.morelocale.event.UpdateLocale;
+import jp.co.c_lis.morelocale.util.Utils;
 
 public class MainActivity2 extends AppCompatActivity {
+    private static final String TAG = MainActivity2.class.getSimpleName();
+
+    public enum Mode {
+        Normal,
+        Select,
+    }
+
+    private Mode mMode = Mode.Normal;
 
     @InjectView(R.id.toolbar)
     Toolbar mToolbar;
@@ -33,8 +50,16 @@ public class MainActivity2 extends AppCompatActivity {
     @InjectView(R.id.fab)
     FloatingActionButton mFab;
 
+    private LocaleItem mSelectedLocaleItem;
+
     @OnClick(R.id.fab)
     void onFabClick(View view) {
+        if (mMode == Mode.Select) {
+            return;
+        }
+
+        LocaleEditDialogFragment.getInstance().show(getSupportFragmentManager(), LocaleEditDialogFragment.class.getSimpleName());
+
         Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
     }
@@ -62,6 +87,27 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_activity2, menu);
         return true;
@@ -69,6 +115,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d(TAG, "onOptionsItemSelected " + item.getItemId());
 
         switch (item.getItemId()) {
             case R.id.main_menu_open_source:
@@ -79,17 +126,75 @@ public class MainActivity2 extends AppCompatActivity {
                 AboutDialogFragment.getInstance()
                         .show(getSupportFragmentManager(), AboutDialogFragment.class.getSimpleName());
                 break;
+            case R.id.main_menu_edit:
+                LocaleEditDialogFragment.getInstance(mSelectedLocaleItem)
+                        .show(getSupportFragmentManager(), AboutDialogFragment.class.getSimpleName());
+                break;
+            case android.R.id.home:
+                EventBus.getDefault().post(new ExitSelectionMode());
+                break;
         }
 
         return super.onOptionsItemSelected(item);
     }
-
 
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
         adapter.addFragment(new LocaleListFragment(), "Locales");
         adapter.addFragment(new RecentListFragment(), "Recents");
         viewPager.setAdapter(adapter);
+    }
+
+    public void onEventMainThread(EnterSelectionMode event) {
+        mMode = Mode.Select;
+
+        mSelectedLocaleItem = event.localeItem;
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mFab.setVisibility(View.GONE);
+        mToolbar.setTitle(R.string.custom_locale_edit);
+        mToolbar.getMenu().clear();
+        mToolbar.inflateMenu(R.menu.main_activity3);
+    }
+
+    public void onEventMainThread(ExitSelectionMode event) {
+        mMode = Mode.Normal;
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
+        mFab.setVisibility(View.VISIBLE);
+        mToolbar.getMenu().clear();
+        mToolbar.inflateMenu(R.menu.main_activity2);
+
+        mSelectedLocaleItem = null;
+    }
+
+    public void onEventAsync(LocaleAdded event) {
+        Log.d(TAG, "onEventAsync");
+
+        Realm realm = Utils.getRealmInstance(this);
+        LocaleItem item = realm
+                .where(LocaleItem.class)
+                .equalTo("language", event.item.getLanguage())
+                .equalTo("country", event.item.getCountry())
+                .findFirst();
+
+        realm.beginTransaction();
+
+        if (item == null) {
+            item = realm.createObject(LocaleItem.class);
+        }
+
+        item.setLabel(event.item.getLabel());
+        item.setHasLabel(true);
+        item.setLanguage(event.item.getLanguage());
+        item.setCountry(event.item.getCountry());
+        item.setLastUsedDate(System.currentTimeMillis());
+
+        realm.commitTransaction();
+
+        EventBus.getDefault().post(new UpdateLocale());
     }
 
     static class Adapter extends FragmentPagerAdapter {

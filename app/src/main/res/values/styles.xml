@@ -8,6 +8,12 @@
         <item name="android:windowBackground">@color/window_background</item>
     </style>
 
+    <style name="locale_edittext">
+        <item name="android:digits">abcdefghijklmnopqrstuvwxyz</item>
+        <item name="android:inputType">text</item>
+        <item name="android:maxLength">3</item>
+    </style>
+
     <style name="opensource_row">
 
     </style>
