@@ -14,6 +14,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,12 +86,29 @@ public class MainActivity2 extends AppCompatActivity {
 
         mTabLayout.setupWithViewPager(mViewPager);
 
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position != 0 && mMode == Mode.Select) {
+                    EventBus.getDefault().post(new ExitSelectionMode());
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
 
     }
 
@@ -152,7 +171,26 @@ public class MainActivity2 extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mFab.setVisibility(View.GONE);
+        Animation.AnimationListener animationListener = new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                mFab.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+        };
+
+        Animation anim = AnimationUtils.loadAnimation(this, R.anim.abc_fade_out);
+        anim.setAnimationListener(animationListener);
+        anim.setFillAfter(true);
+        mFab.startAnimation(anim);
+
         mToolbar.setTitle(R.string.custom_locale_edit);
         mToolbar.getMenu().clear();
         mToolbar.inflateMenu(R.menu.main_activity3);
@@ -163,7 +201,27 @@ public class MainActivity2 extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
-        mFab.setVisibility(View.VISIBLE);
+        Animation.AnimationListener animationListener = new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                mFab.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+        };
+
+        Animation anim = AnimationUtils.loadAnimation(this, R.anim.abc_fade_in);
+        anim.setAnimationListener(animationListener);
+        anim.setFillAfter(true);
+        mFab.startAnimation(anim);
+
+        mToolbar.setTitle(R.string.language_picker_title);
         mToolbar.getMenu().clear();
         mToolbar.inflateMenu(R.menu.main_activity2);
 
