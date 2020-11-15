@@ -1,9 +1,10 @@
 <component name="libraryTable">
   <library name="Gradle: io.realm:realm-android-library:10.0.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f45f01c7dc59fc8c68f55a95baa4a2ce/jetified-realm-android-library-10.0.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f45f01c7dc59fc8c68f55a95baa4a2ce/jetified-realm-android-library-10.0.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f45f01c7dc59fc8c68f55a95baa4a2ce/jetified-realm-android-library-10.0.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ad99503958152ef8cc0482175c4c7480/jetified-realm-android-library-10.0.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ad99503958152ef8cc0482175c4c7480/jetified-realm-android-library-10.0.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ad99503958152ef8cc0482175c4c7480/jetified-realm-android-library-10.0.1/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.realm/realm-android-library/10.0.1/ea0805f0283cd8ba3c001df787e00bf6bbef09bd/realm-android-library-10.0.1-javadoc.jar!/" />
