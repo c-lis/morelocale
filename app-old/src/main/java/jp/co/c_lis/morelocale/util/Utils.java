@@ -12,7 +12,7 @@ import java.util.Locale;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import jp.co.c_lis.morelocale.LocaleItem;
-import jp.co.c_lis.morelocale.MoreLocale;
+import jp.co.c_lis.morelocale.lib.MoreLocale;
 
 /**
  * Created by keiji_ariyama on 6/17/15.

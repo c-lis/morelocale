@@ -26,7 +26,7 @@ import io.realm.RealmResults;
 import io.realm.Sort;
 import jp.co.c_lis.ccl.morelocale.R;
 import jp.co.c_lis.morelocale.LocaleItem;
-import jp.co.c_lis.morelocale.MoreLocale;
+import jp.co.c_lis.morelocale.lib.MoreLocale;
 import jp.co.c_lis.morelocale.event.EnterSelectionMode;
 import jp.co.c_lis.morelocale.event.ExitSelectionMode;
 import jp.co.c_lis.morelocale.event.SetLocale;

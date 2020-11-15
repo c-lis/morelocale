@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("jp.co.c_lis.ccl.morelocale", appContext.packageName)
+        assertEquals("jp.co.c_lis.morelocale", appContext.packageName)
     }
 }

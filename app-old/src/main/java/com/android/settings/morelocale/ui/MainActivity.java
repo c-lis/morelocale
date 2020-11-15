@@ -76,7 +76,7 @@ import java.util.Locale;
 import java.util.concurrent.TimeoutException;
 
 import jp.co.c_lis.ccl.morelocale.R;
-import jp.co.c_lis.morelocale.MoreLocale;
+import jp.co.c_lis.morelocale.lib.MoreLocale;
 import jp.co.c_lis.morelocale.utils.ApplicationUtils;
 
 public class MainActivity extends Activity implements OnItemClickListener, OnMenuItemClickListener,

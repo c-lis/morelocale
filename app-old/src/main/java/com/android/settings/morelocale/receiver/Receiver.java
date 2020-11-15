@@ -38,7 +38,7 @@ import android.content.Intent;
 
 import java.util.Locale;
 
-import jp.co.c_lis.morelocale.MoreLocale;
+import jp.co.c_lis.morelocale.lib.MoreLocale;
 
 public class Receiver extends BroadcastReceiver {
     private static final boolean DEBUG_FLG = false;

@@ -1,4 +1,4 @@
-package jp.co.c_lis.morelocale
+package jp.co.c_lis.ccl.morelocale
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
