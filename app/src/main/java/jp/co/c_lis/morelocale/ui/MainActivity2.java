@@ -1,15 +1,6 @@
 package jp.co.c_lis.morelocale.ui;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,11 +8,22 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.tabs.TabLayout;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnClick;
 import de.greenrobot.event.EventBus;
 import io.realm.Realm;
@@ -43,13 +45,13 @@ public class MainActivity2 extends AppCompatActivity {
 
     private Mode mMode = Mode.Normal;
 
-    @InjectView(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
-    @InjectView(R.id.viewpager)
+    @BindView(R.id.viewpager)
     ViewPager mViewPager;
 
-    @InjectView(R.id.fab)
+    @BindView(R.id.fab)
     FloatingActionButton mFab;
 
     private LocaleItem mSelectedLocaleItem;
@@ -66,7 +68,7 @@ public class MainActivity2 extends AppCompatActivity {
                 .setAction("Action", null).show();
     }
 
-    @InjectView(R.id.tabs)
+    @BindView(R.id.tabs)
     TabLayout mTabLayout;
 
     @Override
@@ -75,7 +77,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         setContentView(R.layout.main_activity2);
 
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         setSupportActionBar(mToolbar);
 

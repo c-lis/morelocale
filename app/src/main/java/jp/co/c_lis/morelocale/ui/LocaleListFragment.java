@@ -2,13 +2,15 @@ package jp.co.c_lis.morelocale.ui;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.AsyncTaskLoader;
-import android.support.v4.content.Loader;
+
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.AsyncTaskLoader;
+import androidx.loader.content.Loader;
 
 import java.util.List;
 
 import io.realm.RealmResults;
+import io.realm.Sort;
 import jp.co.c_lis.morelocale.LocaleItem;
 import jp.co.c_lis.morelocale.MoreLocale;
 import jp.co.c_lis.morelocale.util.Utils;
@@ -78,6 +80,7 @@ public class LocaleListFragment extends BaseListFragment {
     RealmResults<LocaleItem> updateResult() {
         return mRealm
                 .where(LocaleItem.class)
-                .findAllSorted("lastUsedDate", false);
+                .findAll()
+                .sort("lastUsedDate", Sort.ASCENDING);
     }
 }

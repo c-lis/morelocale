@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b05440b-234c-4868-9530-ea9552f24d68" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/morelocale.iml" beforeDir="false" afterPath="$PROJECT_DIR$/morelocale.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +21,7 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Pixel_2_API_23]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -30,9 +33,6 @@
         <projects_view />
       </state>
     </system>
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="morelocale" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -54,6 +54,7 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/android-sdk-macosx" />
@@ -144,7 +145,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="morelocale.app" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -266,5 +267,58 @@
       <updated>1468827434296</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="729" y="303" key="AndroidProcessChooserDialog" timestamp="1605450728625">
+      <screen x="0" y="25" width="1920" height="1055" />
+    </state>
+    <state x="729" y="303" key="AndroidProcessChooserDialog/0.25.1920.1055@0.25.1920.1055" timestamp="1605450728625" />
+    <state width="456" height="466" key="DebuggerActiveHint" timestamp="1605450459711">
+      <screen x="0" y="25" width="1920" height="1055" />
+    </state>
+    <state width="456" height="466" key="DebuggerActiveHint/0.25.1920.1055@0.25.1920.1055" timestamp="1605450459711" />
+    <state width="1878" height="245" key="GridCell.Tab.0.bottom" timestamp="1605450898174">
+      <screen x="0" y="25" width="1920" height="1055" />
+    </state>
+    <state width="1878" height="245" key="GridCell.Tab.0.bottom/0.25.1920.1055@0.25.1920.1055" timestamp="1605450898174" />
+    <state width="1878" height="245" key="GridCell.Tab.0.center" timestamp="1605450898174">
+      <screen x="0" y="25" width="1920" height="1055" />
+    </state>
+    <state width="1878" height="245" key="GridCell.Tab.0.center/0.25.1920.1055@0.25.1920.1055" timestamp="1605450898174" />
+    <state width="1878" height="245" key="GridCell.Tab.0.left" timestamp="1605450898173">
+      <screen x="0" y="25" width="1920" height="1055" />
+    </state>
+    <state width="1878" height="245" key="GridCell.Tab.0.left/0.25.1920.1055@0.25.1920.1055" timestamp="1605450898173" />
+    <state width="1878" height="245" key="GridCell.Tab.0.right" timestamp="1605450898174">
+      <screen x="0" y="25" width="1920" height="1055" />
+    </state>
+    <state width="1878" height="245" key="GridCell.Tab.0.right/0.25.1920.1055@0.25.1920.1055" timestamp="1605450898174" />
+    <state width="1878" height="287" key="GridCell.Tab.1.bottom" timestamp="1605450852090">
+      <screen x="0" y="25" width="1920" height="1055" />
+    </state>
+    <state width="1878" height="287" key="GridCell.Tab.1.bottom/0.25.1920.1055@0.25.1920.1055" timestamp="1605450852090" />
+    <state width="1878" height="287" key="GridCell.Tab.1.center" timestamp="1605450852089">
+      <screen x="0" y="25" width="1920" height="1055" />
+    </state>
+    <state width="1878" height="287" key="GridCell.Tab.1.center/0.25.1920.1055@0.25.1920.1055" timestamp="1605450852089" />
+    <state width="1878" height="287" key="GridCell.Tab.1.left" timestamp="1605450852088">
+      <screen x="0" y="25" width="1920" height="1055" />
+    </state>
+    <state width="1878" height="287" key="GridCell.Tab.1.left/0.25.1920.1055@0.25.1920.1055" timestamp="1605450852088" />
+    <state width="1878" height="287" key="GridCell.Tab.1.right" timestamp="1605450852089">
+      <screen x="0" y="25" width="1920" height="1055" />
+    </state>
+    <state width="1878" height="287" key="GridCell.Tab.1.right/0.25.1920.1055@0.25.1920.1055" timestamp="1605450852089" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/ui/BaseListFragment.java</url>
+          <line>199</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

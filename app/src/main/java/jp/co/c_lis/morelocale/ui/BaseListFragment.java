@@ -2,10 +2,7 @@ package jp.co.c_lis.morelocale.ui;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +10,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.Locale;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Unbinder;
 import de.greenrobot.event.EventBus;
 import io.realm.Realm;
 import io.realm.RealmResults;
+import io.realm.Sort;
 import jp.co.c_lis.ccl.morelocale.R;
 import jp.co.c_lis.morelocale.LocaleItem;
 import jp.co.c_lis.morelocale.MoreLocale;
@@ -37,8 +41,10 @@ public abstract class BaseListFragment extends Fragment {
     private LocaleRecyclerViewAdapter mAdapter;
     private RealmResults<LocaleItem> mResult;
 
-    @InjectView(R.id.recyclerview)
+    @BindView(R.id.recyclerview)
     RecyclerView mRecyclerView;
+
+    private Unbinder mBinding;
 
     public BaseListFragment() {
     }
@@ -48,7 +54,7 @@ public abstract class BaseListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_locale_list, container, false);
 
-        ButterKnife.inject(this, view);
+        mBinding = ButterKnife.bind(this, view);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mRecyclerView.getContext()));
 
@@ -59,7 +65,7 @@ public abstract class BaseListFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
 
-        ButterKnife.reset(this);
+        mBinding.unbind();
     }
 
     @Override
@@ -71,7 +77,8 @@ public abstract class BaseListFragment extends Fragment {
         mRealm = Utils.getRealmInstance(getActivity());
         mResult = mRealm.where(LocaleItem.class)
                 .greaterThan("lastUsedDate", 0)
-                .findAllSorted("lastUsedDate", false);
+                .findAll()
+                .sort("lastUsedDate", Sort.ASCENDING);
 
         mAdapter = new LocaleRecyclerViewAdapter(getActivity(), mResult);
         mRecyclerView.setAdapter(mAdapter);
@@ -190,7 +197,7 @@ public abstract class BaseListFragment extends Fragment {
 
             String label = mValues.get(position).getLabel();
             if (!mValues.get(position).isHasLabel()) {
-                label = mValues.get(position).getLabel().length() == 0 ? locale.getDisplayName() : mValues.get(position).getLabel();
+                label = TextUtils.isEmpty(mValues.get(position).getLabel()) ? locale.getDisplayName() : mValues.get(position).getLabel();
             }
 
             holder.mBoundString = label;

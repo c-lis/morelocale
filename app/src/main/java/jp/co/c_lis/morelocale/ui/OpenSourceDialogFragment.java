@@ -4,13 +4,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.AsyncTaskLoader;
-import android.support.v4.content.Loader;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -18,13 +11,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.DialogFragment;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.AsyncTaskLoader;
+import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Unbinder;
 import jp.co.c_lis.ccl.morelocale.R;
 
 /**
@@ -55,7 +57,7 @@ public class OpenSourceDialogFragment extends DialogFragment {
         return new OpenSourceDialogFragment();
     }
 
-    @InjectView(R.id.recyclerview)
+    @BindView(R.id.recyclerview)
     RecyclerView mRecyclerView;
 
     private OpenSourceRecyclerViewAdapter mAdapter;
@@ -63,10 +65,12 @@ public class OpenSourceDialogFragment extends DialogFragment {
     public OpenSourceDialogFragment() {
     }
 
+    private Unbinder mBinding;
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         View view = View.inflate(getActivity(), R.layout.open_source, null);
-        ButterKnife.inject(this, view);
+        mBinding = ButterKnife.bind(this, view);
 
         mAdapter = new OpenSourceRecyclerViewAdapter(getActivity());
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mRecyclerView.getContext()));
@@ -84,6 +88,12 @@ public class OpenSourceDialogFragment extends DialogFragment {
         super.onAttach(activity);
 
         getLoaderManager().initLoader(0, new Bundle(), mLoaderCallback);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mBinding.unbind();
     }
 
     public enum OssLibrary {

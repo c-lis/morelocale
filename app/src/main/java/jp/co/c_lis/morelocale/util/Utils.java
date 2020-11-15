@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Locale;
 
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import jp.co.c_lis.morelocale.LocaleItem;
 import jp.co.c_lis.morelocale.MoreLocale;
 
@@ -21,7 +22,11 @@ public class Utils {
     private static final String FILENAME_REALM = "locales.realm";
 
     public static Realm getRealmInstance(Context context) {
-        return Realm.getInstance(context.getFilesDir(), FILENAME_REALM);
+        Realm.init(context);
+        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder()
+                .directory(context.getFilesDir()).name(FILENAME_REALM)
+                .build();
+        return Realm.getInstance(realmConfiguration);
     }
 
     public static boolean equals(LocaleItem o1, LocaleItem o2) {

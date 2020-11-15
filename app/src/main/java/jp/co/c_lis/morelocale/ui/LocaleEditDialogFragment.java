@@ -3,13 +3,15 @@ package jp.co.c_lis.morelocale.ui;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.DialogFragment;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Unbinder;
 import de.greenrobot.event.EventBus;
 import jp.co.c_lis.ccl.morelocale.R;
 import jp.co.c_lis.morelocale.LocaleItem;
@@ -38,17 +40,19 @@ public class LocaleEditDialogFragment extends DialogFragment {
         return fragment;
     }
 
-    @InjectView(R.id.et_label)
+    @BindView(R.id.et_label)
     EditText mLabel;
 
-    @InjectView(R.id.et_language)
+    @BindView(R.id.et_language)
     EditText mLanguage;
 
-    @InjectView(R.id.et_country)
+    @BindView(R.id.et_country)
     EditText mCountry;
 
-    @InjectView(R.id.et_variant)
+    @BindView(R.id.et_variant)
     EditText mVariant;
+
+    private Unbinder mBinding;
 
     public LocaleEditDialogFragment() {
     }
@@ -56,7 +60,7 @@ public class LocaleEditDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         View view = View.inflate(getActivity(), R.layout.edit_locale, null);
-        ButterKnife.inject(this, view);
+        mBinding = ButterKnife.bind(this, view);
 
         final LocaleItem item = (LocaleItem) getArguments().getSerializable(KEY_LOCALE);
 
@@ -91,5 +95,11 @@ public class LocaleEditDialogFragment extends DialogFragment {
                 });
 
         return ab.create();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mBinding.unbind();
     }
 }

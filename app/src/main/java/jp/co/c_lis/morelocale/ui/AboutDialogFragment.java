@@ -2,15 +2,17 @@ package jp.co.c_lis.morelocale.ui;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
+
 import java.util.Locale;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Unbinder;
 import jp.co.c_lis.ccl.morelocale.BuildConfig;
 import jp.co.c_lis.ccl.morelocale.R;
 
@@ -26,16 +28,17 @@ public class AboutDialogFragment extends DialogFragment {
     public AboutDialogFragment() {
     }
 
-    @InjectView(R.id.about_tv_version)
+    @BindView(R.id.about_tv_version)
     TextView mVersion;
 
+    private Unbinder mBinding;
 
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         View view = View.inflate(getActivity(), R.layout.about, null);
-        ButterKnife.inject(this, view);
+        mBinding = ButterKnife.bind(this, view);
 
         mVersion.setText(String.format(Locale.US, "%s %s", getString(R.string.version), BuildConfig.VERSION_NAME));
 
@@ -44,5 +47,11 @@ public class AboutDialogFragment extends DialogFragment {
         dialog.setContentView(view);
 
         return dialog;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mBinding.unbind();
     }
 }

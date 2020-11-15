@@ -1,5 +1,6 @@
 package jp.co.c_lis.morelocale.ui;
 
+import io.realm.Sort;
 import jp.co.c_lis.morelocale.LocaleItem;
 
 import io.realm.RealmResults;
@@ -18,7 +19,8 @@ public class RecentListFragment extends BaseListFragment {
         return mRealm
                 .where(LocaleItem.class)
                 .greaterThan("lastUsedDate", -1)
-                .findAllSorted("lastUsedDate", false);
+                .findAll()
+                .sort("lastUsedDate", Sort.ASCENDING);
     }
 
 }
