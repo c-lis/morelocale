@@ -5,135 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b05440b-234c-4868-9530-ea9552f24d68" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/1.10/taskArtifacts/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/1.10/taskArtifacts/cache.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/1.10/taskArtifacts/cache.properties.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/1.10/taskArtifacts/cache.properties.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/RootTools_2_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/RootTools_2_4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_22_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_22_2_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/butterknife_6_1_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/butterknife_6_1_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/cardview_v7_22_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/cardview_v7_22_2_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/commons_io_1_3_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/commons_io_1_3_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/design_22_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/design_22_2_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/eventbus_2_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/eventbus_2_4_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/realm_android_0_80_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/realm_android_0_80_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_22_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_22_2_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_22_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/support_annotations_22_2_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_22_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_22_2_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/app/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/libs/RootTools-2.4.jar" beforeDir="false" afterPath="$PROJECT_DIR$/app/libs/RootTools-2.4.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/app/proguard-rules.pro" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/jp/co/c_lis/morelocale/ApplicationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/jp/co/c_lis/morelocale/ApplicationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/license_aosp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/license_aosp.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/license_butterknife.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/license_butterknife.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/license_creative_commons.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/license_creative_commons.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/license_eventbus.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/license_eventbus.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/license_realm.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/license_realm.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/settings/morelocale/receiver/Receiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/settings/morelocale/receiver/Receiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/settings/morelocale/ui/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/settings/morelocale/ui/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/settings/morelocale/util/DBHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/settings/morelocale/util/DBHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/LocaleItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/LocaleItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/event/EnterSelectionMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/event/EnterSelectionMode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/event/ExitSelectionMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/event/ExitSelectionMode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/event/LocaleAdded.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/event/LocaleAdded.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/event/LocaleEdited.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/event/LocaleEdited.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/event/SetLocale.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/event/SetLocale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/event/UpdateLocale.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/event/UpdateLocale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/ui/AboutDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/ui/AboutDialogFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/ui/BaseListFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/ui/BaseListFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/ui/LocaleEditDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/ui/LocaleEditDialogFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/ui/LocaleListFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/ui/LocaleListFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/ui/MainActivity2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/ui/MainActivity2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/ui/OpenSourceDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/ui/OpenSourceDialogFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/ui/RecentListFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/ui/RecentListFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/util/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/jp/co/c_lis/morelocale/util/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ic_check_circle_black_24dp.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ic_check_circle_black_24dp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ic_delete_white_24dp.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ic_delete_white_24dp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ic_language_black_24dp.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ic_language_black_24dp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ic_mode_edit_white_24dp.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ic_mode_edit_white_24dp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/about.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/about.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custom_locale.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_locale.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/edit_locale.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/edit_locale.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_locale_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_locale_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_locale_select.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_locale_select.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/locale_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/locale_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/main_activity2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/main_activity2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/main_header.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/main_header.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/main_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/main_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/main_item2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/main_item2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/open_source.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/open_source.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/oss_card.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/oss_card.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/locale_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/locale_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/main_activity2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/main_activity2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/main_activity3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/main_activity3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_menu_3d_globe.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_menu_3d_globe.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-cs/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-cs/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-de/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-de/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-es/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-es/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-fr/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-fr/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-it/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-it/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ja/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ja/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ko/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ko/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-nb/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-nb/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-nl/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-nl/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-pl/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-pl/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ru/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ru/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-zh-rCN/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-zh-rCN/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-zh-rTW/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-zh-rTW/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/setting_info.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/xml/setting_info.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/glass/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/glass/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/glass/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/glass/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/glass/glass.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/glass/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/glass/proguard-rules.pro" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/glass/src/androidTest/java/jp/co/c_lis/glass/ApplicationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/glass/src/androidTest/java/jp/co/c_lis/glass/ApplicationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/glass/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/glass/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/glass/src/main/java/jp/co/c_lis/morelocale/glass/ui/AboutActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/glass/src/main/java/jp/co/c_lis/morelocale/glass/ui/AboutActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/glass/src/main/java/jp/co/c_lis/morelocale/glass/ui/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/glass/src/main/java/jp/co/c_lis/morelocale/glass/ui/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/glass/src/main/java/jp/co/c_lis/morelocale/glass/ui/OnLocaleSelectedListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/glass/src/main/java/jp/co/c_lis/morelocale/glass/ui/OnLocaleSelectedListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/glass/src/main/java/jp/co/c_lis/morelocale/glass/ui/SelectActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/glass/src/main/java/jp/co/c_lis/morelocale/glass/ui/SelectActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/glass/src/main/res/layout/glass_about.xml" beforeDir="false" afterPath="$PROJECT_DIR$/glass/src/main/res/layout/glass_about.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/glass/src/main/res/layout/glass_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/glass/src/main/res/layout/glass_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/glass/src/main/res/layout/glass_main_permission_denied.xml" beforeDir="false" afterPath="$PROJECT_DIR$/glass/src/main/res/layout/glass_main_permission_denied.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/glass/src/main/res/menu/glassware_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/glass/src/main/res/menu/glassware_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/glass/src/main/res/mipmap-xxhdpi/ic_menu_3d_globe.png" beforeDir="false" afterPath="$PROJECT_DIR$/glass/src/main/res/mipmap-xxhdpi/ic_menu_3d_globe.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/glass/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/glass/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/glass/src/main/res/xml/voice_trigger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/glass/src/main/res/xml/voice_trigger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lib/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/lib/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/lib.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/morelocale.iml" beforeDir="false" afterPath="$PROJECT_DIR$/lib/morelocale.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/lib/proguard-rules.pro" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/androidTest/java/jp/co/c_lis/morelocale/ApplicationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/androidTest/java/jp/co/c_lis/morelocale/ApplicationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/main/java/jp/co/c_lis/morelocale/MoreLocale.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/main/java/jp/co/c_lis/morelocale/MoreLocale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/main/java/jp/co/c_lis/morelocale/utils/ApplicationUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/main/java/jp/co/c_lis/morelocale/utils/ApplicationUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/main/res/values/iso_3166.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/main/res/values/iso_3166.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/main/res/values/iso_639.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/main/res/values/iso_639.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/morelocale.iml" beforeDir="false" afterPath="$PROJECT_DIR$/morelocale.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
@@ -145,6 +18,7 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -192,7 +66,7 @@
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="DEPLOY" value="true" />
@@ -263,6 +137,70 @@
     <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
     </configuration>
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="morelocale.app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="false" name="app" type="AndroidRunConfigurationType" factoryName="Android Application" activateToolWindowBeforeRun="false">
       <module name="app" />
       <option name="DEPLOY" value="true" />
@@ -312,6 +250,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Android App.app" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
