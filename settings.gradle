@@ -1,2 +1,2 @@
 include ':app'
-include ':app-old', ':lib'
+include ':lib'
