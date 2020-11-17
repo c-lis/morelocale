@@ -55,6 +55,10 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1"
+
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
     implementation project(path: ':lib')
 
     testImplementation 'junit:junit:4.13.1'
