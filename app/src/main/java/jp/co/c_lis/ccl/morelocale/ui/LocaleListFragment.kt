@@ -1,22 +1,29 @@
 package jp.co.c_lis.ccl.morelocale.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import jp.co.c_lis.ccl.morelocale.R
 import jp.co.c_lis.ccl.morelocale.databinding.FragmentLocaleListBinding
+import jp.co.c_lis.ccl.morelocale.repository.LocaleRepository
+import timber.log.Timber
 
 class LocaleListFragment : Fragment() {
 
     private var binding: FragmentLocaleListBinding? = null
 
     private val viewModel by viewModels<LocaleListViewModel> {
-        LocaleListViewModelProvider()
+        LocaleListViewModelProvider(LocaleRepository())
     }
 
     companion object {
@@ -27,16 +34,39 @@ class LocaleListFragment : Fragment() {
         }
     }
 
+    private var adapter: LocaleListAdapter? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        adapter = LocaleListAdapter(LayoutInflater.from(context))
+    }
+
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_locale_list, container, false)
+        return inflater.inflate(R.layout.fragment_locale_list, container, false)
+    }
 
-        binding = FragmentLocaleListBinding.bind(view)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        return view
+        viewModel.localeList.observe(viewLifecycleOwner, { localeItemList ->
+            adapter?.also {
+                Timber.d("localeItemList size ${localeItemList.size}")
+                it.localeItemList = localeItemList
+                it.notifyDataSetChanged()
+            }
+        })
+
+        binding = FragmentLocaleListBinding.bind(view).also {
+            it.recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            it.recyclerView.adapter = adapter
+        }
+
+        viewModel.showLocaleList(requireContext().assets)
     }
 
     override fun onDestroyView() {
@@ -45,12 +75,40 @@ class LocaleListFragment : Fragment() {
         binding?.unbind()
     }
 
-    class LocaleListViewModelProvider : ViewModelProvider.NewInstanceFactory() {
+    inner class LocaleListViewModelProvider(
+            private val localeRepository: LocaleRepository
+    ) : ViewModelProvider.NewInstanceFactory() {
 
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             @Suppress("UNCHECKED_CAST")
-            return LocaleListViewModel() as T
+            return LocaleListViewModel(localeRepository, lifecycleScope) as T
         }
     }
 
+    class LocaleListAdapter(
+            private val inflater: LayoutInflater
+    ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+        var localeItemList: List<LocaleRepository.LocaleItem> = ArrayList()
+
+        override fun getItemCount() = localeItemList.size
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+            return LocaleItemViewHolder(
+                    inflater.inflate(R.layout.list_item_locale, parent, false))
+        }
+
+        override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+            if (holder is LocaleItemViewHolder) {
+                holder.bind(localeItemList[position])
+            }
+        }
+
+        class LocaleItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+            private val label = itemView.findViewById<TextView>(R.id.label)
+
+            fun bind(localeItem: LocaleRepository.LocaleItem) {
+                label.text = localeItem.country
+            }
+        }
+    }
 }
