@@ -21,7 +21,7 @@ class LocaleListFragment : Fragment() {
     private var binding: FragmentLocaleListBinding? = null
 
     private val viewModel by viewModels<LocaleListViewModel> {
-        LocaleListViewModelProvider(LocaleRepository())
+        LocaleListViewModelProvider(LocaleRepository(requireContext().applicationContext))
     }
 
     companion object {

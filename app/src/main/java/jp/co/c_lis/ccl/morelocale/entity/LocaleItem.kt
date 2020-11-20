@@ -1,11 +1,17 @@
 package jp.co.c_lis.ccl.morelocale.entity
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.Locale
 
+@Entity
 data class LocaleItem(
+        @PrimaryKey(autoGenerate = true)
+        val id: Int = 0,
         val country: String,
         val language: String? = null
 ) {
+
     val label: String
         get() {
             return if (language != null) {
