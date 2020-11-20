@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="locale"
+            type="jp.co.c_lis.ccl.morelocale.entity.LocaleItem" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,6 +35,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/color_bar"
             app:layout_constraintTop_toTopOf="parent"
+            android:text="@{locale.label}"
             tools:text="日本語（日本）" />
 
         <View

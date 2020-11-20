@@ -116,7 +116,7 @@ class LocaleListFragment : Fragment() {
             private val binding = ListItemLocaleBinding.bind(itemView)
 
             fun bind(localeItem: LocaleItem) {
-                binding.label.text = localeItem.country
+                binding.locale = localeItem
             }
 
             fun unbind() {
