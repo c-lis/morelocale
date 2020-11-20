@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import jp.co.c_lis.ccl.morelocale.R
 import jp.co.c_lis.ccl.morelocale.databinding.FragmentLocaleListBinding
+import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
 import jp.co.c_lis.ccl.morelocale.repository.LocaleRepository
 import timber.log.Timber
 
@@ -88,7 +89,7 @@ class LocaleListFragment : Fragment() {
     class LocaleListAdapter(
             private val inflater: LayoutInflater
     ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-        var localeItemList: List<LocaleRepository.LocaleItem> = ArrayList()
+        var localeItemList: List<LocaleItem> = ArrayList()
 
         override fun getItemCount() = localeItemList.size
 
@@ -106,7 +107,7 @@ class LocaleListFragment : Fragment() {
         class LocaleItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             private val label = itemView.findViewById<TextView>(R.id.label)
 
-            fun bind(localeItem: LocaleRepository.LocaleItem) {
+            fun bind(localeItem: LocaleItem) {
                 label.text = localeItem.country
             }
         }

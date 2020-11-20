@@ -1,6 +1,7 @@
 package jp.co.c_lis.ccl.morelocale.repository
 
 import android.content.res.AssetManager
+import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import timber.log.Timber
@@ -28,11 +29,4 @@ class LocaleRepository {
             }
         }
     }
-
-    data class LocaleItem(
-            private var label: String? = null,
-            val hasLabel: Boolean = false,
-            val country: String,
-            val language: String? = null
-    )
 }
