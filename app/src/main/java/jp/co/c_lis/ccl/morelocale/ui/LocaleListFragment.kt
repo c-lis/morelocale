@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import jp.co.c_lis.ccl.morelocale.R
 import jp.co.c_lis.ccl.morelocale.databinding.FragmentLocaleListBinding
+import jp.co.c_lis.ccl.morelocale.databinding.ListItemLocaleBinding
 import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
 import jp.co.c_lis.ccl.morelocale.repository.LocaleRepository
 import timber.log.Timber
@@ -104,11 +105,22 @@ class LocaleListFragment : Fragment() {
             }
         }
 
+        override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
+            super.onViewRecycled(holder)
+            if (holder is LocaleItemViewHolder) {
+                holder.unbind()
+            }
+        }
+
         class LocaleItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            private val label = itemView.findViewById<TextView>(R.id.label)
+            private val binding = ListItemLocaleBinding.bind(itemView)
 
             fun bind(localeItem: LocaleItem) {
-                label.text = localeItem.country
+                binding.label.text = localeItem.country
+            }
+
+            fun unbind() {
+                binding.unbind()
             }
         }
     }
