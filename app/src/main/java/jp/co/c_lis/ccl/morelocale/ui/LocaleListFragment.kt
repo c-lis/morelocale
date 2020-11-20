@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
@@ -17,7 +16,6 @@ import jp.co.c_lis.ccl.morelocale.R
 import jp.co.c_lis.ccl.morelocale.databinding.FragmentLocaleListBinding
 import jp.co.c_lis.ccl.morelocale.databinding.ListItemLocaleBinding
 import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
-import jp.co.c_lis.ccl.morelocale.entity.createLocale
 import jp.co.c_lis.ccl.morelocale.repository.LocaleRepository
 import timber.log.Timber
 
@@ -56,6 +54,13 @@ class LocaleListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.currentLocale.observe(viewLifecycleOwner, { currentLocale ->
+            binding?.also {
+                it.currentLocale = currentLocale
+
+            }
+        })
+
         viewModel.localeList.observe(viewLifecycleOwner, { localeItemList ->
             adapter?.also {
                 Timber.d("localeItemList size ${localeItemList.size}")
@@ -67,12 +72,10 @@ class LocaleListFragment : Fragment() {
         binding = FragmentLocaleListBinding.bind(view).also {
             it.recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             it.recyclerView.adapter = adapter
-
-            @Suppress("DEPRECATION")
-            it.currentLocale = createLocale(resources.configuration.locale)
         }
 
-        viewModel.showLocaleList(requireContext().assets)
+        viewModel.loadCurrentLocale(requireContext())
+        viewModel.loadLocaleList(requireContext())
     }
 
     override fun onDestroyView() {
