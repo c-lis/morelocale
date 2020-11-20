@@ -93,42 +93,4 @@ class LocaleListFragment : Fragment() {
             return LocaleListViewModel(localeRepository, lifecycleScope) as T
         }
     }
-
-    class LocaleListAdapter(
-            private val inflater: LayoutInflater
-    ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-        var localeItemList: List<LocaleItem> = ArrayList()
-
-        override fun getItemCount() = localeItemList.size
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-            return LocaleItemViewHolder(
-                    inflater.inflate(R.layout.list_item_locale, parent, false))
-        }
-
-        override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-            if (holder is LocaleItemViewHolder) {
-                holder.bind(localeItemList[position])
-            }
-        }
-
-        override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
-            super.onViewRecycled(holder)
-            if (holder is LocaleItemViewHolder) {
-                holder.unbind()
-            }
-        }
-
-        class LocaleItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            private val binding = ListItemLocaleBinding.bind(itemView)
-
-            fun bind(localeItem: LocaleItem) {
-                binding.locale = localeItem
-            }
-
-            fun unbind() {
-                binding.unbind()
-            }
-        }
-    }
 }
