@@ -17,6 +17,7 @@ import jp.co.c_lis.ccl.morelocale.R
 import jp.co.c_lis.ccl.morelocale.databinding.FragmentLocaleListBinding
 import jp.co.c_lis.ccl.morelocale.databinding.ListItemLocaleBinding
 import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
+import jp.co.c_lis.ccl.morelocale.entity.createLocale
 import jp.co.c_lis.ccl.morelocale.repository.LocaleRepository
 import timber.log.Timber
 
@@ -66,6 +67,9 @@ class LocaleListFragment : Fragment() {
         binding = FragmentLocaleListBinding.bind(view).also {
             it.recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             it.recyclerView.adapter = adapter
+
+            @Suppress("DEPRECATION")
+            it.currentLocale = createLocale(resources.configuration.locale)
         }
 
         viewModel.showLocaleList(requireContext().assets)
