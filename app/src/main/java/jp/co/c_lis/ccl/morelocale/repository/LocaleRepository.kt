@@ -1,7 +1,6 @@
 package jp.co.c_lis.ccl.morelocale.repository
 
 import android.content.res.AssetManager
-import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
 import jp.co.c_lis.ccl.morelocale.entity.createLocale
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
