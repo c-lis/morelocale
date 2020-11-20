@@ -40,7 +40,7 @@ class LocaleListFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        adapter = LocaleListAdapter(LayoutInflater.from(context))
+        adapter = LocaleListAdapter(LayoutInflater.from(context), lifecycleScope)
     }
 
     override fun onCreateView(
