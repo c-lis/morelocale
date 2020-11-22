@@ -31,11 +31,11 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:gravity="center_vertical"
+            android:text="@{locale.displayName}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/color_bar"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="@{locale.label}"
             tools:text="日本語（日本）" />
 
         <View

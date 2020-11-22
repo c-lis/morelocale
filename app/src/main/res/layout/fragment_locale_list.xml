@@ -27,7 +27,7 @@
                 android:id="@+id/now_locale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{currentLocale.label}"
+                android:text="@{currentLocale.displayName}"
                 tools:text="日本語（日本） ja JP N/A" />
 
             <TextView

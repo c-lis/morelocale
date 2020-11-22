@@ -1,6 +1,7 @@
 package jp.co.c_lis.ccl.morelocale.entity
 
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import java.util.Locale
 
@@ -12,6 +13,13 @@ data class LocaleItem(
         val language: String? = null
 ) {
 
+    @Ignore
+    val locale: Locale = if (language != null) {
+        Locale(language, country)
+    } else {
+        Locale("", country)
+    }
+
     val label: String
         get() {
             return if (language != null) {
@@ -21,6 +29,8 @@ data class LocaleItem(
             }
         }
 
+    val displayName: String
+        get() = locale.displayName
 }
 
 fun createLocale(localeStr: String): LocaleItem {
