@@ -13,9 +13,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import jp.co.c_lis.ccl.morelocale.R
 import jp.co.c_lis.ccl.morelocale.databinding.FragmentLocaleListBinding
+import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
 import jp.co.c_lis.ccl.morelocale.repository.LocaleRepository
 import jp.co.c_lis.morelocale.MoreLocale
 import timber.log.Timber
+import java.lang.reflect.InvocationTargetException
 
 class LocaleListFragment : Fragment() {
 
@@ -43,7 +45,15 @@ class LocaleListFragment : Fragment() {
                 lifecycleScope
         ) { localeItem ->
             Timber.d("Change locale ${localeItem.displayName}")
+            setLocale(localeItem)
+        }
+    }
+
+    private fun setLocale(localeItem: LocaleItem) {
+        try {
             MoreLocale.setLocale(localeItem.locale)
+        } catch (e: InvocationTargetException) {
+            Timber.e(e, "InvocationTargetException")
         }
     }
 

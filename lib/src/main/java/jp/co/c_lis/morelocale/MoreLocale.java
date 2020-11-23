@@ -35,32 +35,13 @@ package jp.co.c_lis.morelocale;
 import android.content.res.Configuration;
 import android.util.Log;
 
-import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Locale;
 
 public class MoreLocale {
-    private static final String LOG_TAG = "MoreLocale";
-
-    public static class Loc implements Serializable {
-
-        private static final long serialVersionUID = 1311111741832102598L;
-
-        public String label;
-        public Locale locale;
-
-        public Loc(String label, Locale locale) {
-            this.label = label;
-            this.locale = locale;
-        }
-
-        @Override
-        public String toString() {
-            return this.label;
-        }
-    }
+    private static final String LOG_TAG = MoreLocale.class.getSimpleName();
 
     private static void setUserSetLocale(Configuration configuration, boolean value) {
         Class c = configuration.getClass();
@@ -81,18 +62,9 @@ public class MoreLocale {
     /**
      * 言語を設定
      *
-     * @param loc
+     * @param locale
      */
-    public static boolean setLocale(MoreLocale.Loc loc) {
-        return setLocale(loc.locale);
-    }
-
-    /**
-     * 言語を設定
-     *
-     * @param loc
-     */
-    public static boolean setLocale(Locale loc) {
+    public static boolean setLocale(Locale locale) throws InvocationTargetException {
         try {
             Class<?> activityManagerNative = (Class<?>) Class.forName("android.app.ActivityManagerNative");
 
@@ -104,7 +76,7 @@ public class MoreLocale {
             Method getConfiguration = am.getClass().getMethod("getConfiguration", null);
             Configuration config = (Configuration) getConfiguration.invoke(am, null);
 
-            config.locale = loc;
+            config.locale = locale;
             setUserSetLocale(config, true);
 
             // am.updateConfiguration(config);
@@ -116,10 +88,6 @@ public class MoreLocale {
         } catch (ClassNotFoundException e) {
             if (BuildConfig.DEBUG) {
                 Log.e(LOG_TAG, "ClassNotFoundException", e);
-            }
-        } catch (InvocationTargetException e) {
-            if (BuildConfig.DEBUG) {
-                Log.e(LOG_TAG, "InvocationTargetException", e);
             }
         } catch (NoSuchMethodException e) {
             if (BuildConfig.DEBUG) {
