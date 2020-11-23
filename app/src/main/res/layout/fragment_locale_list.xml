@@ -18,7 +18,11 @@
             android:id="@+id/relativeLayout"
             android:layout_width="0dp"
             android:layout_height="?android:listPreferredItemHeight"
-            android:padding="8dp"
+            android:paddingStart="8dp"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="0dp"
+            android:paddingRight="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -30,13 +34,15 @@
                 android:text="@{currentLocale.displayName}"
                 tools:text="日本語（日本） ja JP N/A" />
 
-            <TextView
+            <Button
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                android:text="ロケールの詳細な変更" />
+                android:layout_marginTop="8dp"
+                android:text="@string/set_custom_locale" />
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
