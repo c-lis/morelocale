@@ -42,7 +42,6 @@ import java.lang.reflect.Method;
 import java.util.Locale;
 
 public class MoreLocale {
-    private static final boolean DEBUG_FLG = false;
     private static final String LOG_TAG = "MoreLocale";
 
     public static class Loc implements Serializable {
@@ -69,11 +68,11 @@ public class MoreLocale {
             Field f = c.getField("userSetLocale");
             f.set(configuration, new Boolean(value));
         } catch (NoSuchFieldException e) {
-            if (DEBUG_FLG) {
+            if (BuildConfig.DEBUG) {
                 Log.e(LOG_TAG, "NoSuchFieldException", e);
             }
         } catch (IllegalAccessException e) {
-            if (DEBUG_FLG) {
+            if (BuildConfig.DEBUG) {
                 Log.e(LOG_TAG, "IllegalAccessException", e);
             }
         }
@@ -115,19 +114,19 @@ public class MoreLocale {
             return true;
 
         } catch (ClassNotFoundException e) {
-            if (DEBUG_FLG) {
+            if (BuildConfig.DEBUG) {
                 Log.e(LOG_TAG, "ClassNotFoundException", e);
             }
         } catch (InvocationTargetException e) {
-            if (DEBUG_FLG) {
+            if (BuildConfig.DEBUG) {
                 Log.e(LOG_TAG, "InvocationTargetException", e);
             }
         } catch (NoSuchMethodException e) {
-            if (DEBUG_FLG) {
+            if (BuildConfig.DEBUG) {
                 Log.e(LOG_TAG, "NoSuchMethodException", e);
             }
         } catch (IllegalAccessException e) {
-            if (DEBUG_FLG) {
+            if (BuildConfig.DEBUG) {
                 Log.e(LOG_TAG, "IllegalAccessException", e);
             }
         }

@@ -15,7 +15,8 @@ import kotlinx.coroutines.withContext
 
 class LocaleListAdapter(
         private val inflater: LayoutInflater,
-        private val coroutineScope: CoroutineScope
+        private val coroutineScope: CoroutineScope,
+        private val onLocaleSelected: (localeItem: LocaleItem) -> Unit,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var localeItemList: List<LocaleItem> = ArrayList()
@@ -35,7 +36,9 @@ class LocaleListAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return LocaleItemViewHolder(
-                inflater.inflate(R.layout.list_item_locale, parent, false))
+                inflater.inflate(R.layout.list_item_locale, parent, false),
+                onLocaleSelected
+        )
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -51,11 +54,17 @@ class LocaleListAdapter(
         }
     }
 
-    class LocaleItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class LocaleItemViewHolder(
+            itemView: View,
+            private val onLocaleSelected: (localeItem: LocaleItem) -> Unit
+    ) : RecyclerView.ViewHolder(itemView) {
         private val binding = ListItemLocaleBinding.bind(itemView)
 
         fun bind(localeItem: LocaleItem) {
             binding.locale = localeItem
+            itemView.setOnClickListener {
+                onLocaleSelected(localeItem)
+            }
         }
 
         fun unbind() {

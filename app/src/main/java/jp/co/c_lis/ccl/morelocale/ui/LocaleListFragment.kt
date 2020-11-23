@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import jp.co.c_lis.ccl.morelocale.R
 import jp.co.c_lis.ccl.morelocale.databinding.FragmentLocaleListBinding
 import jp.co.c_lis.ccl.morelocale.repository.LocaleRepository
+import jp.co.c_lis.morelocale.MoreLocale
 import timber.log.Timber
 
 class LocaleListFragment : Fragment() {
@@ -37,7 +38,13 @@ class LocaleListFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        adapter = LocaleListAdapter(LayoutInflater.from(context), lifecycleScope)
+        adapter = LocaleListAdapter(
+                LayoutInflater.from(context),
+                lifecycleScope
+        ) { localeItem ->
+            Timber.d("Change locale ${localeItem.displayName}")
+            MoreLocale.setLocale(localeItem.locale)
+        }
     }
 
     override fun onCreateView(
