@@ -3,6 +3,9 @@ package jp.co.c_lis.ccl.morelocale.ui
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -39,6 +42,8 @@ class LocaleListFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+
+        setHasOptionsMenu(true)
 
         adapter = LocaleListAdapter(
                 LayoutInflater.from(context),
@@ -90,6 +95,24 @@ class LocaleListFragment : Fragment() {
 
         viewModel.loadCurrentLocale(requireContext())
         viewModel.loadLocaleList(requireContext())
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        inflater.inflate(R.menu.fragment_locale_list, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_add_locale -> {
+
+            }
+            R.id.menu_about -> {
+
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onDestroyView() {

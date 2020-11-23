@@ -1,3 +1,4 @@
 <resources>
     <string name="set_custom_locale">ロケールの詳細な変更</string>
+    <string name="add_locale">ロケールの追加</string>
 </resources>

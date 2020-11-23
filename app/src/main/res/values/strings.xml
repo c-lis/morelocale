@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name" translatable="false">MoreLocale 2</string>
     <string name="set_custom_locale">Custom Locale</string>
+    <string name="add_locale">Add Locale</string>
+    <string name="about" translatable="false">About</string>
 </resources>
