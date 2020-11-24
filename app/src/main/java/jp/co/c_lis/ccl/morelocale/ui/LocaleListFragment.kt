@@ -109,7 +109,8 @@ class LocaleListFragment : Fragment() {
 
             }
             R.id.menu_about -> {
-
+                AboutDialog.getInstance()
+                        .show(parentFragmentManager, AboutDialog.TAG)
             }
         }
         return super.onOptionsItemSelected(item)
