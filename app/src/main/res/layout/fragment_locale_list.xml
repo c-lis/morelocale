@@ -35,7 +35,8 @@
                 tools:text="日本語（日本） ja JP N/A" />
 
             <Button
-                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:id="@+id/custom_locale"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"

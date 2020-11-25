@@ -91,6 +91,10 @@ class LocaleListFragment : Fragment() {
         binding = FragmentLocaleListBinding.bind(view).also {
             it.recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             it.recyclerView.adapter = adapter
+            it.customLocale.setOnClickListener {
+                EditLocaleDialog.getSetInstance()
+                        .show(parentFragmentManager, EditLocaleDialog.TAG)
+            }
         }
 
         viewModel.loadCurrentLocale(requireContext())
@@ -106,6 +110,8 @@ class LocaleListFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_add_locale -> {
+                EditLocaleDialog.getAddInstance()
+                        .show(parentFragmentManager, EditLocaleDialog.TAG)
 
             }
             R.id.menu_about -> {
