@@ -18,9 +18,11 @@
 
         <View
             android:id="@+id/color_bar"
-            android:layout_width="8dp"
+            android:layout_width="4dp"
             android:layout_height="0dp"
-            android:background="@color/primaryLightColor"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            android:background="@color/preset_ribbon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

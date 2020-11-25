@@ -2,10 +2,12 @@
 <resources>
     <color name="primaryColor">#212121</color>
     <color name="primaryLightColor">#484848</color>
-    <color name="primaryDarkColor">#000000</color>
+    <color name="primaryDarkColor">#76ff03</color>
     <color name="secondaryColor">#212121</color>
     <color name="secondaryLightColor">#484848</color>
     <color name="secondaryDarkColor">#000000</color>
     <color name="primaryTextColor">#ffffff</color>
     <color name="secondaryTextColor">#ffffff</color>
+
+    <color name="preset_ribbon">#6200EE</color>
 </resources>

@@ -9,6 +9,7 @@ import java.util.Locale
 data class LocaleItem(
         @PrimaryKey(autoGenerate = true)
         val id: Int = 0,
+        val label: String? = null,
         val country: String,
         val language: String? = null
 ) {
@@ -19,15 +20,6 @@ data class LocaleItem(
     } else {
         Locale("", country)
     }
-
-    val label: String
-        get() {
-            return if (language != null) {
-                "$country $language"
-            } else {
-                country
-            }
-        }
 
     val displayName: String
         get() = locale.displayName
