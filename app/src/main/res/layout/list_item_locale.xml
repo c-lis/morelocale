@@ -33,6 +33,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:gravity="center_vertical"
             android:text="@{locale.displayName}"
             android:textSize="16sp"
@@ -49,18 +51,16 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
             android:src="@drawable/more_vert"
-            app:layout_constraintBottom_toTopOf="@+id/divider"
+            app:layout_constraintBottom_toBottomOf="@+id/label"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/label" />
 
         <View
             android:id="@+id/divider"
             android:layout_width="0dp"
             android:layout_height="1px"
-            android:background="#66363636"
+            android:background="#99696969"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
