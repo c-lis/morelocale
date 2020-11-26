@@ -9,8 +9,6 @@
     <string name="add">追加</string>
     <string name="save">保存</string>
     <string name="set">設定</string>
-    <string name="permission_required">パーミッションがありません</string>
-    <string name="detail">詳細</string>
     <string name="edit">編集</string>
     <string name="delete">削除</string>
 </resources>

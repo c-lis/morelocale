@@ -15,13 +15,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
 import jp.co.c_lis.ccl.morelocale.R
 import jp.co.c_lis.ccl.morelocale.databinding.FragmentLocaleListBinding
 import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
 import jp.co.c_lis.ccl.morelocale.repository.LocaleRepository
+import jp.co.c_lis.ccl.morelocale.ui.help.PermissionRequiredDialog
 import jp.co.c_lis.ccl.morelocale.ui.license.LicenseActivity
 import jp.co.c_lis.ccl.morelocale.widget.WrapContentLinearLayoutManager
 import jp.co.c_lis.morelocale.MoreLocale
@@ -78,13 +77,8 @@ class LocaleListFragment : Fragment() {
             MoreLocale.setLocale(localeItem.locale)
         } catch (e: InvocationTargetException) {
             Timber.e(e, "InvocationTargetException")
-            binding?.also { binding ->
-                Snackbar.make(binding.root, R.string.permission_required, Snackbar.LENGTH_LONG).also { sn ->
-                    sn.setAction(R.string.detail) {
-
-                    }
-                }.show()
-            }
+            PermissionRequiredDialog.getInstance()
+                    .show(parentFragmentManager, PermissionRequiredDialog.TAG)
         }
     }
 
