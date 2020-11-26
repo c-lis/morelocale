@@ -66,24 +66,23 @@ class LocaleListAdapter(
 
         fun bind(localeItem: LocaleItem) {
             binding.locale = localeItem
-            itemView.setOnClickListener {
+            binding.root.setOnClickListener {
                 onLocaleSelected(localeItem)
             }
             binding.more.setOnClickListener {
-                binding.more.setOnClickListener {
-                    PopupMenu(itemView.context, it).also { popupMenu ->
-                        popupMenu.menuInflater.inflate(
-                                R.menu.list_item_locale,
-                                popupMenu.menu)
-                        popupMenu.setOnMenuItemClickListener { menuItem ->
-                            when (menuItem.itemId) {
-                                R.id.menu_edit -> menuCallback?.onEdit(localeItem)
-                                R.id.menu_delete -> menuCallback?.onDelete(localeItem)
-                            }
-                            return@setOnMenuItemClickListener true
+                PopupMenu(itemView.context, it).also { popupMenu ->
+                    popupMenu.menuInflater.inflate(
+                            R.menu.list_item_locale,
+                            popupMenu.menu
+                    )
+                    popupMenu.setOnMenuItemClickListener { menuItem ->
+                        when (menuItem.itemId) {
+                            R.id.menu_edit -> menuCallback?.onEdit(localeItem)
+                            R.id.menu_delete -> menuCallback?.onDelete(localeItem)
                         }
-                    }.show()
-                }
+                        return@setOnMenuItemClickListener true
+                    }
+                }.show()
             }
         }
 
