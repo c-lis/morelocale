@@ -6,6 +6,7 @@
     <string name="about" translatable="false">About</string>
     <string name="iso639" translatable="false">ISO639</string>
     <string name="iso3166" translatable="false">ISO3166</string>
+    <string name="label">Label</string>
     <string name="language">Language</string>
     <string name="country">Country</string>
     <string name="variant" translatable="false">Variant</string>

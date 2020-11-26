@@ -3,22 +3,27 @@ package jp.co.c_lis.ccl.morelocale.ui
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.view.Window
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import jp.co.c_lis.ccl.morelocale.BuildConfig
 import jp.co.c_lis.ccl.morelocale.R
+import jp.co.c_lis.ccl.morelocale.databinding.DialogEditLocaleBinding
 
 class EditLocaleDialog : DialogFragment() {
 
     private enum class MODE(
             val titleRes: Int,
-            val positiveButtonLabelRes: Int
+            val positiveButtonLabelRes: Int,
+            val showLabelInput: Boolean,
     ) {
-        ADD(R.string.add_locale, R.string.add),
-        EDIT(R.string.edit_locale, R.string.save),
-        SET(R.string.set_custom_locale, R.string.set),
+        ADD(R.string.add_locale, R.string.add, true),
+        EDIT(R.string.edit_locale, R.string.save, true),
+        SET(R.string.set_custom_locale, R.string.set, false),
     }
 
     companion object {
@@ -54,6 +59,8 @@ class EditLocaleDialog : DialogFragment() {
         }
     }
 
+    private var binding: DialogEditLocaleBinding? = null
+
     private var mode = MODE.ADD
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,16 +72,28 @@ class EditLocaleDialog : DialogFragment() {
     @SuppressLint("SetTextI18n")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
-        val contentView = layoutInflater.inflate(R.layout.dialog_edit_locale, null).also { view ->
+        val binding = DialogEditLocaleBinding.inflate(layoutInflater).also { binding ->
+            binding.textInputLayoutLabel.visibility = if (mode.showLabelInput) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
+            this.binding = binding
         }
 
         return AlertDialog.Builder(requireContext())
                 .setTitle(mode.titleRes)
-                .setView(contentView)
+                .setView(binding.root)
                 .setPositiveButton(mode.positiveButtonLabelRes) { _, _ ->
                 }
                 .setNegativeButton(android.R.string.cancel) { _, _ ->
                 }
                 .create()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        binding?.unbind()
     }
 }
