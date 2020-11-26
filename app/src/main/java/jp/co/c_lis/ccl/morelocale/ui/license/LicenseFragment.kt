@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.AssetManager
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
@@ -48,6 +49,19 @@ class LicenseFragment : Fragment() {
         }
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        setHasOptionsMenu(true)
+        
+        if (context is AppCompatActivity) {
+            context.supportActionBar?.also {
+                it.setHomeButtonEnabled(true)
+                it.setDisplayHomeAsUpEnabled(true)
+            }
+        }
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_license, container, false)
     }
@@ -65,6 +79,16 @@ class LicenseFragment : Fragment() {
                     requireContext(), LinearLayoutManager.VERTICAL, false)
             binding.recyclerView.adapter = adapter
             this.binding = binding
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                requireActivity().finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
