@@ -1,6 +1,7 @@
 package jp.co.c_lis.ccl.morelocale.ui
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -14,12 +15,15 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import jp.co.c_lis.ccl.morelocale.R
 import jp.co.c_lis.ccl.morelocale.databinding.FragmentLocaleListBinding
 import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
 import jp.co.c_lis.ccl.morelocale.repository.LocaleRepository
+import jp.co.c_lis.ccl.morelocale.ui.license.LicenseActivity
+import jp.co.c_lis.ccl.morelocale.widget.WrapContentLinearLayoutManager
 import jp.co.c_lis.morelocale.MoreLocale
 import timber.log.Timber
 import java.lang.reflect.InvocationTargetException
@@ -155,6 +159,9 @@ class LocaleListFragment : Fragment() {
                 EditLocaleDialog.getAddInstance()
                         .show(parentFragmentManager, EditLocaleDialog.TAG)
 
+            }
+            R.id.menu_license -> {
+                startActivity(Intent(requireContext(), LicenseActivity::class.java))
             }
             R.id.menu_about -> {
                 AboutDialog.getInstance()

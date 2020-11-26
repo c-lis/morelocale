@@ -3,6 +3,7 @@
     <string name="set_custom_locale">Custom Locale</string>
     <string name="add_locale">Add Locale</string>
     <string name="edit_locale">Edit Locale</string>
+    <string name="open_source_licenses">Licenses</string>
     <string name="about" translatable="false">About</string>
     <string name="iso639" translatable="false">ISO639</string>
     <string name="iso3166" translatable="false">ISO3166</string>
@@ -17,4 +18,5 @@
     <string name="detail">Detail</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
+    <string name="dummy" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquet odio tellus, nec imperdiet purus euismod eget. Fusce id nibh in odio vestibulum lobortis vitae vel purus. Nunc tincidunt libero diam, id vulputate sapien egestas et. Vivamus vitae efficitur erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nulla in magna vitae odio consequat accumsan. Donec tempus purus ante, et bibendum odio consectetur quis. Cras ac ultrices justo, in feugiat quam. Vivamus sapien nunc, congue eu commodo in, vestibulum scelerisque quam.</string>
 </resources>
