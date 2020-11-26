@@ -22,7 +22,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="1dp"
             android:layout_marginBottom="1dp"
-            android:background="@color/preset_ribbon"
+            android:background="@{locale.preset ? @color/preset_ribbon : @color/custom_ribbon}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -35,6 +35,7 @@
             android:layout_marginLeft="8dp"
             android:gravity="center_vertical"
             android:text="@{locale.displayName}"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/color_bar"

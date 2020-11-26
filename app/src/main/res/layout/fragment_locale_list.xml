@@ -32,6 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{currentLocale.displayName}"
+                android:textSize="16sp"
                 tools:text="日本語（日本） ja JP N/A" />
 
             <Button

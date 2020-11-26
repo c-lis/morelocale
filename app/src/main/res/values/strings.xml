@@ -13,4 +13,6 @@
     <string name="add">Add</string>
     <string name="save">Save</string>
     <string name="set">Set</string>
+    <string name="permission_required">Permission required</string>
+    <string name="detail">Detail</string>
 </resources>

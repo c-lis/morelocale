@@ -51,7 +51,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/language"
-                android:inputType="textCapCharacters"
                 android:maxLength="2"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>

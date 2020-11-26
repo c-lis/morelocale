@@ -1,5 +1,7 @@
 package jp.co.c_lis.ccl.morelocale.entity
 
+import android.os.Parcel
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
@@ -11,18 +13,50 @@ data class LocaleItem(
         val id: Int = 0,
         val label: String? = null,
         val country: String,
-        val language: String? = null
-) {
+        val language: String? = null,
+        val variant: String? = null,
+        var isPreset: Boolean = false,
+) : Parcelable {
 
     @Ignore
-    val locale: Locale = if (language != null) {
+    val locale: Locale = if (language != null && variant != null) {
+        Locale(language, country, variant)
+    } else if (language != null && variant == null) {
         Locale(language, country)
     } else {
         Locale("", country)
     }
 
     val displayName: String
-        get() = locale.displayName
+        get() = label ?: locale.displayName
+
+    constructor(parcel: Parcel) : this(
+            parcel.readInt(),
+            parcel.readString(),
+            parcel.readString() ?: "",
+            parcel.readString()) {
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(id)
+        parcel.writeString(label)
+        parcel.writeString(country)
+        parcel.writeString(language)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<LocaleItem> {
+        override fun createFromParcel(parcel: Parcel): LocaleItem {
+            return LocaleItem(parcel)
+        }
+
+        override fun newArray(size: Int): Array<LocaleItem?> {
+            return arrayOfNulls(size)
+        }
+    }
 }
 
 fun createLocale(localeStr: String): LocaleItem {

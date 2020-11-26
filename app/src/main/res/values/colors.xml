@@ -10,4 +10,5 @@
     <color name="secondaryTextColor">#000000</color>
 
     <color name="preset_ribbon">#6200EE</color>
+    <color name="custom_ribbon">#64dd17</color>
 </resources>
