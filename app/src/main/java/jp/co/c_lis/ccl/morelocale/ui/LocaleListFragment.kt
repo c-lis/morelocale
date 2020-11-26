@@ -130,7 +130,8 @@ class LocaleListFragment : Fragment() {
         })
 
         binding = FragmentLocaleListBinding.bind(view).also {
-            it.recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            it.recyclerView.layoutManager = WrapContentLinearLayoutManager(
+                    requireContext(), LinearLayoutManager.VERTICAL, false)
             it.recyclerView.adapter = adapter
             it.customLocale.setOnClickListener {
                 EditLocaleDialog.getSetInstance()

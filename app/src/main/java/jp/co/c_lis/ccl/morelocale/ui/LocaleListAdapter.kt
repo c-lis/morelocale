@@ -25,8 +25,8 @@ class LocaleListAdapter(
         set(value) {
             coroutineScope.launch(Dispatchers.Main) {
                 val diffResult = calculateDiff(field, value)
-                diffResult.dispatchUpdatesTo(this@LocaleListAdapter)
                 field = value
+                diffResult.dispatchUpdatesTo(this@LocaleListAdapter)
             }
         }
 
