@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -42,7 +43,7 @@ class LocaleListFragment : Fragment() {
     private val menuCallback = object : LocaleListAdapter.MenuCallback {
         override fun onEdit(localeItem: LocaleItem) {
             EditLocaleDialog.getEditInstance(localeItem)
-                    .show(childFragmentManager, EditLocaleDialog.TAG)
+                    .show(parentFragmentManager, EditLocaleDialog.TAG)
         }
 
         override fun onDelete(localeItem: LocaleItem) {
@@ -94,19 +95,19 @@ class LocaleListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        childFragmentManager.setFragmentResultListener(EditLocaleDialog.MODE.ADD.name, viewLifecycleOwner) { requestKey, bundle ->
+        setFragmentResultListener(EditLocaleDialog.MODE.ADD.name) { requestKey, bundle ->
             val localeItemAdded = bundle.getParcelable<LocaleItem>(EditLocaleDialog.RESULT_KEY_LOCALE_ITEM)
                     ?: return@setFragmentResultListener
             Timber.d("Fragment Result $requestKey ${localeItemAdded.displayName}")
             viewModel.addLocale(localeItemAdded)
         }
-        childFragmentManager.setFragmentResultListener(EditLocaleDialog.MODE.EDIT.name, viewLifecycleOwner) { requestKey, bundle ->
+        setFragmentResultListener(EditLocaleDialog.MODE.EDIT.name) { requestKey, bundle ->
             Timber.d("Fragment Result $requestKey")
             val localeItemEdited = bundle.getParcelable<LocaleItem>(EditLocaleDialog.RESULT_KEY_LOCALE_ITEM)
                     ?: return@setFragmentResultListener
             viewModel.editLocale(localeItemEdited)
         }
-        childFragmentManager.setFragmentResultListener(EditLocaleDialog.MODE.SET.name, viewLifecycleOwner) { requestKey, bundle ->
+        setFragmentResultListener(EditLocaleDialog.MODE.SET.name) { requestKey, bundle ->
             Timber.d("Fragment Result $requestKey")
             val localeItem = bundle.getParcelable<LocaleItem>(EditLocaleDialog.RESULT_KEY_LOCALE_ITEM)
                     ?: return@setFragmentResultListener
@@ -133,7 +134,7 @@ class LocaleListFragment : Fragment() {
             it.recyclerView.adapter = adapter
             it.customLocale.setOnClickListener {
                 EditLocaleDialog.getSetInstance()
-                        .show(childFragmentManager, EditLocaleDialog.TAG)
+                        .show(parentFragmentManager, EditLocaleDialog.TAG)
             }
         }
 
@@ -151,12 +152,12 @@ class LocaleListFragment : Fragment() {
         when (item.itemId) {
             R.id.menu_add_locale -> {
                 EditLocaleDialog.getAddInstance()
-                        .show(childFragmentManager, EditLocaleDialog.TAG)
+                        .show(parentFragmentManager, EditLocaleDialog.TAG)
 
             }
             R.id.menu_about -> {
                 AboutDialog.getInstance()
-                        .show(childFragmentManager, AboutDialog.TAG)
+                        .show(parentFragmentManager, AboutDialog.TAG)
             }
         }
         return super.onOptionsItemSelected(item)

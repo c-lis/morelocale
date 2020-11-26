@@ -8,6 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
 import jp.co.c_lis.ccl.morelocale.R
 import jp.co.c_lis.ccl.morelocale.databinding.DialogEditLocaleBinding
 import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
@@ -116,12 +117,31 @@ class EditLocaleDialog : AppCompatDialogFragment() {
     @SuppressLint("SetTextI18n")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
+        setFragmentResultListener(LocaleSelectorDialog.LocaleType.Iso639.name) { _, bundle ->
+            val iso639Str = bundle.getString(LocaleSelectorDialog.RESULT_KEY_LOCALE)
+                    ?: return@setFragmentResultListener
+            binding?.inputLanguage?.setText(iso639Str)
+        }
+        setFragmentResultListener(LocaleSelectorDialog.LocaleType.Iso3166.name) { _, bundle ->
+            val iso3166Str = bundle.getString(LocaleSelectorDialog.RESULT_KEY_LOCALE)
+                    ?: return@setFragmentResultListener
+            binding?.inputCountry?.setText(iso3166Str)
+        }
+
         val editItem = requireArguments().getParcelable<LocaleItem>(KEY_LOCALE_ITEM)
         val binding = DialogEditLocaleBinding.inflate(layoutInflater).also { binding ->
             binding.textInputLayoutLabel.visibility = if (mode.showLabelInput) {
                 View.VISIBLE
             } else {
                 View.GONE
+            }
+            binding.buttonIso639.setOnClickListener {
+                LocaleSelectorDialog.getIso639Instance()
+                        .show(parentFragmentManager, LocaleSelectorDialog.TAG)
+            }
+            binding.buttonIso3166.setOnClickListener {
+                LocaleSelectorDialog.getIso3166Instance()
+                        .show(parentFragmentManager, LocaleSelectorDialog.TAG)
             }
 
             editItem?.also { localeItem ->
@@ -147,6 +167,11 @@ class EditLocaleDialog : AppCompatDialogFragment() {
                     // Do nothing
                 }
                 .create()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
     }
 
     override fun onDestroyView() {
