@@ -69,12 +69,23 @@ class LocaleListAdapter(
             binding.root.setOnClickListener {
                 onLocaleSelected(localeItem)
             }
-            binding.root.setOnLongClickListener {
-                showPopupMenu(binding.more, localeItem)
-                return@setOnLongClickListener true
-            }
-            binding.more.setOnClickListener {
-                showPopupMenu(it, localeItem)
+
+            if (localeItem.isPreset) {
+                binding.more.visibility = View.INVISIBLE
+                binding.root.setOnLongClickListener {
+                    return@setOnLongClickListener true
+                }
+                binding.more.setOnClickListener {
+                }
+            } else {
+                binding.more.visibility = View.VISIBLE
+                binding.root.setOnLongClickListener {
+                    showPopupMenu(binding.more, localeItem)
+                    return@setOnLongClickListener true
+                }
+                binding.more.setOnClickListener {
+                    showPopupMenu(it, localeItem)
+                }
             }
         }
 

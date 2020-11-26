@@ -17,7 +17,9 @@
         <RelativeLayout
             android:id="@+id/relativeLayout"
             android:layout_width="0dp"
-            android:layout_height="?android:listPreferredItemHeight"
+            android:layout_height="wrap_content"
+            android:minHeight="?android:listPreferredItemHeight"
+            android:padding="8dp"
             android:paddingStart="8dp"
             android:paddingLeft="8dp"
             android:paddingTop="8dp"
@@ -28,11 +30,11 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/now_locale"
+                android:id="@+id/current_locale_display"
+                style="@style/TextAppearance.MaterialComponents.Body1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{currentLocale.displayName}"
-                android:textSize="16sp"
+                android:text="@{currentLocale.displayFull}"
                 tools:text="日本語（日本） ja JP N/A" />
 
             <Button
@@ -40,9 +42,9 @@
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/current_locale_display"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
                 android:layout_marginTop="8dp"
                 android:text="@string/set_custom_locale" />
         </RelativeLayout>

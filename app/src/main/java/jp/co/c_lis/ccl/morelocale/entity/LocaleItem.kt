@@ -30,6 +30,13 @@ data class LocaleItem(
     val displayName: String
         get() = label ?: locale.displayName
 
+    val displayFull: String
+        get() {
+            val language = language ?: "N/A"
+            val variant = variant ?: "N/A"
+            return "$displayName $language $country $variant"
+        }
+
     constructor(parcel: Parcel) : this(
             parcel.readInt(),
             parcel.readString(),
