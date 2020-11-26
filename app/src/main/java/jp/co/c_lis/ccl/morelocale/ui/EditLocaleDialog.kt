@@ -31,6 +31,7 @@ class EditLocaleDialog : AppCompatDialogFragment() {
         const val RESULT_KEY_LOCALE_ITEM = "result_key_locale_item"
 
         private const val KEY_MODE = "key_mode"
+        private const val KEY_LOCALE_ITEM = "key_locale_item"
 
         fun getAddInstance(): EditLocaleDialog {
             val args = Bundle().apply {
@@ -41,9 +42,10 @@ class EditLocaleDialog : AppCompatDialogFragment() {
             }
         }
 
-        fun getEditInstance(): EditLocaleDialog {
+        fun getEditInstance(localeItem: LocaleItem): EditLocaleDialog {
             val args = Bundle().apply {
                 putInt(KEY_MODE, MODE.EDIT.ordinal)
+                putParcelable(KEY_LOCALE_ITEM, localeItem)
             }
             return EditLocaleDialog().also {
                 it.arguments = args
@@ -70,7 +72,7 @@ class EditLocaleDialog : AppCompatDialogFragment() {
         mode = MODE.values()[requireArguments().getInt(KEY_MODE)]
     }
 
-    private fun createLocaleItem(): LocaleItem? {
+    private fun createLocaleItem(editItem: LocaleItem?): LocaleItem? {
         val binding = binding ?: return null
 
         val label = binding.inputLabel.text.let {
@@ -102,18 +104,34 @@ class EditLocaleDialog : AppCompatDialogFragment() {
             }
         }
 
-        return LocaleItem(label = label, language = language, country = country, variant = variant)
+        return LocaleItem(
+                id = editItem?.id ?: 0,
+                label = label,
+                language = language,
+                country = country,
+                variant = variant
+        )
     }
 
     @SuppressLint("SetTextI18n")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
+        val editItem = requireArguments().getParcelable<LocaleItem>(KEY_LOCALE_ITEM)
         val binding = DialogEditLocaleBinding.inflate(layoutInflater).also { binding ->
             binding.textInputLayoutLabel.visibility = if (mode.showLabelInput) {
                 View.VISIBLE
             } else {
                 View.GONE
             }
+
+            editItem?.also { localeItem ->
+                binding.inputLabel.setText(localeItem.label)
+                binding.inputLanguage.setText(localeItem.language)
+                binding.inputCountry.setText(localeItem.country)
+                binding.inputVariant.setText(localeItem.variant)
+                localeItem.id
+            }
+
             this.binding = binding
         }
 
@@ -121,7 +139,7 @@ class EditLocaleDialog : AppCompatDialogFragment() {
                 .setTitle(mode.titleRes)
                 .setView(binding.root)
                 .setPositiveButton(mode.positiveButtonLabelRes) { _, _ ->
-                    val localeItem = createLocaleItem()
+                    val localeItem = createLocaleItem(editItem)
                     Timber.d("locale label = %s", localeItem?.label)
                     setFragmentResult(mode.name, bundleOf(RESULT_KEY_LOCALE_ITEM to localeItem))
                 }

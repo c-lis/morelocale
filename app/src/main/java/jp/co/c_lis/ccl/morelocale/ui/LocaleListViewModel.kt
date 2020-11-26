@@ -54,4 +54,11 @@ class LocaleListViewModel(
         }
     }
 
+    fun deleteLocale(localeItem: LocaleItem) {
+        viewModelScope.launch {
+            localeListRepository.delete(localeItem)
+            localeList.postValue(localeListRepository.findAll())
+        }
+    }
+
 }

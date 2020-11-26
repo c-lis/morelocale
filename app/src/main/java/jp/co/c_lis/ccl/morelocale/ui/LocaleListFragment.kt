@@ -39,6 +39,18 @@ class LocaleListFragment : Fragment() {
         }
     }
 
+    private val menuCallback = object : LocaleListAdapter.MenuCallback {
+        override fun onEdit(localeItem: LocaleItem) {
+            EditLocaleDialog.getEditInstance(localeItem)
+                    .show(childFragmentManager, EditLocaleDialog.TAG)
+        }
+
+        override fun onDelete(localeItem: LocaleItem) {
+            viewModel.deleteLocale(localeItem)
+        }
+
+    }
+
     private var adapter: LocaleListAdapter? = null
 
     override fun onAttach(context: Context) {
@@ -48,7 +60,8 @@ class LocaleListFragment : Fragment() {
 
         adapter = LocaleListAdapter(
                 LayoutInflater.from(context),
-                lifecycleScope
+                lifecycleScope,
+                menuCallback
         ) { localeItem ->
             Timber.d("Change locale ${localeItem.displayName}")
             setLocale(localeItem)

@@ -46,4 +46,9 @@ class LocaleRepository(applicationContext: Context) {
         db.localeItemDao()
                 .update(locale)
     }
+
+    suspend fun delete(locale: LocaleItem) = withContext(Dispatchers.IO) {
+        db.localeItemDao()
+                .delete(locale)
+    }
 }

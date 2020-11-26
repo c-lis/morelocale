@@ -15,4 +15,6 @@
     <string name="set">Set</string>
     <string name="permission_required">Permission required</string>
     <string name="detail">Detail</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
 </resources>
