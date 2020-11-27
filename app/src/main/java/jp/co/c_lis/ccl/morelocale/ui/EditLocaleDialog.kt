@@ -76,8 +76,8 @@ class EditLocaleDialog : AppCompatDialogFragment() {
     private fun validation(): Boolean {
         val binding = binding ?: return false
 
-        if (mode != MODE.SET && binding.inputLabel.text.isNullOrEmpty()) {
-            binding.textInputLayoutLabel.error = getString(R.string.required)
+        if (binding.inputLanguage.text.isNullOrEmpty()) {
+            binding.textInputLayoutLanguage.error = getString(R.string.required)
             return false
         }
 

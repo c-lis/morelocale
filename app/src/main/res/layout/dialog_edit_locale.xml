@@ -34,13 +34,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/iso639"
-                app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
+                app:layout_constraintBottom_toBottomOf="@+id/textInputLayoutLanguage"
                 app:layout_constraintEnd_toEndOf="@+id/button_iso3166"
                 app:layout_constraintStart_toStartOf="@+id/button_iso3166"
-                app:layout_constraintTop_toTopOf="@+id/textInputLayout" />
+                app:layout_constraintTop_toTopOf="@+id/textInputLayoutLanguage" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout"
+                android:id="@+id/textInputLayoutLanguage"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -65,12 +65,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/iso3166"
-                app:layout_constraintBottom_toBottomOf="@+id/textInputLayout2"
+                app:layout_constraintBottom_toBottomOf="@+id/textInputLayoutCountry"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textInputLayout2" />
+                app:layout_constraintTop_toTopOf="@+id/textInputLayoutCountry" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout2"
+                android:id="@+id/textInputLayoutCountry"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -78,7 +78,7 @@
                 android:layout_marginRight="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/button_iso3166"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutLanguage">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_country"
@@ -94,9 +94,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayoutCountry"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCountry">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_variant"
