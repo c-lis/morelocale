@@ -27,11 +27,11 @@
         <Button
             android:id="@+id/button_iso639"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/iso639"
             app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/button_iso3166"
             app:layout_constraintStart_toStartOf="@+id/button_iso3166"
             app:layout_constraintTop_toTopOf="@+id/textInputLayout" />
 
