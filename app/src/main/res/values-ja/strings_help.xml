@@ -5,5 +5,5 @@
     <string name="execute_as_su">SuperUserとして実行</string>
     <string name="use_pm_command_message">1. 端末のUSBデバッグをONにします。\n2. 端末をPCに接続して以下のコマンドを実行します。\n<b>adb shell pm grant jp.co.c_lis.ccl.morelocale android.permission.CHANGE_CONFIGURATION</b></string>
     <string name="permission_granted">パーミッションを確認しました</string>
-    <string name="could_not_get_su_privilege">Couldn\'t get SuperUser privilege...</string>
+    <string name="could_not_get_su_privilege">SuperUserとして実行できませんでした</string>
 </resources>
