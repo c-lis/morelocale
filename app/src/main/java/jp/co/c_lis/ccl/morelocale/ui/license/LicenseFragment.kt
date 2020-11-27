@@ -22,32 +22,8 @@ import kotlinx.coroutines.withContext
 
 class LicenseFragment : Fragment() {
 
-    data class License(
-            val name: String,
-            val url: String,
-            val licensePathOnAsset: String
-    )
-
     companion object {
         val TAG = LicenseFragment::class.java.simpleName
-
-        private val LICENSES = listOf(
-                License(
-                        "ic_menu_3d_globe.png",
-                        "https://android.googlesource.com/platform/packages/apps/Settings/",
-                        "license/aosp_creative_commons.txt"
-                ),
-                License(
-                        "Android Open Source Project",
-                        "https://source.android.com/",
-                        "license/aosp.txt"
-                ),
-                License(
-                        "Timber",
-                        "https://github.com/JakeWharton/timber",
-                        "license/timber.txt"
-                ),
-        )
 
         fun getInstance(): LicenseFragment {
             return LicenseFragment()

@@ -7,7 +7,7 @@
 
         <variable
             name="licenseData"
-            type="jp.co.c_lis.ccl.morelocale.ui.license.LicenseFragment.License" />
+            type="jp.co.c_lis.ccl.morelocale.ui.license.License" />
 
         <variable
             name="licenseText"
