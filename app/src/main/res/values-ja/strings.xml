@@ -2,7 +2,7 @@
     <string name="set_custom_locale">ロケールの詳細な変更</string>
     <string name="add_locale">ロケールの追加</string>
     <string name="edit_locale">ロケールの編集</string>
-    <string name="open_source_licenses">ライセンス</string>
+    <string name="open_source_licenses">オープンソースライセンス</string>
     <string name="label">ラベル</string>
     <string name="language">言語</string>
     <string name="country">地域</string>

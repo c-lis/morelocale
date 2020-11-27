@@ -33,6 +33,11 @@ class LicenseFragment : Fragment() {
 
         private val LICENSES = listOf(
                 License(
+                        "ic_menu_3d_globe.png",
+                        "https://android.googlesource.com/platform/packages/apps/Settings/",
+                        "license/aosp_creative_commons.txt"
+                ),
+                License(
                         "Android Open Source Project",
                         "https://source.android.com/",
                         "license/aosp.txt"
@@ -53,7 +58,7 @@ class LicenseFragment : Fragment() {
         super.onAttach(context)
 
         setHasOptionsMenu(true)
-        
+
         if (context is AppCompatActivity) {
             context.supportActionBar?.also {
                 it.setHomeButtonEnabled(true)

@@ -3,7 +3,7 @@
     <string name="set_custom_locale">Custom Locale</string>
     <string name="add_locale">Add Locale</string>
     <string name="edit_locale">Edit Locale</string>
-    <string name="open_source_licenses">Licenses</string>
+    <string name="open_source_licenses">Open Source Licenses</string>
     <string name="about" translatable="false">About</string>
     <string name="iso639" translatable="false">ISO639</string>
     <string name="iso3166" translatable="false">ISO3166</string>

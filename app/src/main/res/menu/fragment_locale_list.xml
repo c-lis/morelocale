@@ -7,12 +7,11 @@
         android:title="@string/add_locale"
         app:showAsAction="never" />
     <item
-        android:id="@+id/menu_license"
-        android:title="@string/open_source_licenses"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/menu_about"
         android:title="@string/about"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_license"
+        android:title="@string/open_source_licenses"
         app:showAsAction="never" />
 </menu>
