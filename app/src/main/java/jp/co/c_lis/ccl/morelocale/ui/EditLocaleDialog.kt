@@ -73,6 +73,17 @@ class EditLocaleDialog : AppCompatDialogFragment() {
         mode = MODE.values()[requireArguments().getInt(KEY_MODE)]
     }
 
+    private fun validation(): Boolean {
+        val binding = binding ?: return false
+
+        if (mode != MODE.SET && binding.inputLabel.text.isNullOrEmpty()) {
+            binding.textInputLayoutLabel.error = getString(R.string.required)
+            return false
+        }
+
+        return true
+    }
+
     private fun createLocaleItem(editItem: LocaleItem?): LocaleItem? {
         val binding = binding ?: return null
 
@@ -159,9 +170,7 @@ class EditLocaleDialog : AppCompatDialogFragment() {
                 .setTitle(mode.titleRes)
                 .setView(binding.root)
                 .setPositiveButton(mode.positiveButtonLabelRes) { _, _ ->
-                    val localeItem = createLocaleItem(editItem)
-                    Timber.d("locale label = %s", localeItem?.label)
-                    setFragmentResult(mode.name, bundleOf(RESULT_KEY_LOCALE_ITEM to localeItem))
+                    // Do nothing
                 }
                 .setNegativeButton(android.R.string.cancel) { _, _ ->
                     // Do nothing
@@ -169,9 +178,26 @@ class EditLocaleDialog : AppCompatDialogFragment() {
                 .create()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onResume() {
+        super.onResume()
 
+        val editItem = requireArguments().getParcelable<LocaleItem>(KEY_LOCALE_ITEM)
+
+        val dialog = dialog
+        if (dialog is AlertDialog) {
+            // Prevent to close a dialog automatically.
+            // https://stackoverflow.com/a/15619098
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+                if (!validation()) {
+                    return@setOnClickListener
+                }
+                createLocaleItem(editItem)?.also { localeItem ->
+                    Timber.d("locale label = %s", localeItem.label)
+                    setFragmentResult(mode.name, bundleOf(RESULT_KEY_LOCALE_ITEM to localeItem))
+                }
+                dismiss()
+            }
+        }
     }
 
     override fun onDestroyView() {

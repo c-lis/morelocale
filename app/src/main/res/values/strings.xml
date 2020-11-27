@@ -18,4 +18,5 @@
     <string name="delete">Delete</string>
     <string name="dummy" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquet odio tellus, nec imperdiet purus euismod eget. Fusce id nibh in odio vestibulum lobortis vitae vel purus. Nunc tincidunt libero diam, id vulputate sapien egestas et. Vivamus vitae efficitur erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nulla in magna vitae odio consequat accumsan. Donec tempus purus ante, et bibendum odio consectetur quis. Cras ac ultrices justo, in feugiat quam. Vivamus sapien nunc, congue eu commodo in, vestibulum scelerisque quam.</string>
     <string name="confirm_delete">Delete locale?</string>
+    <string name="required">required</string>
 </resources>
