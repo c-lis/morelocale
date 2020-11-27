@@ -3,6 +3,7 @@
     <string name="add_locale">ロケールの追加</string>
     <string name="edit_locale">ロケールの編集</string>
     <string name="open_source_licenses">オープンソースライセンス</string>
+    <string name="about">アプリについて</string>
     <string name="label">ラベル</string>
     <string name="language">言語</string>
     <string name="country">地域</string>
@@ -13,4 +14,5 @@
     <string name="delete">削除</string>
     <string name="confirm_delete">ロケールを削除しますか？</string>
     <string name="required">入力してください</string>
+    <string name="project_page">プロジェクトページ:</string>
 </resources>
