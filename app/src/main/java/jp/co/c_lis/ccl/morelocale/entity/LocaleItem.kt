@@ -12,19 +12,21 @@ data class LocaleItem(
         @PrimaryKey(autoGenerate = true)
         val id: Int = 0,
         val label: String? = null,
-        val country: String,
         val language: String? = null,
+        val country: String? = null,
         val variant: String? = null,
         var isPreset: Boolean = false,
 ) : Parcelable {
 
     @Ignore
-    val locale: Locale = if (language != null && variant != null) {
+    val locale: Locale = if (language != null && country != null && variant != null) {
         Locale(language, country, variant)
-    } else if (language != null && variant == null) {
+    } else if (language != null && country != null && variant == null) {
         Locale(language, country)
+    } else if (language != null && country == null && variant == null) {
+        Locale(language)
     } else {
-        Locale("", country)
+        Locale("")
     }
 
     val displayName: String
@@ -40,15 +42,19 @@ data class LocaleItem(
     constructor(parcel: Parcel) : this(
             parcel.readInt(),
             parcel.readString(),
-            parcel.readString() ?: "",
-            parcel.readString()) {
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readByte() != 0.toByte()) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)
         parcel.writeString(label)
-        parcel.writeString(country)
         parcel.writeString(language)
+        parcel.writeString(country)
+        parcel.writeString(variant)
+        parcel.writeByte(if (isPreset) 1 else 0)
     }
 
     override fun describeContents(): Int {
@@ -70,17 +76,31 @@ fun createLocale(localeStr: String): LocaleItem {
     val localeTokens = localeStr.split("-")
     return when (localeTokens.size) {
         0 -> {
-            LocaleItem(country = localeStr)
+            LocaleItem(language = localeStr)
         }
         1 -> {
-            LocaleItem(country = localeTokens[0])
+            LocaleItem(language = localeTokens[0])
+        }
+        2 -> {
+            LocaleItem(
+                    language = localeTokens[0],
+                    country = localeTokens[1]
+            )
         }
         else -> {
-            LocaleItem(country = localeTokens[0], language = localeTokens[1])
+            LocaleItem(
+                    language = localeTokens[0],
+                    country = localeTokens[1],
+                    variant = localeTokens[2]
+            )
         }
     }
 }
 
 fun createLocale(locale: Locale): LocaleItem {
-    return LocaleItem(country = locale.country, language = locale.language)
+    return LocaleItem(
+            language = locale.language,
+            country = locale.country,
+            variant = locale.variant
+    )
 }
