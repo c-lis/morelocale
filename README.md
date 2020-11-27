@@ -1,4 +1,4 @@
-# morelocale
+# MoreLocale
 This application will change system locale and country setting.
 
 Any contribution is welcome!
