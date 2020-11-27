@@ -50,9 +50,15 @@ class LocaleListFragment : Fragment() {
         }
 
         override fun onDelete(localeItem: LocaleItem) {
-            viewModel.deleteLocale(localeItem)
+            ConfirmDialog.show(
+                    targetFragment = this@LocaleListFragment,
+                    title = "",
+                    message = getString(R.string.confirm_delete),
+                    positiveButtonLabel = getString(R.string.delete),
+                    negativeButtonLabel = getString(android.R.string.cancel),
+                    onPositiveButtonClicked = { viewModel.deleteLocale(localeItem) },
+            )
         }
-
     }
 
     private var adapter: LocaleListAdapter? = null
