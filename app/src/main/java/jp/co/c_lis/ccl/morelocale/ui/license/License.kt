@@ -18,12 +18,12 @@ val LICENSES = listOf(
                 "license/aosp.txt"
         ),
         License(
-                "Android Jetpack - lifecycle ViewModel",
+                "AndroidX Jetpack - lifecycle ViewModel",
                 "https://developer.android.com/jetpack/androidx/releases/lifecycle",
                 "license/aosp_jetpack.txt"
         ),
         License(
-                "Android Jetpack - lifecycle LiveData",
+                "AndroidX Jetpack - lifecycle LiveData",
                 "https://developer.android.com/jetpack/androidx/releases/lifecycle",
                 "license/aosp_jetpack.txt"
         ),
