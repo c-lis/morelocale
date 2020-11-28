@@ -4,6 +4,6 @@ In order to clarify the intellectual property license granted with Contributions
 
 This license is for your protection as a Contributor as well as the protection of C-LIS CO., LTD. and its users; it does not change your rights to use your own Contributions for any other purpose.
 
-If you have not already done so, please complete and submit to:
+If you have not already done so, please complete and submit:
 
  * https://github.com/c-lis/c-lis/blob/master/CLA.md
