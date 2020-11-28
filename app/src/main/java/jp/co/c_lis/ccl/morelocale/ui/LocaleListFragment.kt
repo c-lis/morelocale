@@ -138,7 +138,7 @@ class LocaleListFragment : Fragment() {
                     requireContext(), LinearLayoutManager.VERTICAL, false)
             it.recyclerView.adapter = adapter
             it.customLocale.setOnClickListener {
-                EditLocaleDialog.getSetInstance()
+                EditLocaleDialog.getSetInstance(viewModel.currentLocale.value)
                         .show(parentFragmentManager, EditLocaleDialog.TAG)
             }
         }

@@ -53,9 +53,10 @@ class EditLocaleDialog : AppCompatDialogFragment() {
             }
         }
 
-        fun getSetInstance(): EditLocaleDialog {
+        fun getSetInstance(localeItem: LocaleItem?): EditLocaleDialog {
             val args = Bundle().apply {
                 putInt(KEY_MODE, MODE.SET.ordinal)
+                putParcelable(KEY_LOCALE_ITEM, localeItem)
             }
             return EditLocaleDialog().also {
                 it.arguments = args
