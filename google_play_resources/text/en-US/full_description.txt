@@ -1,0 +1,7 @@
+* NOTICE *
+After 4.2 new Jelly Bean, The protection level definition of CHANGE_CONFIGURATION has been changed.
+If you're able to use development tools, you can grant the permission manually by 'pm' command.
+If you have SuperUser privilege on your device. MoreLocale 2 could get the permission automatically.
+
+You can select more locales via this app.
+If your locale doesn't appear, please use custom locale function in menu.
