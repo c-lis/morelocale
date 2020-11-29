@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
 import jp.co.c_lis.ccl.morelocale.entity.createLocale
 import jp.co.c_lis.ccl.morelocale.repository.LocaleRepository
+import jp.co.c_lis.morelocale.MoreLocale
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -20,7 +21,7 @@ class LocaleListViewModel(
     fun loadCurrentLocale(context: Context) {
         viewModelScope.launch {
             @Suppress("DEPRECATION")
-            currentLocale.postValue(createLocale(context.resources.configuration.locale))
+            currentLocale.postValue(createLocale(MoreLocale.getLocale(context.resources.configuration)))
         }
     }
 

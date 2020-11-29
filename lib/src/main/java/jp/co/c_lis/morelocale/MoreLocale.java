@@ -32,7 +32,10 @@
 
 package jp.co.c_lis.morelocale;
 
+import android.annotation.SuppressLint;
 import android.content.res.Configuration;
+import android.os.Build;
+import android.os.LocaleList;
 import android.util.Log;
 
 import java.lang.reflect.Field;
@@ -43,11 +46,12 @@ import java.util.Locale;
 public class MoreLocale {
     private static final String LOG_TAG = MoreLocale.class.getSimpleName();
 
+    @SuppressWarnings({"UnnecessaryBoxing", "rawtypes"})
     private static void setUserSetLocale(Configuration configuration, boolean value) {
         Class c = configuration.getClass();
         try {
             Field f = c.getField("userSetLocale");
-            f.set(configuration, new Boolean(value));
+            f.set(configuration, Boolean.valueOf(value));
         } catch (NoSuchFieldException e) {
             if (BuildConfig.DEBUG) {
                 Log.e(LOG_TAG, "NoSuchFieldException", e);
@@ -60,13 +64,89 @@ public class MoreLocale {
     }
 
     /**
-     * 言語を設定
+     * 言語を取得.
+     *
+     * @return Locale
+     */
+    @SuppressWarnings("deprecation")
+    public static Locale getLocale(Configuration configuration) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            Locale locale = configuration.getLocales().get(0);
+            Log.d(LOG_TAG, locale.getDisplayName());
+
+            return locale;
+        } else {
+            return configuration.locale;
+        }
+    }
+
+    /**
+     * 言語を設定.
      *
      * @param locale
      */
     public static boolean setLocale(Locale locale) throws InvocationTargetException {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            return setLocaleList(new LocaleList(locale));
+        } else {
+            return setSingleLocale(locale);
+        }
+    }
+
+    /**
+     * 言語を設定.
+     * RequiresApi N
+     *
+     * @param locales
+     */
+    @SuppressLint("NewApi")
+    @SuppressWarnings({"RedundantArrayCreation", "ConfusingArgumentToVarargsMethod"})
+    private static boolean setLocaleList(LocaleList locales) throws InvocationTargetException {
         try {
-            Class<?> activityManagerNative = (Class<?>) Class.forName("android.app.ActivityManagerNative");
+            @SuppressLint("PrivateApi") Class<?> activityManagerNative = Class.forName("android.app.ActivityManagerNative");
+
+            // ActivityManagerNative.getDefault();
+            Method getDefault = activityManagerNative.getMethod("getDefault", null);
+            Object am = getDefault.invoke(activityManagerNative, null);
+
+            // am.getConfiguration();
+            Method getConfiguration = am.getClass().getMethod("getConfiguration", null);
+            Configuration config = (Configuration) getConfiguration.invoke(am, null);
+
+            config.setLocales(locales);
+            setUserSetLocale(config, true);
+
+            // am.updateConfiguration(config);
+            Method updateConfiguration = am.getClass().getMethod("updateConfiguration", new Class[]{Configuration.class});
+            updateConfiguration.invoke(am, new Object[]{config});
+
+            return true;
+
+        } catch (ClassNotFoundException e) {
+            if (BuildConfig.DEBUG) {
+                Log.e(LOG_TAG, "ClassNotFoundException", e);
+            }
+        } catch (NoSuchMethodException e) {
+            if (BuildConfig.DEBUG) {
+                Log.e(LOG_TAG, "NoSuchMethodException", e);
+            }
+        } catch (IllegalAccessException e) {
+            if (BuildConfig.DEBUG) {
+                Log.e(LOG_TAG, "IllegalAccessException", e);
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 言語を設定
+     *
+     * @param locale
+     */
+    @SuppressWarnings({"RedundantArrayCreation", "ConfusingArgumentToVarargsMethod"})
+    private static boolean setSingleLocale(Locale locale) throws InvocationTargetException {
+        try {
+            @SuppressLint("PrivateApi") Class<?> activityManagerNative = Class.forName("android.app.ActivityManagerNative");
 
             // ActivityManagerNative.getDefault();
             Method getDefault = activityManagerNative.getMethod("getDefault", null);
