@@ -20,7 +20,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class LicenseFragment : Fragment() {
+class LicenseFragment : Fragment(R.layout.fragment_license) {
 
     companion object {
         val TAG = LicenseFragment::class.java.simpleName
@@ -41,10 +41,6 @@ class LicenseFragment : Fragment() {
                 it.setDisplayHomeAsUpEnabled(true)
             }
         }
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_license, container, false)
     }
 
     private var binding: FragmentLicenseBinding? = null

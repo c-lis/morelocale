@@ -29,7 +29,7 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.lang.reflect.InvocationTargetException
 
-class LocaleListFragment : Fragment() {
+class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
 
     private var binding: FragmentLocaleListBinding? = null
 
@@ -94,14 +94,6 @@ class LocaleListFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_locale_list, container, false)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -127,7 +119,6 @@ class LocaleListFragment : Fragment() {
         viewModel.currentLocale.observe(viewLifecycleOwner, { currentLocale ->
             binding?.also {
                 it.currentLocale = currentLocale
-
             }
         })
 
