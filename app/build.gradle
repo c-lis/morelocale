@@ -17,6 +17,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
+        buildConfigField("String", "PREFERENCES_FILE_NAME", "\"pref.xml\"")
         buildConfigField("String", "DATABASE_FILE_NAME", "\"locale.db\"")
     }
 

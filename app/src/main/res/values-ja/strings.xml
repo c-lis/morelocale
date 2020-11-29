@@ -14,4 +14,11 @@
     <string name="delete">削除</string>
     <string name="confirm_delete">ロケールを削除しますか？</string>
     <string name="required">入力してください</string>
+    <string name="restore">復元</string>
+    <string name="notification_channel_name_restore_locale">ロケールの復元</string>
+    <string name="never">自動復元しない</string>
+    <string name="restore_canceled">復元はキャンセルされました</string>
+    <string name="tap_to_open">タップして開く</string>
+    <string name="tap_to_cancel">タップしてキャンセル</string>
+    <string name="restoring_locale">ロケールを復元中…</string>
 </resources>

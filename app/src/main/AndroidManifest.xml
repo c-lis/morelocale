@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="jp.co.c_lis.ccl.morelocale">
 
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
         android:name=".MainApplication"
         android:allowBackup="false"
@@ -19,6 +22,16 @@
         <activity
             android:name=".ui.license.LicenseActivity"
             android:label="@string/open_source_licenses" />
+
+        <receiver android:name=".receiver.BootCompletedReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".service.RestoreLocaleService" />
+
     </application>
 
 </manifest>

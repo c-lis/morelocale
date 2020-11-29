@@ -20,10 +20,12 @@ import jp.co.c_lis.ccl.morelocale.R
 import jp.co.c_lis.ccl.morelocale.databinding.FragmentLocaleListBinding
 import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
 import jp.co.c_lis.ccl.morelocale.repository.LocaleRepository
+import jp.co.c_lis.ccl.morelocale.repository.PreferenceRepository
 import jp.co.c_lis.ccl.morelocale.ui.help.PermissionRequiredDialog
 import jp.co.c_lis.ccl.morelocale.ui.license.LicenseActivity
 import jp.co.c_lis.ccl.morelocale.widget.WrapContentLinearLayoutManager
 import jp.co.c_lis.morelocale.MoreLocale
+import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.lang.reflect.InvocationTargetException
 
@@ -81,6 +83,10 @@ class LocaleListFragment : Fragment() {
     private fun setLocale(localeItem: LocaleItem) {
         try {
             MoreLocale.setLocale(localeItem.locale)
+
+            lifecycleScope.launch {
+                PreferenceRepository(requireContext()).saveLocale(localeItem)
+            }
         } catch (e: InvocationTargetException) {
             Timber.e(e, "InvocationTargetException")
             PermissionRequiredDialog.getInstance()
