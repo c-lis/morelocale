@@ -71,10 +71,7 @@ public class MoreLocale {
     @SuppressWarnings("deprecation")
     public static Locale getLocale(Configuration configuration) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            Locale locale = configuration.getLocales().get(0);
-            Log.d(LOG_TAG, locale.getDisplayName());
-
-            return locale;
+            return configuration.getLocales().get(0);
         } else {
             return configuration.locale;
         }
