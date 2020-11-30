@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDialogFragment
+import com.stericson.RootShell.exceptions.RootDeniedException
 import com.stericson.RootShell.execution.Command
 import com.stericson.RootTools.RootTools
 import jp.co.c_lis.ccl.morelocale.BuildConfig
@@ -53,6 +54,8 @@ class PermissionRequiredDialog : AppCompatDialogFragment() {
             RootTools.getShell(true, TIMEOUT)
                     .add(Command(0, COMMAND_PM_GRANT))
             return true
+        } catch (e: RootDeniedException) {
+            Timber.e(e)
         } catch (e: InterruptedException) {
             Timber.e(e)
         } catch (e: IOException) {
