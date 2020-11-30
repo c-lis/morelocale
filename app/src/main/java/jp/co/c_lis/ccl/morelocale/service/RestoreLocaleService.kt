@@ -42,7 +42,7 @@ class RestoreLocaleService : Service() {
         private const val NO_ICON = 0x0
 
         private const val DELAY_IN_MILLIS = 10 * 1000
-        private const val INTERVAL_PROGRESS_UPDATE_IN_MILLIS = 200L
+        private const val INTERVAL_PROGRESS_UPDATE_IN_MILLIS = 100L
 
         private const val REQUEST_OPEN_FROM_PERMISSION_ERROR = 0x1234
 
@@ -235,6 +235,7 @@ class RestoreLocaleService : Service() {
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setContentTitle(getText(R.string.restoring_locale))
                 .setContentText(getText(R.string.tap_to_cancel))
+                .setTicker(getText(R.string.restoring_locale))
                 .setProgress(100, percentage, false)
                 .setOngoing(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
@@ -276,6 +277,7 @@ class RestoreLocaleService : Service() {
                 .setSmallIcon(R.mipmap.ic_menu_3d_globe)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setContentTitle(getText(R.string.restore_canceled))
+                .setTicker(getText(R.string.restore_canceled))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .addAction(neverAction)
                 .addAction(restoreAction)
@@ -301,6 +303,7 @@ class RestoreLocaleService : Service() {
                 .setSmallIcon(android.R.drawable.stat_notify_error)
                 .setContentTitle(getText(R.string.permission_required))
                 .setContentText(getText(R.string.tap_to_open))
+                .setTicker(getText(R.string.permission_required))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
                 .build()
