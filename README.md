@@ -3,7 +3,7 @@ This application will change system locale and country setting.
 
 Any contribution is welcome
 
-<img src="google_play_resources/graphics/phone_screenshot_1.png" width="250">
+<img src="play_store_resources/graphics/phone_screenshot_1.png" width="250">
 
 License
 =======
