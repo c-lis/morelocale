@@ -231,7 +231,7 @@ class RestoreLocaleService : Service() {
         val percentage = ((elapsed.toFloat() / DELAY_IN_MILLIS) * 100).roundToInt()
 
         return NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
-                .setSmallIcon(R.mipmap.ic_menu_3d_globe)
+                .setSmallIcon(R.drawable.settings_backup_restore)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setContentTitle(getText(R.string.restoring_locale))
                 .setContentText(getText(R.string.tap_to_cancel))
