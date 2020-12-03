@@ -2,11 +2,21 @@ package jp.co.c_lis.ccl.morelocale
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import jp.co.c_lis.ccl.morelocale.dao.LocaleIsoItemDao
 import jp.co.c_lis.ccl.morelocale.dao.LocaleItemDao
+import jp.co.c_lis.ccl.morelocale.entity.Converters
+import jp.co.c_lis.ccl.morelocale.entity.LocaleIsoItem
 import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
 
-@Database(entities = [LocaleItem::class], version = 1)
+@Database(
+        entities = [LocaleItem::class, LocaleIsoItem::class],
+        version = 1
+)
+@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun localeItemDao(): LocaleItemDao
+
+    abstract fun localeIsoItemDao(): LocaleIsoItemDao
 }
