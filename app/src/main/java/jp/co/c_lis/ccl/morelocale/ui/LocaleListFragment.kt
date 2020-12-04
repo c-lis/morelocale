@@ -152,11 +152,6 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
 
     private fun setupActionBar(activity: AppCompatActivity, toolBar: Toolbar) {
         activity.setSupportActionBar(toolBar)
-
-        activity.supportActionBar?.also {
-            it.setHomeButtonEnabled(true)
-            it.setDisplayHomeAsUpEnabled(true)
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
