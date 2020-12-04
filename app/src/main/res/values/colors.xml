@@ -6,9 +6,11 @@
     <color name="secondaryColor">#64dd17</color>
     <color name="secondaryLightColor">#9cff57</color>
     <color name="secondaryDarkColor">#1faa00</color>
-    <color name="primaryTextColor">#000000</color>
-    <color name="secondaryTextColor">#000000</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#ffffff</color>
 
     <color name="preset_ribbon">#6200EE</color>
     <color name="custom_ribbon">#64dd17</color>
+
+    <color name="edit_locale_dialog_background">#424242</color>
 </resources>

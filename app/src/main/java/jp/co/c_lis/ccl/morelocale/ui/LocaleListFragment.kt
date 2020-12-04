@@ -24,7 +24,6 @@ import jp.co.c_lis.ccl.morelocale.repository.LocaleRepository
 import jp.co.c_lis.ccl.morelocale.repository.PreferenceRepository
 import jp.co.c_lis.ccl.morelocale.ui.help.PermissionRequiredDialog
 import jp.co.c_lis.ccl.morelocale.ui.license.LicenseActivity
-import jp.co.c_lis.ccl.morelocale.ui.license.LicenseFragment
 import jp.co.c_lis.ccl.morelocale.widget.WrapContentLinearLayoutManager
 import jp.co.c_lis.morelocale.MoreLocale
 import kotlinx.coroutines.launch
@@ -49,8 +48,10 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
 
     private val menuCallback = object : LocaleListAdapter.MenuCallback {
         override fun onEdit(localeItem: LocaleItem) {
-            EditLocaleDialog.getEditInstance(localeItem)
-                    .show(parentFragmentManager, EditLocaleDialog.TAG)
+            parentFragmentManager.beginTransaction()
+                    .add(R.id.fragment_container, EditLocaleFragment.getEditInstance(localeItem))
+                    .addToBackStack(null)
+                    .commit()
         }
 
         override fun onDelete(localeItem: LocaleItem) {
@@ -99,21 +100,21 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setFragmentResultListener(EditLocaleDialog.MODE.ADD.name) { requestKey, bundle ->
-            val localeItemAdded = bundle.getParcelable<LocaleItem>(EditLocaleDialog.RESULT_KEY_LOCALE_ITEM)
+        setFragmentResultListener(EditLocaleFragment.MODE.ADD.name) { requestKey, bundle ->
+            val localeItemAdded = bundle.getParcelable<LocaleItem>(EditLocaleFragment.RESULT_KEY_LOCALE_ITEM)
                     ?: return@setFragmentResultListener
             Timber.d("Fragment Result $requestKey ${localeItemAdded.displayName}")
             viewModel.addLocale(localeItemAdded)
         }
-        setFragmentResultListener(EditLocaleDialog.MODE.EDIT.name) { requestKey, bundle ->
+        setFragmentResultListener(EditLocaleFragment.MODE.EDIT.name) { requestKey, bundle ->
             Timber.d("Fragment Result $requestKey")
-            val localeItemEdited = bundle.getParcelable<LocaleItem>(EditLocaleDialog.RESULT_KEY_LOCALE_ITEM)
+            val localeItemEdited = bundle.getParcelable<LocaleItem>(EditLocaleFragment.RESULT_KEY_LOCALE_ITEM)
                     ?: return@setFragmentResultListener
             viewModel.editLocale(localeItemEdited)
         }
-        setFragmentResultListener(EditLocaleDialog.MODE.SET.name) { requestKey, bundle ->
+        setFragmentResultListener(EditLocaleFragment.MODE.SET.name) { requestKey, bundle ->
             Timber.d("Fragment Result $requestKey")
-            val localeItem = bundle.getParcelable<LocaleItem>(EditLocaleDialog.RESULT_KEY_LOCALE_ITEM)
+            val localeItem = bundle.getParcelable<LocaleItem>(EditLocaleFragment.RESULT_KEY_LOCALE_ITEM)
                     ?: return@setFragmentResultListener
             setLocale(localeItem)
         }
@@ -137,8 +138,10 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
                     requireContext(), LinearLayoutManager.VERTICAL, false)
             binding.recyclerView.adapter = adapter
             binding.customLocale.setOnClickListener {
-                EditLocaleDialog.getSetInstance(viewModel.currentLocale.value)
-                        .show(parentFragmentManager, EditLocaleDialog.TAG)
+                parentFragmentManager.beginTransaction()
+                        .add(R.id.fragment_container, EditLocaleFragment.getSetInstance(viewModel.currentLocale.value))
+                        .addToBackStack(null)
+                        .commit()
             }
 
             if (requireContext() is AppCompatActivity) {
@@ -163,9 +166,10 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_add_locale -> {
-                EditLocaleDialog.getAddInstance()
-                        .show(parentFragmentManager, EditLocaleDialog.TAG)
-
+                parentFragmentManager.beginTransaction()
+                        .add(R.id.fragment_container, EditLocaleFragment.getAddInstance())
+                        .addToBackStack(null)
+                        .commit()
             }
             R.id.menu_license -> {
                 startActivity(Intent(requireContext(), LicenseActivity::class.java))

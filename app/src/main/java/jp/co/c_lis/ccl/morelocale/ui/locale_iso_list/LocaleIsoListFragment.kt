@@ -17,12 +17,11 @@ import jp.co.c_lis.ccl.morelocale.entity.Type
 import jp.co.c_lis.ccl.morelocale.repository.LocaleIso3166Repository
 import jp.co.c_lis.ccl.morelocale.repository.LocaleIso639Repository
 import jp.co.c_lis.ccl.morelocale.repository.LocaleIsoRepository
-import jp.co.c_lis.ccl.morelocale.ui.LocaleSelectorDialog
 
 class LocaleIsoListFragment : Fragment(R.layout.fragment_locale_select) {
 
     companion object {
-        val TAG = LocaleSelectorDialog::class.simpleName
+        val TAG = LocaleIsoListFragment::class.simpleName
 
         const val RESULT_KEY_LOCALE = "result_key_locale"
 

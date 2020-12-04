@@ -36,7 +36,7 @@ class LocaleIsoListAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return LocaleItemViewHolder(
-                inflater.inflate(R.layout.list_item_locale_candidate, parent, false),
+                inflater.inflate(R.layout.list_item_locale_iso, parent, false),
                 onLocaleIsoSelected
         )
     }
