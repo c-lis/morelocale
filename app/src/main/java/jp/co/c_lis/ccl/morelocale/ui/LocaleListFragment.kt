@@ -8,7 +8,8 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
@@ -23,6 +24,7 @@ import jp.co.c_lis.ccl.morelocale.repository.LocaleRepository
 import jp.co.c_lis.ccl.morelocale.repository.PreferenceRepository
 import jp.co.c_lis.ccl.morelocale.ui.help.PermissionRequiredDialog
 import jp.co.c_lis.ccl.morelocale.ui.license.LicenseActivity
+import jp.co.c_lis.ccl.morelocale.ui.license.LicenseFragment
 import jp.co.c_lis.ccl.morelocale.widget.WrapContentLinearLayoutManager
 import jp.co.c_lis.morelocale.MoreLocale
 import kotlinx.coroutines.launch
@@ -130,18 +132,31 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
             }
         })
 
-        binding = FragmentLocaleListBinding.bind(view).also {
-            it.recyclerView.layoutManager = WrapContentLinearLayoutManager(
+        binding = FragmentLocaleListBinding.bind(view).also { binding ->
+            binding.recyclerView.layoutManager = WrapContentLinearLayoutManager(
                     requireContext(), LinearLayoutManager.VERTICAL, false)
-            it.recyclerView.adapter = adapter
-            it.customLocale.setOnClickListener {
+            binding.recyclerView.adapter = adapter
+            binding.customLocale.setOnClickListener {
                 EditLocaleDialog.getSetInstance(viewModel.currentLocale.value)
                         .show(parentFragmentManager, EditLocaleDialog.TAG)
+            }
+
+            if (requireContext() is AppCompatActivity) {
+                setupActionBar(requireContext() as AppCompatActivity, binding.toolbar)
             }
         }
 
         viewModel.loadCurrentLocale(requireContext())
         viewModel.loadLocaleList(requireContext())
+    }
+
+    private fun setupActionBar(activity: AppCompatActivity, toolBar: Toolbar) {
+        activity.setSupportActionBar(toolBar)
+
+        activity.supportActionBar?.also {
+            it.setHomeButtonEnabled(true)
+            it.setDisplayHomeAsUpEnabled(true)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

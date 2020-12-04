@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,13 +35,6 @@ class LicenseFragment : Fragment(R.layout.fragment_license) {
         super.onAttach(context)
 
         setHasOptionsMenu(true)
-
-        if (context is AppCompatActivity) {
-            context.supportActionBar?.also {
-                it.setHomeButtonEnabled(true)
-                it.setDisplayHomeAsUpEnabled(true)
-            }
-        }
     }
 
     private var binding: FragmentLicenseBinding? = null
@@ -51,11 +45,23 @@ class LicenseFragment : Fragment(R.layout.fragment_license) {
 
         adapter = Adapter(layoutInflater, LICENSES, requireContext().assets, lifecycleScope)
 
-        val binding = FragmentLicenseBinding.bind(view).also { binding ->
+        binding = FragmentLicenseBinding.bind(view).also { binding ->
             binding.recyclerView.layoutManager = LinearLayoutManager(
                     requireContext(), LinearLayoutManager.VERTICAL, false)
             binding.recyclerView.adapter = adapter
-            this.binding = binding
+
+            if (requireContext() is AppCompatActivity) {
+                setupActionBar(requireContext() as AppCompatActivity, binding.toolbar)
+            }
+        }
+    }
+
+    private fun setupActionBar(activity: AppCompatActivity, toolBar: Toolbar) {
+        activity.setSupportActionBar(toolBar)
+
+        activity.supportActionBar?.also {
+            it.setHomeButtonEnabled(true)
+            it.setDisplayHomeAsUpEnabled(true)
         }
     }
 
@@ -72,6 +78,7 @@ class LicenseFragment : Fragment(R.layout.fragment_license) {
     override fun onDestroyView() {
         super.onDestroyView()
 
+        adapter?.destroy()
         binding?.unbind()
 
     }
