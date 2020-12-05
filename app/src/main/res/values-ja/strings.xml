@@ -21,4 +21,5 @@
     <string name="tap_to_open">タップして開く</string>
     <string name="tap_to_cancel">タップしてキャンセル</string>
     <string name="restoring_locale">ロケールを復元中…</string>
+    <string name="search">検索</string>
 </resources>
