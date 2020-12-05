@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -109,8 +110,13 @@ class LocaleIsoListFragment : Fragment(R.layout.fragment_locale_select) {
     }
 
     private fun setupActionBar(activity: AppCompatActivity, toolbar: Toolbar) {
-        activity.setSupportActionBar(toolbar)
         toolbar.setTitle(localeType.titleRes)
+
+        activity.setSupportActionBar(toolbar)
+        activity.supportActionBar?.also {
+            it.setDisplayHomeAsUpEnabled(true)
+            it.setHomeAsUpIndicator(R.drawable.clear)
+        }
     }
 
     private val searchQueryTextListener = object : SearchView.OnQueryTextListener {
@@ -135,6 +141,16 @@ class LocaleIsoListFragment : Fragment(R.layout.fragment_locale_select) {
         val searchMenu = menu.findItem(R.id.menu_search)
         val searchView = searchMenu.actionView as SearchView
         searchView.setOnQueryTextListener(searchQueryTextListener)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                parentFragmentManager.popBackStack()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onDestroyView() {

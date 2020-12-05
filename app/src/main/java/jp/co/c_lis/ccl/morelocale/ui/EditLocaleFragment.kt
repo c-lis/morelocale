@@ -1,7 +1,5 @@
 package jp.co.c_lis.ccl.morelocale.ui
 
-import android.annotation.SuppressLint
-import android.app.Dialog
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
@@ -155,12 +153,14 @@ class EditLocaleFragment : Fragment(R.layout.fragment_edit_locale) {
             }
             binding.buttonIso639.setOnClickListener {
                 parentFragmentManager.beginTransaction()
+                        .setCustomAnimations(R.anim.fragment_in, 0, 0, R.anim.fragment_out)
                         .add(R.id.fragment_container, LocaleIsoListFragment.getIso639Instance())
                         .addToBackStack(null)
                         .commit()
             }
             binding.buttonIso3166.setOnClickListener {
                 parentFragmentManager.beginTransaction()
+                        .setCustomAnimations(R.anim.fragment_in, 0, 0, R.anim.fragment_out)
                         .add(R.id.fragment_container, LocaleIsoListFragment.getIso3166Instance())
                         .addToBackStack(null)
                         .commit()
