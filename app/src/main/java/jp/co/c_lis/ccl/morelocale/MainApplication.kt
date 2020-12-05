@@ -21,9 +21,11 @@ class MainApplication : Application() {
                     application,
                     AppDatabase::class.java,
                     BuildConfig.DATABASE_FILE_NAME
-            ).build().also {
-                db = it
-            }
+            )
+                    .addMigrations(MIGRATION_1_2)
+                    .build().also {
+                        db = it
+                    }
         }
     }
 
