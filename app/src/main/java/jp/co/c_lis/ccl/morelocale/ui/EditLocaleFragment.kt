@@ -182,10 +182,11 @@ class EditLocaleFragment : Fragment(R.layout.fragment_edit_locale) {
                 createLocaleItem(editItem)?.also { localeItem ->
                     Timber.d("locale label = %s", localeItem.label)
                     setFragmentResult(mode.name, bundleOf(RESULT_KEY_LOCALE_ITEM to localeItem))
+                    parentFragmentManager.popBackStack()
                 }
             }
             binding.cancel.setOnClickListener {
-
+                parentFragmentManager.popBackStack()
             }
         }
     }

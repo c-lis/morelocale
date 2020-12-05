@@ -85,6 +85,7 @@ class LocaleIsoListFragment : Fragment(R.layout.fragment_locale_select) {
 
         val adapter = LocaleIsoListAdapter(layoutInflater, lifecycleScope) { localeIsoItem ->
             setFragmentResult(localeType.name, bundleOf(RESULT_KEY_LOCALE to localeIsoItem.value))
+            parentFragmentManager.popBackStack()
         }
 
         binding = FragmentLocaleSelectBinding.bind(view).also { binding ->
