@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import jp.co.c_lis.ccl.morelocale.R
 import jp.co.c_lis.ccl.morelocale.entity.LocaleIsoItem
+import jp.co.c_lis.ccl.morelocale.entity.Type
 import jp.co.c_lis.ccl.morelocale.repository.LocaleIsoRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,26 +26,46 @@ class LocaleIsoListViewModel(
                 return@launch
             }
 
-            init(
-                    resources.getStringArray(R.array.iso_3166_title),
-                    resources.getStringArray(R.array.iso_3166_value)
-            )
-            init(
-                    resources.getStringArray(R.array.iso_639_title),
-                    resources.getStringArray(R.array.iso_639_value)
-            )
+            when (localeIsoRepository.type) {
+                Type.Iso3166 -> {
+                    init(
+                            resources.getStringArray(R.array.iso_3166_title),
+                            resources.getStringArray(R.array.iso_3166_value)
+                    )
+                }
+                Type.Iso639 -> {
+                    init(
+                            resources.getStringArray(R.array.iso_639_title),
+                            resources.getStringArray(R.array.iso_639_value)
+                    )
+                }
+            }
 
             localeIsoList.postValue(localeIsoRepository.findAll())
         }
     }
 
-    suspend fun init(
+    private suspend fun init(
             titles: Array<String>,
             values: Array<String>
     ) = withContext(Dispatchers.Default) {
+        titles.reverse()
+        values.reverse()
+
         titles.forEachIndexed { index, title ->
             val value = values[index]
-            localeIsoRepository.add(LocaleIsoItem(label = title, value = value, isListed = true))
+            localeIsoRepository.add(LocaleIsoItem(
+                    label = title,
+                    value = value,
+                    isListed = true
+            ))
+        }
+    }
+
+    fun search(searchString: String?) {
+        viewModelScope.launch {
+            val list = localeIsoRepository.findMatchLabel(searchString)
+            localeIsoList.postValue(list)
         }
     }
 }

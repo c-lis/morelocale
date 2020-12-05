@@ -1,20 +1,15 @@
 package jp.co.c_lis.ccl.morelocale.repository
 
-import android.content.Context
-import androidx.room.Room
-import jp.co.c_lis.ccl.morelocale.AppDatabase
-import jp.co.c_lis.ccl.morelocale.BuildConfig
+import android.app.Application
+import jp.co.c_lis.ccl.morelocale.MainApplication
 import jp.co.c_lis.ccl.morelocale.entity.LocaleIsoItem
 import jp.co.c_lis.ccl.morelocale.entity.Type
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-abstract class LocaleIsoRepository(applicationContext: Context) {
+abstract class LocaleIsoRepository(application: Application) {
 
-    private val db = Room.databaseBuilder(
-            applicationContext,
-            AppDatabase::class.java, BuildConfig.DATABASE_FILE_NAME
-    ).build()
+    private val db = MainApplication.getDbInstance(application)
 
     abstract val type: Type
 
@@ -22,8 +17,12 @@ abstract class LocaleIsoRepository(applicationContext: Context) {
         return@withContext db.localeIsoItemDao().findByType(type.name)
     }
 
-    suspend fun findMatchLabel(text: String) = withContext(Dispatchers.IO) {
+    suspend fun findMatchLabel(text: String?) = withContext(Dispatchers.IO) {
+        if (text.isNullOrEmpty() || text.isBlank()) {
+            return@withContext db.localeIsoItemDao().findByType(type.name)
+        }
 
+        return@withContext db.localeIsoItemDao().findMatchLabel(type.name, "%$text%")
     }
 
     suspend fun add(localeIsoItem: LocaleIsoItem) = withContext(Dispatchers.IO) {

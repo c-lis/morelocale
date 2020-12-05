@@ -1,7 +1,14 @@
 package jp.co.c_lis.ccl.morelocale.ui.locale_iso_list
 
+import android.app.Application
+import android.content.Context
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
+import androidx.appcompat.widget.Toolbar
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
@@ -51,9 +58,10 @@ class LocaleIsoListFragment : Fragment(R.layout.fragment_locale_select) {
     private var localeType = Type.Iso639
 
     private val viewModel by viewModels<LocaleIsoListViewModel> {
+        val application = requireContext().applicationContext as Application
         val repository = when (localeType) {
-            Type.Iso3166 -> LocaleIso3166Repository(requireContext().applicationContext)
-            Type.Iso639 -> LocaleIso639Repository(requireContext().applicationContext)
+            Type.Iso3166 -> LocaleIso3166Repository(application)
+            Type.Iso639 -> LocaleIso639Repository(application)
         }
         LocaleIsoListViewModelProvider(repository)
     }
@@ -62,6 +70,12 @@ class LocaleIsoListFragment : Fragment(R.layout.fragment_locale_select) {
         super.onCreate(savedInstanceState)
 
         localeType = Type.values()[requireArguments().getInt(KEY_LOCALE_TYPE)]
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        setHasOptionsMenu(true)
     }
 
     var binding: FragmentLocaleSelectBinding? = null
@@ -73,15 +87,17 @@ class LocaleIsoListFragment : Fragment(R.layout.fragment_locale_select) {
             setFragmentResult(localeType.name, bundleOf(RESULT_KEY_LOCALE to localeIsoItem.value))
         }
 
-        val binding = FragmentLocaleSelectBinding.bind(view).also {
-            it.recyclerView.layoutManager = LinearLayoutManager(
+        binding = FragmentLocaleSelectBinding.bind(view).also { binding ->
+            binding.recyclerView.layoutManager = LinearLayoutManager(
                     requireContext(),
                     LinearLayoutManager.VERTICAL,
                     false
             )
-            it.recyclerView.adapter = adapter
+            binding.recyclerView.adapter = adapter
 
-            binding = it
+            if (requireContext() is AppCompatActivity) {
+                setupActionBar(requireContext() as AppCompatActivity, binding.toolbar)
+            }
         }
 
         viewModel.localeIsoList.observe(viewLifecycleOwner, Observer {
@@ -89,6 +105,35 @@ class LocaleIsoListFragment : Fragment(R.layout.fragment_locale_select) {
         })
 
         viewModel.init(resources)
+    }
+
+    private fun setupActionBar(activity: AppCompatActivity, toolbar: Toolbar) {
+        activity.setSupportActionBar(toolbar)
+        toolbar.setTitle(localeType.titleRes)
+    }
+
+    private val searchQueryTextListener = object : SearchView.OnQueryTextListener {
+        override fun onQueryTextChange(newText: String?): Boolean {
+            viewModel.search(newText)
+            return true
+        }
+
+        override fun onQueryTextSubmit(query: String?): Boolean {
+            return false
+        }
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        menu.clear()
+
+        inflater.inflate(R.menu.fragment_locale_iso_list, menu)
+
+        val searchMenu = menu.findItem(R.id.menu_search)
+        val searchView = searchMenu.actionView as SearchView
+        searchView.setOnQueryTextListener(searchQueryTextListener)
     }
 
     override fun onDestroyView() {

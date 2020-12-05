@@ -16,6 +16,9 @@ interface LocaleIsoItemDao {
     @Query("SELECT * FROM LocaleIsoItem WHERE type = :type ORDER BY id DESC")
     fun findByType(type: String): List<LocaleIsoItem>
 
+    @Query("SELECT * FROM LocaleIsoItem WHERE type = :type AND label LIKE :like ORDER BY id DESC")
+    fun findMatchLabel(type: String, like: String): List<LocaleIsoItem>
+
     @Insert
     fun insertAll(localeIsoItemList: List<LocaleIsoItem>)
 

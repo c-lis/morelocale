@@ -28,4 +28,5 @@
     <string name="restoring_locale">Restoring locale…</string>
     <string name="about_url" translatable="false">https://www.c-lis.co.jp/</string>
     <string name="copyright" translatable="false">Copyright C-LIS CO., LTD.</string>
+    <string name="search">Search</string>
 </resources>

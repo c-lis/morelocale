@@ -1,5 +1,6 @@
 package jp.co.c_lis.ccl.morelocale.ui
 
+import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -35,7 +36,8 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
     private var binding: FragmentLocaleListBinding? = null
 
     private val viewModel by viewModels<LocaleListViewModel> {
-        LocaleListViewModelProvider(LocaleRepository(requireContext().applicationContext))
+        val application = requireContext().applicationContext as Application
+        LocaleListViewModelProvider(LocaleRepository(application))
     }
 
     companion object {
