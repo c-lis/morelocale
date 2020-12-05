@@ -54,6 +54,7 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
     private val menuCallback = object : LocaleListAdapter.MenuCallback {
         override fun onEdit(localeItem: LocaleItem) {
             parentFragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.fragment_in, R.anim.fragment_out, R.anim.fragment_in, R.anim.fragment_out)
                     .add(R.id.fragment_container, EditLocaleFragment.getEditInstance(localeItem))
                     .addToBackStack(null)
                     .commit()
@@ -144,6 +145,7 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
             binding.recyclerView.adapter = adapter
             binding.customLocale.setOnClickListener {
                 parentFragmentManager.beginTransaction()
+                        .setCustomAnimations(R.anim.fragment_in, R.anim.fragment_out, R.anim.fragment_in, R.anim.fragment_out)
                         .add(R.id.fragment_container, EditLocaleFragment.getSetInstance(viewModel.currentLocale.value))
                         .addToBackStack(null)
                         .commit()
@@ -172,6 +174,7 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
         when (item.itemId) {
             R.id.menu_add_locale -> {
                 parentFragmentManager.beginTransaction()
+                        .setCustomAnimations(R.anim.fragment_in, R.anim.fragment_out, R.anim.fragment_in, R.anim.fragment_out)
                         .add(R.id.fragment_container, EditLocaleFragment.getAddInstance())
                         .addToBackStack(null)
                         .commit()

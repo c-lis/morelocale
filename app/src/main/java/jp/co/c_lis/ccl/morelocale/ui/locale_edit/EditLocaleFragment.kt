@@ -1,7 +1,13 @@
 package jp.co.c_lis.ccl.morelocale.ui.locale_edit
 
+import android.content.Context
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
@@ -73,6 +79,12 @@ class EditLocaleFragment : Fragment(R.layout.fragment_edit_locale) {
         mode = MODE.values()[requireArguments().getInt(KEY_MODE)]
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        setHasOptionsMenu(true)
+    }
+
     private fun validation(): Boolean {
         val binding = binding ?: return false
 
@@ -141,11 +153,6 @@ class EditLocaleFragment : Fragment(R.layout.fragment_edit_locale) {
 
         val editItem = requireArguments().getParcelable<LocaleItem>(KEY_LOCALE_ITEM)
         binding = FragmentEditLocaleBinding.bind(view).also { binding ->
-            binding.clickGuard.setOnClickListener {
-                parentFragmentManager.popBackStack()
-            }
-
-            binding.title.setText(mode.titleRes)
             binding.textInputLayoutLabel.visibility = if (mode.showLabelInput) {
                 View.VISIBLE
             } else {
@@ -174,20 +181,52 @@ class EditLocaleFragment : Fragment(R.layout.fragment_edit_locale) {
                 localeItem.id
             }
 
-            binding.set.setText(mode.positiveButtonLabelRes)
-            binding.set.setOnClickListener {
+            if (requireContext() is AppCompatActivity) {
+                setupActionBar(requireContext() as AppCompatActivity, binding.toolbar)
+            }
+        }
+    }
+
+    private fun setupActionBar(activity: AppCompatActivity, toolbar: Toolbar) {
+        toolbar.setTitle(mode.titleRes)
+
+        activity.setSupportActionBar(toolbar)
+        activity.supportActionBar?.also {
+            it.setDisplayHomeAsUpEnabled(true)
+            it.setHomeAsUpIndicator(R.drawable.clear)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        menu.clear()
+
+        inflater.inflate(R.menu.fragment_edit_locale, menu)
+
+        menu.findItem(R.id.menu_set).also {
+            it.setTitle(mode.positiveButtonLabelRes)
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                parentFragmentManager.popBackStack()
+                true
+            }
+            R.id.menu_set -> {
                 if (!validation()) {
-                    return@setOnClickListener
+                    return true
                 }
+                val editItem = requireArguments().getParcelable<LocaleItem>(KEY_LOCALE_ITEM)
                 createLocaleItem(editItem)?.also { localeItem ->
-                    Timber.d("locale label = %s", localeItem.label)
                     setFragmentResult(mode.name, bundleOf(RESULT_KEY_LOCALE_ITEM to localeItem))
                     parentFragmentManager.popBackStack()
                 }
+                true
             }
-            binding.cancel.setOnClickListener {
-                parentFragmentManager.popBackStack()
-            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
