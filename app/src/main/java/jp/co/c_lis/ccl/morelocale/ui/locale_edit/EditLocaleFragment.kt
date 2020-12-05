@@ -142,7 +142,7 @@ class EditLocaleFragment : Fragment(R.layout.fragment_edit_locale) {
         val editItem = requireArguments().getParcelable<LocaleItem>(KEY_LOCALE_ITEM)
         binding = FragmentEditLocaleBinding.bind(view).also { binding ->
             binding.clickGuard.setOnClickListener {
-                // Do nothing
+                parentFragmentManager.popBackStack()
             }
 
             binding.title.setText(mode.titleRes)
