@@ -9,7 +9,6 @@ import jp.co.c_lis.ccl.morelocale.entity.createLocale
 import jp.co.c_lis.ccl.morelocale.repository.LocaleRepository
 import jp.co.c_lis.morelocale.MoreLocale
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class LocaleListViewModel(
         private val localeListRepository: LocaleRepository
@@ -32,17 +31,9 @@ class LocaleListViewModel(
     }
 
     fun addLocale(localeItem: LocaleItem) {
-        Timber.d("addLocale")
-
         viewModelScope.launch {
-            Timber.d("addLocale 1")
-
             localeListRepository.create(localeItem)
-            Timber.d("addLocale 2")
-
             val list = localeListRepository.findAll()
-            Timber.d("addLocale 3")
-            Timber.d(list.toString())
 
             localeList.postValue(list)
         }
