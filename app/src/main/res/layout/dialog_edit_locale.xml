@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -55,6 +54,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/language"
+                    android:inputType="textNoSuggestions"
                     android:maxLength="2"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -85,7 +85,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/country"
-                    android:inputType="text"
+                    android:inputType="textNoSuggestions"
                     android:maxLength="2"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -103,7 +103,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/variant"
-                    android:inputType="text"
+                    android:inputType="textNoSuggestions"
                     android:maxLength="2"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
