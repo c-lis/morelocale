@@ -27,7 +27,7 @@ import jp.co.c_lis.ccl.morelocale.ui.AboutDialog
 import jp.co.c_lis.ccl.morelocale.ui.ConfirmDialog
 import jp.co.c_lis.ccl.morelocale.ui.locale_edit.EditLocaleFragment
 import jp.co.c_lis.ccl.morelocale.ui.help.PermissionRequiredDialog
-import jp.co.c_lis.ccl.morelocale.ui.license.LicenseActivity
+import jp.co.c_lis.ccl.morelocale.ui.license.LicenseFragment
 import jp.co.c_lis.ccl.morelocale.widget.WrapContentLinearLayoutManager
 import jp.co.c_lis.morelocale.MoreLocale
 import kotlinx.coroutines.launch
@@ -177,7 +177,10 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
                         .commit()
             }
             R.id.menu_license -> {
-                startActivity(Intent(requireContext(), LicenseActivity::class.java))
+                parentFragmentManager.beginTransaction()
+                        .add(R.id.fragment_container, LicenseFragment.getInstance())
+                        .addToBackStack(null)
+                        .commit()
             }
             R.id.menu_about -> {
                 AboutDialog.getInstance()

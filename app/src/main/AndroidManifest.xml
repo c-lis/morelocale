@@ -23,9 +23,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.license.LicenseActivity"
-            android:label="@string/open_source_licenses" />
 
         <receiver android:name=".receiver.BootCompletedReceiver">
             <intent-filter>

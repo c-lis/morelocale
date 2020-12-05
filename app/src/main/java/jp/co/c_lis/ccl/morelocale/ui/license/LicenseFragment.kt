@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.res.AssetManager
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
@@ -65,10 +67,16 @@ class LicenseFragment : Fragment(R.layout.fragment_license) {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        menu.clear()
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
-                requireActivity().finish()
+                parentFragmentManager.popBackStack()
                 true
             }
             else -> super.onOptionsItemSelected(item)
