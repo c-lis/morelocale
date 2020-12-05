@@ -19,6 +19,12 @@ android {
 
         buildConfigField("String", "PREFERENCES_FILE_NAME", "\"pref.xml\"")
         buildConfigField("String", "DATABASE_FILE_NAME", "\"locale.db\"")
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     buildTypes {
