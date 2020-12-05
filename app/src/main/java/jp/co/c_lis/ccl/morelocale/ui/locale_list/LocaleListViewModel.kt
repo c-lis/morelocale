@@ -1,4 +1,4 @@
-package jp.co.c_lis.ccl.morelocale.ui
+package jp.co.c_lis.ccl.morelocale.ui.locale_list
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData

@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import jp.co.c_lis.ccl.morelocale.R
+import jp.co.c_lis.ccl.morelocale.ui.locale_list.LocaleListFragment
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 

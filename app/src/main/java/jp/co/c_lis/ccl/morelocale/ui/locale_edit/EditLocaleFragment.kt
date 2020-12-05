@@ -1,4 +1,4 @@
-package jp.co.c_lis.ccl.morelocale.ui
+package jp.co.c_lis.ccl.morelocale.ui.locale_edit
 
 import android.os.Bundle
 import android.view.View

@@ -1,4 +1,4 @@
-package jp.co.c_lis.ccl.morelocale.ui
+package jp.co.c_lis.ccl.morelocale.ui.locale_list
 
 import android.app.Application
 import android.content.Context
@@ -23,6 +23,9 @@ import jp.co.c_lis.ccl.morelocale.databinding.FragmentLocaleListBinding
 import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
 import jp.co.c_lis.ccl.morelocale.repository.LocaleRepository
 import jp.co.c_lis.ccl.morelocale.repository.PreferenceRepository
+import jp.co.c_lis.ccl.morelocale.ui.AboutDialog
+import jp.co.c_lis.ccl.morelocale.ui.ConfirmDialog
+import jp.co.c_lis.ccl.morelocale.ui.locale_edit.EditLocaleFragment
 import jp.co.c_lis.ccl.morelocale.ui.help.PermissionRequiredDialog
 import jp.co.c_lis.ccl.morelocale.ui.license.LicenseActivity
 import jp.co.c_lis.ccl.morelocale.widget.WrapContentLinearLayoutManager
