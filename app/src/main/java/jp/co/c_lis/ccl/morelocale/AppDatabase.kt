@@ -11,7 +11,7 @@ import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
 
 @Database(
         entities = [LocaleItem::class, LocaleIsoItem::class],
-        version = 1
+        version = 2
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
