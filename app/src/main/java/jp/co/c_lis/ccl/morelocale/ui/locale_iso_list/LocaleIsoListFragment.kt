@@ -101,7 +101,7 @@ class LocaleIsoListFragment : Fragment(R.layout.fragment_locale_select) {
             }
         }
 
-        viewModel.localeIsoList.observe(viewLifecycleOwner, Observer {
+        viewModel.localeIsoList.observe(viewLifecycleOwner, {
             adapter.localeIsoItemList = it
         })
 
