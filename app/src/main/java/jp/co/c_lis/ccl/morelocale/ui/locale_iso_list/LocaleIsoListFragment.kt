@@ -115,7 +115,6 @@ class LocaleIsoListFragment : Fragment(R.layout.fragment_locale_select) {
         activity.setSupportActionBar(toolbar)
         activity.supportActionBar?.also {
             it.setDisplayHomeAsUpEnabled(true)
-            it.setHomeAsUpIndicator(R.drawable.clear)
         }
     }
 

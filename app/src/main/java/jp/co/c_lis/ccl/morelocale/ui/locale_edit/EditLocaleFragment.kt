@@ -153,11 +153,15 @@ class EditLocaleFragment : Fragment(R.layout.fragment_edit_locale) {
 
         val editItem = requireArguments().getParcelable<LocaleItem>(KEY_LOCALE_ITEM)
         binding = FragmentEditLocaleBinding.bind(view).also { binding ->
-            binding.textInputLayoutLabel.visibility = if (mode.showLabelInput) {
+            val labelVisibility = if (mode.showLabelInput) {
                 View.VISIBLE
             } else {
                 View.GONE
             }
+            arrayOf(binding.textInputLayoutLabel, binding.labelLocaleSpacer).forEach {
+                it.visibility = labelVisibility
+            }
+
             binding.buttonIso639.setOnClickListener {
                 parentFragmentManager.beginTransaction()
                         .setCustomAnimations(R.anim.fragment_in, 0, 0, R.anim.fragment_out)
