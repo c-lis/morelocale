@@ -110,7 +110,9 @@ class LocaleIsoListFragment : Fragment(R.layout.fragment_locale_select) {
     }
 
     private fun setupActionBar(activity: AppCompatActivity, toolbar: Toolbar) {
-        toolbar.setTitle(localeType.titleRes)
+        val title = getString(localeType.titleRes)
+        val isoTitle = getString(localeType.isoTitle)
+        toolbar.title = "$title - $isoTitle"
 
         activity.setSupportActionBar(toolbar)
         activity.supportActionBar?.also {

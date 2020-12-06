@@ -5,9 +5,9 @@ import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
 import jp.co.c_lis.ccl.morelocale.R
 
-enum class Type(val titleRes: Int) {
-    Iso639(R.string.iso639),
-    Iso3166(R.string.iso3166),
+enum class Type(val titleRes: Int, val isoTitle: Int) {
+    Iso639(R.string.language, R.string.iso639),
+    Iso3166(R.string.country, R.string.iso3166),
 }
 
 class Converters {
