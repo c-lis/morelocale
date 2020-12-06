@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "f9252237a7736a79ad3aa8153152ce97",
+    "identityHash": "760f2e4c0ae13c24aa786d9aec9ec9bf",
     "entities": [
       {
         "tableName": "LocaleItem",
@@ -56,7 +56,7 @@
       },
       {
         "tableName": "LocaleIsoItem",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `type` TEXT, `label` TEXT NOT NULL, `value` TEXT NOT NULL, `isListed` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `type` TEXT, `label` TEXT NOT NULL, `value` TEXT NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -81,12 +81,6 @@
             "columnName": "value",
             "affinity": "TEXT",
             "notNull": true
-          },
-          {
-            "fieldPath": "isListed",
-            "columnName": "isListed",
-            "affinity": "INTEGER",
-            "notNull": true
           }
         ],
         "primaryKey": {
@@ -102,7 +96,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f9252237a7736a79ad3aa8153152ce97')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '760f2e4c0ae13c24aa786d9aec9ec9bf')"
     ]
   }
 }

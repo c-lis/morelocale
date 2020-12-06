@@ -26,6 +26,6 @@ abstract class AppDatabase : RoomDatabase() {
 val MIGRATION_1_2 = object : Migration(1, 2) {
     override fun migrate(database: SupportSQLiteDatabase) {
         database.execSQL("CREATE TABLE IF NOT EXISTS `LocaleIsoItem`" +
-                " (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `type` TEXT, `label` TEXT NOT NULL, `value` TEXT NOT NULL, `isListed` INTEGER NOT NULL)")
+                " (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `type` TEXT, `label` TEXT NOT NULL, `value` TEXT NOT NULL)")
     }
 }

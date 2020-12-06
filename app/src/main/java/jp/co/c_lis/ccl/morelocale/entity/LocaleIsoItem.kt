@@ -29,5 +29,4 @@ data class LocaleIsoItem(
         var type: Type? = null,
         val label: String,
         val value: String,
-        var isListed: Boolean = false,
 )

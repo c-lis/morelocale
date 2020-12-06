@@ -52,7 +52,6 @@ abstract class LocaleIsoRepository(application: Application) {
             add(LocaleIsoItem(
                     label = title,
                     value = value,
-                    isListed = true
             ))
         }
     }
