@@ -3,7 +3,6 @@ package jp.co.c_lis.ccl.morelocale.repository
 import android.app.Application
 import android.content.res.Resources
 import jp.co.c_lis.ccl.morelocale.MainApplication
-import jp.co.c_lis.ccl.morelocale.R
 import jp.co.c_lis.ccl.morelocale.entity.LocaleIsoItem
 import jp.co.c_lis.ccl.morelocale.entity.Type
 import kotlinx.coroutines.Dispatchers
@@ -21,26 +20,14 @@ abstract class LocaleIsoRepository(application: Application) {
             return@withContext list
         }
 
-        init(type, resources)
+        init(resources)
 
         return@withContext db.localeIsoItemDao().findByType(type.name)
     }
 
-    private suspend fun init(type: Type, resources: Resources) = withContext(Dispatchers.Default) {
-        when (type) {
-            Type.Iso3166 -> {
-                init(resources.getStringArray(R.array.iso_3166_title),
-                        resources.getStringArray(R.array.iso_3166_value)
-                )
-            }
-            Type.Iso639 -> {
-                init(resources.getStringArray(R.array.iso_639_title),
-                        resources.getStringArray(R.array.iso_639_value))
-            }
-        }
-    }
+    abstract suspend fun init(resources: Resources)
 
-    private suspend fun init(
+    suspend fun init(
             titles: Array<String>,
             values: Array<String>
     ) = withContext(Dispatchers.IO) {
