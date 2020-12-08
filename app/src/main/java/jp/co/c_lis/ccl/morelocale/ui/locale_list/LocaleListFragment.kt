@@ -133,9 +133,9 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
 
         viewModel.localeList.observe(viewLifecycleOwner, { localeItemList ->
             adapter?.also {
-                Timber.d("localeItemList size ${localeItemList.size}")
                 it.localeItemList = localeItemList
                 it.notifyDataSetChanged()
+                binding?.progress?.visibility = View.GONE
             }
         })
 
