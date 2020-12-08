@@ -43,12 +43,8 @@ abstract class LocaleIsoRepository(application: Application) {
         }
     }
 
-    suspend fun findMatchLabel(text: String?) = withContext(Dispatchers.IO) {
-        if (text.isNullOrEmpty() || text.isBlank()) {
-            return@withContext db.localeIsoItemDao().findByType(type.name)
-        }
-
-        return@withContext db.localeIsoItemDao().findMatchLabel(type.name, "%$text%")
+    suspend fun findMatchLabel(likeText: String) = withContext(Dispatchers.IO) {
+        return@withContext db.localeIsoItemDao().findMatchLabel(type.name, likeText)
     }
 
     suspend fun add(localeIsoItem: LocaleIsoItem) = withContext(Dispatchers.IO) {

@@ -22,7 +22,10 @@ class LocaleIsoListViewModel(
 
     fun search(searchString: String?) {
         viewModelScope.launch {
-            val list = localeIsoRepository.findMatchLabel(searchString)
+            val likeText = searchString?.let {
+                "$it%"
+            } ?: ""
+            val list = localeIsoRepository.findMatchLabel(likeText)
             localeIsoList.postValue(list)
         }
     }
