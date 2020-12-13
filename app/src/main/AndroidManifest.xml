@@ -12,7 +12,7 @@
     <application
         android:name=".MainApplication"
         android:allowBackup="false"
-        android:icon="@mipmap/ic_menu_3d_globe"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Morelocale">
