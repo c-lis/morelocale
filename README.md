@@ -8,7 +8,7 @@ Any contribution is welcome
 License
 =======
 
-    Copyright 2009-2020 C-LIS CO., LTD. and ARIYAMA Keiji
+    Copyright 2009-2021 C-LIS CO., LTD. and ARIYAMA Keiji
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
