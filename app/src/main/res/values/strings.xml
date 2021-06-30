@@ -26,7 +26,7 @@
     <string name="tap_to_open">Tap to open</string>
     <string name="tap_to_cancel">Tap to cancel</string>
     <string name="restoring_locale">Restoring locale…</string>
-    <string name="about_url" translatable="false">https://www.c-lis.co.jp/</string>
+    <string name="about_url" translatable="false">https://github.com/c-lis/morelocale</string>
     <string name="copyright" translatable="false">Copyright C-LIS CO., LTD.</string>
     <string name="search">Search</string>
 </resources>
