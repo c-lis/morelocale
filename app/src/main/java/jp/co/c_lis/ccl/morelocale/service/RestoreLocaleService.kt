@@ -11,6 +11,7 @@ import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import jp.co.c_lis.ccl.morelocale.BuildConfig
 import jp.co.c_lis.ccl.morelocale.equals
 import jp.co.c_lis.ccl.morelocale.R
 import jp.co.c_lis.ccl.morelocale.repository.PreferenceRepository
@@ -33,7 +34,11 @@ class RestoreLocaleService : Service() {
     companion object {
         private const val KEY_REQUEST = "key_request"
 
-        private const val NOTIFICATION_CHANNEL_ID = "morelocale_restore_locale"
+        private const val NOTIFICATION_CHANNEL_ID =
+            "morelocale_restore_locale-${BuildConfig.VERSION_NAME}"
+        private val OLD_NOTIFICATION_CHANNEL_IDS = listOf(
+            "morelocale_restore_locale",
+        )
 
         private const val NOTIFICATION_ID_PROGRESS = 0x128
         private const val NOTIFICATION_ID_CANCELED = 0x129
@@ -92,6 +97,11 @@ class RestoreLocaleService : Service() {
         Timber.d("requestCode: $requestCode")
 
         val notificationManager = NotificationManagerCompat.from(this)
+
+        removeOldNotificationChannels(
+            notificationManager,
+            OLD_NOTIFICATION_CHANNEL_IDS
+        )
 
         createNotificationChannel(
                 notificationManager,
@@ -197,6 +207,19 @@ class RestoreLocaleService : Service() {
         return null
     }
 
+    private fun removeOldNotificationChannels(
+        notificationManager: NotificationManagerCompat,
+        oldChannelIds: List<String>
+    ) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            return
+        }
+
+        oldChannelIds.forEach { channelId ->
+            notificationManager.deleteNotificationChannel(channelId)
+        }
+    }
+
     private fun createNotificationChannel(
             notificationManager: NotificationManagerCompat,
             channelId: String,
@@ -210,7 +233,9 @@ class RestoreLocaleService : Service() {
                 channelId,
                 name,
                 NotificationManager.IMPORTANCE_DEFAULT
-        )
+        ).also {
+            it.setSound(null, null)
+        }
         notificationManager.createNotificationChannel(channel)
     }
 
@@ -240,6 +265,8 @@ class RestoreLocaleService : Service() {
                 .setOngoing(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(cancelPendingIntent)
+                .setDefaults(0)
+                .setSound(null)
                 .build()
 
     }
