@@ -210,7 +210,9 @@ class RestoreLocaleService : Service() {
                 channelId,
                 name,
                 NotificationManager.IMPORTANCE_DEFAULT
-        )
+        ).also {
+            it.setSound(null, null)
+        }
         notificationManager.createNotificationChannel(channel)
     }
 
@@ -240,6 +242,8 @@ class RestoreLocaleService : Service() {
                 .setOngoing(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(cancelPendingIntent)
+                .setDefaults(0)
+                .setSound(null)
                 .build()
 
     }
