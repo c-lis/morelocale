@@ -23,7 +23,7 @@ jobs:
         cache-name: cache-gradle-dependencies
       with:
         path: ${{ github.workspace }}/.nuget/packages
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/build.gradle') }}
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/build.gradle.kts') }}
 
     - name: set up JDK
       uses: actions/setup-java@v2
