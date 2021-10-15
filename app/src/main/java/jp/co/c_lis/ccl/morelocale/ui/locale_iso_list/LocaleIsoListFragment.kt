@@ -165,7 +165,7 @@ class LocaleIsoListFragment : Fragment(R.layout.fragment_locale_select) {
             private val localeIsoRepository: LocaleIsoRepository
     ) : ViewModelProvider.NewInstanceFactory() {
 
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
             @Suppress("UNCHECKED_CAST")
             return LocaleIsoListViewModel(localeIsoRepository) as T
         }

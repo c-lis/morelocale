@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    compileSdk = 30
+    compileSdk = 31
 
     defaultConfig {
         applicationId = "jp.co.c_lis.ccl.morelocale"
@@ -17,13 +17,13 @@ android {
         buildConfigField(
             "String",
             "PREFERENCES_FILE_NAME",
-            "pref.xml"
+            "\"pref.xml\""
         )
 
         buildConfigField(
             "String",
             "DATABASE_FILE_NAME",
-            "locale.db"
+            "\"locale.db\""
         )
 
         sourceSets {
