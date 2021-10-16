@@ -14,8 +14,8 @@ android {
         applicationId = "jp.co.c_lis.ccl.morelocale"
         minSdk = 14
         targetSdk = 30
-        versionCode = 14245
-        versionName = "2.4.5"
+        versionCode = 14246
+        versionName = "2.4.6"
 
         buildConfigField(
             "String",
