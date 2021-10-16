@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import dagger.hilt.android.AndroidEntryPoint
 import jp.co.c_lis.ccl.morelocale.R
 import jp.co.c_lis.ccl.morelocale.databinding.FragmentLicenseBinding
 import jp.co.c_lis.ccl.morelocale.databinding.ListItemLicenseBinding
@@ -23,6 +24,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+@AndroidEntryPoint
 class LicenseFragment : Fragment(R.layout.fragment_license) {
 
     companion object {
@@ -52,8 +54,9 @@ class LicenseFragment : Fragment(R.layout.fragment_license) {
                     requireContext(), LinearLayoutManager.VERTICAL, false)
             binding.recyclerView.adapter = adapter
 
-            if (requireContext() is AppCompatActivity) {
-                setupActionBar(requireContext() as AppCompatActivity, binding.toolbar)
+            val activity = requireActivity()
+            if (activity is AppCompatActivity) {
+                setupActionBar(activity, binding.toolbar)
             }
         }
     }

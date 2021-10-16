@@ -1,6 +1,6 @@
 package jp.co.c_lis.ccl.morelocale.repository
 
-import android.app.Application
+import android.content.Context
 import android.content.res.Resources
 import jp.co.c_lis.ccl.morelocale.MainApplication
 import jp.co.c_lis.ccl.morelocale.entity.LocaleIsoItem
@@ -8,9 +8,9 @@ import jp.co.c_lis.ccl.morelocale.entity.Type
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-abstract class LocaleIsoRepository(application: Application) {
+abstract class LocaleIsoRepository(applicationContext: Context) {
 
-    private val db = MainApplication.getDbInstance(application)
+    private val db = MainApplication.getDbInstance(applicationContext)
 
     abstract val type: Type
 
@@ -50,5 +50,4 @@ abstract class LocaleIsoRepository(application: Application) {
     suspend fun add(localeIsoItem: LocaleIsoItem) = withContext(Dispatchers.IO) {
         db.localeIsoItemDao().insertAll(listOf(localeIsoItem.also { it.type = type }))
     }
-
 }

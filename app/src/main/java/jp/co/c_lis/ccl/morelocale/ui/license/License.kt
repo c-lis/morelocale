@@ -67,4 +67,9 @@ val LICENSES = listOf(
                 "https://github.com/Kotlin/kotlinx.coroutines",
                 "license/kotlin-coroutines.txt"
         ),
+        License(
+                "Hilt - Dagger",
+                "https://dagger.dev/hilt/",
+                "license/hilt_dagger.txt"
+        ),
 )

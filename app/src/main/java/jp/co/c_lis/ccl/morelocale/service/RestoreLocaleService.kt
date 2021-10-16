@@ -11,6 +11,7 @@ import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import dagger.hilt.android.AndroidEntryPoint
 import jp.co.c_lis.ccl.morelocale.BuildConfig
 import jp.co.c_lis.ccl.morelocale.equals
 import jp.co.c_lis.ccl.morelocale.R
@@ -27,8 +28,10 @@ import kotlinx.coroutines.runBlocking
 import timber.log.Timber
 import java.lang.reflect.InvocationTargetException
 import java.util.Locale
+import javax.inject.Inject
 import kotlin.math.roundToInt
 
+@AndroidEntryPoint
 class RestoreLocaleService : Service() {
 
     companion object {
@@ -83,6 +86,9 @@ class RestoreLocaleService : Service() {
 
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
+    @Inject
+    lateinit var preferenceRepository: PreferenceRepository
+
     private var startTimeInMillis = -1L
     private var job: Job? = null
 
@@ -90,8 +96,6 @@ class RestoreLocaleService : Service() {
         super.onStartCommand(intent, flags, startId)
 
         intent ?: return super.onStartCommand(intent, flags, startId)
-
-        val settingRepository = PreferenceRepository(this)
 
         val requestCode = intent.getIntExtra(KEY_REQUEST, REQUEST_CODE_NOTIFY)
         Timber.d("requestCode: $requestCode")
@@ -114,7 +118,7 @@ class RestoreLocaleService : Service() {
         val currentLocale = MoreLocale.getLocale(resources.configuration)
 
         val locale = runBlocking {
-            settingRepository.loadLocale()?.locale
+            preferenceRepository.loadLocale()?.locale
         } ?: return START_STICKY_COMPATIBILITY
 
         if (equals(currentLocale, locale)) {
@@ -131,7 +135,7 @@ class RestoreLocaleService : Service() {
                 return START_STICKY_COMPATIBILITY
             }
             REQUEST_CODE_NEVER -> {
-                setNeverRestore(settingRepository, notificationManager)
+                setNeverRestore(preferenceRepository, notificationManager)
                 return START_STICKY_COMPATIBILITY
             }
         }

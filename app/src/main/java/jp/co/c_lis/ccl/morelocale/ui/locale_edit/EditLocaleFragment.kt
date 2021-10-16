@@ -12,13 +12,14 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
+import dagger.hilt.android.AndroidEntryPoint
 import jp.co.c_lis.ccl.morelocale.R
 import jp.co.c_lis.ccl.morelocale.databinding.FragmentEditLocaleBinding
 import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
 import jp.co.c_lis.ccl.morelocale.entity.Type
 import jp.co.c_lis.ccl.morelocale.ui.locale_iso_list.LocaleIsoListFragment
-import timber.log.Timber
 
+@AndroidEntryPoint
 class EditLocaleFragment : Fragment(R.layout.fragment_edit_locale) {
 
     enum class MODE(
@@ -185,8 +186,9 @@ class EditLocaleFragment : Fragment(R.layout.fragment_edit_locale) {
                 localeItem.id
             }
 
-            if (requireContext() is AppCompatActivity) {
-                setupActionBar(requireContext() as AppCompatActivity, binding.toolbar)
+            val activity = requireActivity()
+            if (activity is AppCompatActivity) {
+                setupActionBar(activity, binding.toolbar)
             }
         }
     }

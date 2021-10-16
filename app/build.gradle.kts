@@ -2,7 +2,10 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
+
+val hiltVersion: String by rootProject.extra
 
 android {
     compileSdk = 31
@@ -58,9 +61,9 @@ android {
 }
 
 dependencies {
-    val lifecycle_version = "2.4.0-rc01"
-    val fragment_version = "1.4.0-alpha10"
-    val room_version = "2.3.0"
+    val lifecycleVersion = "2.4.0-rc01"
+    val fragmentVersion = "1.4.0-alpha10"
+    val roomVersion = "2.3.0"
 
     implementation(
         fileTree(
@@ -78,17 +81,20 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.1")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
 
-    implementation("androidx.fragment:fragment-ktx:$fragment_version")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+    implementation("androidx.fragment:fragment-ktx:$fragmentVersion")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
 
-    implementation("androidx.room:room-runtime:$room_version")
-    kapt("androidx.room:room-compiler:$room_version")
-    androidTestImplementation("androidx.room:room-testing:$room_version")
+    implementation("androidx.room:room-runtime:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+    androidTestImplementation("androidx.room:room-testing:$roomVersion")
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
 
     implementation("com.jakewharton.timber:timber:5.0.1")
+
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
     implementation(project(mapOf("path" to ":lib")))
 

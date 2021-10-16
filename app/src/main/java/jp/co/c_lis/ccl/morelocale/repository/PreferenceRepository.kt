@@ -1,10 +1,16 @@
 package jp.co.c_lis.ccl.morelocale.repository
 
 import android.content.Context
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import jp.co.c_lis.ccl.morelocale.BuildConfig
 import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Singleton
 
 class PreferenceRepository(applicationContext: Context) {
 
@@ -44,5 +50,19 @@ class PreferenceRepository(applicationContext: Context) {
                 .putString(KEY_VARIANT, null)
                 .apply()
     }
+}
 
+@Module
+@InstallIn(SingletonComponent::class)
+object PreferenceRepositoryModule {
+
+    @Singleton
+    @Provides
+    fun prividePreferenceRepository(
+        @ApplicationContext applicationContext: Context,
+    ): PreferenceRepository {
+        return PreferenceRepository(
+            applicationContext
+        )
+    }
 }

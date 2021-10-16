@@ -4,14 +4,19 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
 import jp.co.c_lis.ccl.morelocale.entity.createLocale
 import jp.co.c_lis.ccl.morelocale.repository.LocaleRepository
+import jp.co.c_lis.ccl.morelocale.repository.PreferenceRepository
 import jp.co.c_lis.morelocale.MoreLocale
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class LocaleListViewModel(
-        private val localeListRepository: LocaleRepository
+@HiltViewModel
+class LocaleListViewModel @Inject constructor(
+    private val localeListRepository: LocaleRepository,
+    private val preferenceRepository: PreferenceRepository,
 ) : ViewModel() {
 
     val currentLocale = MutableLiveData<LocaleItem>()
@@ -53,4 +58,9 @@ class LocaleListViewModel(
         }
     }
 
+    fun setLocale(localeItem: LocaleItem) {
+        viewModelScope.launch {
+            preferenceRepository.saveLocale(localeItem)
+        }
+    }
 }
