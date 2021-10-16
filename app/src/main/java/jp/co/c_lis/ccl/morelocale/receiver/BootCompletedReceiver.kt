@@ -4,12 +4,14 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import dagger.hilt.android.AndroidEntryPoint
 import jp.co.c_lis.ccl.morelocale.equals
 import jp.co.c_lis.ccl.morelocale.repository.PreferenceRepository
 import jp.co.c_lis.ccl.morelocale.service.RestoreLocaleService
 import jp.co.c_lis.morelocale.MoreLocale
 import kotlinx.coroutines.runBlocking
 
+@AndroidEntryPoint
 class BootCompletedReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {

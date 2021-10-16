@@ -1,8 +1,6 @@
 package jp.co.c_lis.ccl.morelocale.ui.locale_list
 
-import android.app.Application
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -14,15 +12,12 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import jp.co.c_lis.ccl.morelocale.R
 import jp.co.c_lis.ccl.morelocale.databinding.FragmentLocaleListBinding
 import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
-import jp.co.c_lis.ccl.morelocale.repository.LocaleRepository
-import jp.co.c_lis.ccl.morelocale.repository.PreferenceRepository
 import jp.co.c_lis.ccl.morelocale.ui.AboutDialog
 import jp.co.c_lis.ccl.morelocale.ui.ConfirmDialog
 import jp.co.c_lis.ccl.morelocale.ui.locale_edit.EditLocaleFragment
@@ -30,18 +25,15 @@ import jp.co.c_lis.ccl.morelocale.ui.help.PermissionRequiredDialog
 import jp.co.c_lis.ccl.morelocale.ui.license.LicenseFragment
 import jp.co.c_lis.ccl.morelocale.widget.WrapContentLinearLayoutManager
 import jp.co.c_lis.morelocale.MoreLocale
-import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.lang.reflect.InvocationTargetException
 
+@AndroidEntryPoint
 class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
 
     private var binding: FragmentLocaleListBinding? = null
 
-    private val viewModel by viewModels<LocaleListViewModel> {
-        val application = requireContext().applicationContext as Application
-        LocaleListViewModelProvider(LocaleRepository(application))
-    }
+    private val viewModel: LocaleListViewModel by viewModels()
 
     companion object {
         val TAG = LocaleListFragment::class.java.simpleName
@@ -93,9 +85,7 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
         try {
             MoreLocale.setLocale(localeItem.locale)
 
-            lifecycleScope.launch {
-                PreferenceRepository(requireContext()).saveLocale(localeItem)
-            }
+            viewModel.setLocale(localeItem)
         } catch (e: InvocationTargetException) {
             Timber.e(e, "InvocationTargetException")
             PermissionRequiredDialog.getInstance()
@@ -151,8 +141,9 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
                         .commit()
             }
 
-            if (requireContext() is AppCompatActivity) {
-                setupActionBar(requireContext() as AppCompatActivity, binding.toolbar)
+            val activity = requireActivity()
+            if (activity is AppCompatActivity) {
+                setupActionBar(activity, binding.toolbar)
             }
         }
 
@@ -197,15 +188,5 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
         super.onDestroyView()
 
         binding?.unbind()
-    }
-
-    inner class LocaleListViewModelProvider(
-            private val localeRepository: LocaleRepository
-    ) : ViewModelProvider.NewInstanceFactory() {
-
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            @Suppress("UNCHECKED_CAST")
-            return LocaleListViewModel(localeRepository) as T
-        }
     }
 }

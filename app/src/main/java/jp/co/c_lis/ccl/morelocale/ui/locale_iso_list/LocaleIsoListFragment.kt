@@ -1,6 +1,5 @@
 package jp.co.c_lis.ccl.morelocale.ui.locale_iso_list
 
-import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.view.Menu
@@ -14,18 +13,14 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import jp.co.c_lis.ccl.morelocale.R
 import jp.co.c_lis.ccl.morelocale.databinding.FragmentLocaleSelectBinding
 import jp.co.c_lis.ccl.morelocale.entity.Type
-import jp.co.c_lis.ccl.morelocale.repository.LocaleIso3166Repository
-import jp.co.c_lis.ccl.morelocale.repository.LocaleIso639Repository
-import jp.co.c_lis.ccl.morelocale.repository.LocaleIsoRepository
 
+@AndroidEntryPoint
 class LocaleIsoListFragment : Fragment(R.layout.fragment_locale_select) {
 
     companion object {
@@ -57,20 +52,13 @@ class LocaleIsoListFragment : Fragment(R.layout.fragment_locale_select) {
     }
 
     private var localeType = Type.Iso639
-
-    private val viewModel by viewModels<LocaleIsoListViewModel> {
-        val application = requireContext().applicationContext as Application
-        val repository = when (localeType) {
-            Type.Iso3166 -> LocaleIso3166Repository(application)
-            Type.Iso639 -> LocaleIso639Repository(application)
-        }
-        LocaleIsoListViewModelProvider(repository)
-    }
+    private val viewModel by viewModels<LocaleIsoListViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         localeType = Type.values()[requireArguments().getInt(KEY_LOCALE_TYPE)]
+        viewModel.localeType = localeType
     }
 
     override fun onAttach(context: Context) {
@@ -97,8 +85,9 @@ class LocaleIsoListFragment : Fragment(R.layout.fragment_locale_select) {
             )
             binding.recyclerView.adapter = adapter
 
-            if (requireContext() is AppCompatActivity) {
-                setupActionBar(requireContext() as AppCompatActivity, binding.toolbar)
+            val activity = requireActivity()
+            if (activity is AppCompatActivity) {
+                setupActionBar(activity, binding.toolbar)
             }
         }
 
@@ -159,15 +148,5 @@ class LocaleIsoListFragment : Fragment(R.layout.fragment_locale_select) {
         super.onDestroyView()
 
         binding?.unbind()
-    }
-
-    inner class LocaleIsoListViewModelProvider(
-            private val localeIsoRepository: LocaleIsoRepository
-    ) : ViewModelProvider.NewInstanceFactory() {
-
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            @Suppress("UNCHECKED_CAST")
-            return LocaleIsoListViewModel(localeIsoRepository) as T
-        }
     }
 }

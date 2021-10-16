@@ -1,24 +1,27 @@
 package jp.co.c_lis.ccl.morelocale
 
 import android.app.Application
+import android.content.Context
 import androidx.room.Room
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
 @Suppress("unused")
+@HiltAndroidApp
 class MainApplication : Application() {
 
     companion object {
 
         var db: AppDatabase? = null
 
-        fun getDbInstance(application: Application): AppDatabase {
+        fun getDbInstance(applicationContext: Context): AppDatabase {
             db?.also {
                 return it
             }
 
             return Room.databaseBuilder(
-                    application,
+                    applicationContext,
                     AppDatabase::class.java,
                     BuildConfig.DATABASE_FILE_NAME
             )

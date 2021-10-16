@@ -1,16 +1,22 @@
 package jp.co.c_lis.ccl.morelocale.repository
 
-import android.app.Application
+import android.content.Context
 import android.content.res.AssetManager
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import jp.co.c_lis.ccl.morelocale.MainApplication
 import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
 import jp.co.c_lis.ccl.morelocale.entity.createLocale
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Singleton
 
-class LocaleRepository(application: Application) {
+class LocaleRepository(applicationContext: Context) {
 
-    private val db = MainApplication.getDbInstance(application)
+    private val db = MainApplication.getDbInstance(applicationContext)
 
     suspend fun getAll(assetManager: AssetManager) = withContext(Dispatchers.IO) {
         val localeList = findAll()
@@ -45,5 +51,20 @@ class LocaleRepository(application: Application) {
     suspend fun delete(locale: LocaleItem) = withContext(Dispatchers.IO) {
         db.localeItemDao()
                 .delete(locale)
+    }
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+object LocaleRepositoryModule {
+
+    @Singleton
+    @Provides
+    fun provideLocaleRepository(
+        @ApplicationContext applicationContext: Context,
+    ): LocaleRepository {
+        return LocaleRepository(
+            applicationContext
+        )
     }
 }
