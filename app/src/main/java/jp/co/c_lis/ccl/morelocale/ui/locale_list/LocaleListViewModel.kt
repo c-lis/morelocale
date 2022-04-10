@@ -22,11 +22,15 @@ class LocaleListViewModel @Inject constructor(
     val currentLocale = MutableLiveData<LocaleItem>()
     val localeList = MutableLiveData<List<LocaleItem>>()
 
-    fun loadCurrentLocale(context: Context) {
-        viewModelScope.launch {
-            @Suppress("DEPRECATION")
-            currentLocale.postValue(createLocale(MoreLocale.getLocale(context.resources.configuration)))
+    fun loadCurrentLocale(context: Context) = viewModelScope.launch {
+        val localeConfigs = createLocale(MoreLocale.getLocale(context.resources.configuration))
+        val localePreferences = preferenceRepository.loadLocale()
+
+        if (localePreferences != null && localeConfigs.id != localePreferences.id) {
+            setLocale(localePreferences)
         }
+
+        currentLocale.postValue(localePreferences ?: localeConfigs)
     }
 
     fun loadLocaleList(context: Context) {
@@ -60,6 +64,8 @@ class LocaleListViewModel @Inject constructor(
 
     fun setLocale(localeItem: LocaleItem) {
         viewModelScope.launch {
+            MoreLocale.setLocale(localeItem.locale)
+
             preferenceRepository.saveLocale(localeItem)
         }
     }

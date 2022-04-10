@@ -23,7 +23,6 @@ import jp.co.c_lis.ccl.morelocale.ui.locale_edit.EditLocaleFragment
 import jp.co.c_lis.ccl.morelocale.ui.help.PermissionRequiredDialog
 import jp.co.c_lis.ccl.morelocale.ui.license.LicenseFragment
 import jp.co.c_lis.ccl.morelocale.widget.WrapContentLinearLayoutManager
-import jp.co.c_lis.morelocale.MoreLocale
 import timber.log.Timber
 import java.lang.reflect.InvocationTargetException
 
@@ -79,8 +78,6 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
 
     private fun setLocale(localeItem: LocaleItem) {
         try {
-            MoreLocale.setLocale(localeItem.locale)
-
             viewModel.setLocale(localeItem)
         } catch (e: InvocationTargetException) {
             Timber.e(e, "InvocationTargetException")
