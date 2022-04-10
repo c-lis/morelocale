@@ -12,7 +12,6 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.c_lis.ccl.morelocale.R
@@ -36,8 +35,6 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
     private val viewModel: LocaleListViewModel by viewModels()
 
     companion object {
-        val TAG = LocaleListFragment::class.java.simpleName
-
         fun getInstance(): LocaleListFragment {
             return LocaleListFragment()
         }
@@ -72,9 +69,8 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
         setHasOptionsMenu(true)
 
         adapter = LocaleListAdapter(
-                LayoutInflater.from(context),
-                lifecycleScope,
-                menuCallback
+            LayoutInflater.from(context),
+            menuCallback
         ) { localeItem ->
             Timber.d("Change locale ${localeItem.displayName}")
             setLocale(localeItem)
@@ -115,19 +111,19 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
             setLocale(localeItem)
         }
 
-        viewModel.currentLocale.observe(viewLifecycleOwner, { currentLocale ->
+        viewModel.currentLocale.observe(viewLifecycleOwner) { currentLocale ->
             binding?.also {
                 it.currentLocale = currentLocale
             }
-        })
+        }
 
-        viewModel.localeList.observe(viewLifecycleOwner, { localeItemList ->
+        viewModel.localeList.observe(viewLifecycleOwner) { localeItemList ->
             adapter?.also {
-                it.localeItemList = localeItemList
-                it.notifyDataSetChanged()
-                binding?.progress?.visibility = View.GONE
+                it.submitList(localeItemList) {
+                    binding?.progress?.visibility = View.GONE
+                }
             }
-        })
+        }
 
         binding = FragmentLocaleListBinding.bind(view).also { binding ->
             binding.recyclerView.layoutManager = WrapContentLinearLayoutManager(
