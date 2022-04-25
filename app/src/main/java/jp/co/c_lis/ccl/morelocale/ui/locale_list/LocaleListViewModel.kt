@@ -3,6 +3,7 @@ package jp.co.c_lis.ccl.morelocale.ui.locale_list
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
@@ -10,7 +11,10 @@ import jp.co.c_lis.ccl.morelocale.entity.createLocale
 import jp.co.c_lis.ccl.morelocale.repository.LocaleRepository
 import jp.co.c_lis.ccl.morelocale.repository.PreferenceRepository
 import jp.co.c_lis.morelocale.MoreLocale
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
+import timber.log.Timber
+import java.lang.reflect.InvocationTargetException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -21,6 +25,9 @@ class LocaleListViewModel @Inject constructor(
 
     val currentLocale = MutableLiveData<LocaleItem>()
     val localeList = MutableLiveData<List<LocaleItem>>()
+
+    private val _alertsEvents = MutableSharedFlow<IAlertsLocale>()
+    val alertsEvents = _alertsEvents.asLiveData()
 
     fun loadCurrentLocale(context: Context) = viewModelScope.launch {
         val localeConfigs = createLocale(MoreLocale.getLocale(context.resources.configuration))
@@ -62,11 +69,15 @@ class LocaleListViewModel @Inject constructor(
         }
     }
 
-    fun setLocale(localeItem: LocaleItem) {
-        viewModelScope.launch {
+    fun setLocale(localeItem: LocaleItem) = viewModelScope.launch {
+        try {
             MoreLocale.setLocale(localeItem.locale)
 
             preferenceRepository.saveLocale(localeItem)
+        } catch (e: InvocationTargetException) {
+            Timber.e(e, "InvocationTargetException")
+
+            _alertsEvents.emit(IAlertsLocale.NEED_PERMISSION)
         }
     }
 }

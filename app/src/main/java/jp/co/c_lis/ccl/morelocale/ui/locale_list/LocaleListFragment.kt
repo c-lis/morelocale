@@ -19,12 +19,11 @@ import jp.co.c_lis.ccl.morelocale.databinding.FragmentLocaleListBinding
 import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
 import jp.co.c_lis.ccl.morelocale.ui.AboutDialog
 import jp.co.c_lis.ccl.morelocale.ui.ConfirmDialog
-import jp.co.c_lis.ccl.morelocale.ui.locale_edit.EditLocaleFragment
 import jp.co.c_lis.ccl.morelocale.ui.help.PermissionRequiredDialog
 import jp.co.c_lis.ccl.morelocale.ui.license.LicenseFragment
+import jp.co.c_lis.ccl.morelocale.ui.locale_edit.EditLocaleFragment
 import jp.co.c_lis.ccl.morelocale.widget.WrapContentLinearLayoutManager
 import timber.log.Timber
-import java.lang.reflect.InvocationTargetException
 
 @AndroidEntryPoint
 class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
@@ -77,13 +76,7 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
     }
 
     private fun setLocale(localeItem: LocaleItem) {
-        try {
-            viewModel.setLocale(localeItem)
-        } catch (e: InvocationTargetException) {
-            Timber.e(e, "InvocationTargetException")
-            PermissionRequiredDialog.getInstance()
-                    .show(parentFragmentManager, PermissionRequiredDialog.TAG)
-        }
+        viewModel.setLocale(localeItem)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -119,6 +112,12 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
                 it.submitList(localeItemList) {
                     binding?.progress?.visibility = View.GONE
                 }
+            }
+        }
+
+        viewModel.alertsEvents.observe(viewLifecycleOwner) {
+            PermissionRequiredDialog.getInstance().apply {
+                show(parentFragmentManager, PermissionRequiredDialog.TAG)
             }
         }
 
