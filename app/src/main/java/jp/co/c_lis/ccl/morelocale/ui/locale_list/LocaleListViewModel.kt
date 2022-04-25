@@ -26,7 +26,7 @@ class LocaleListViewModel @Inject constructor(
     val currentLocale = MutableLiveData<LocaleItem>()
     val localeList = MutableLiveData<List<LocaleItem>>()
 
-    private val _alertsEvents = MutableSharedFlow<IAlertsLocale>()
+    private val _alertsEvents = MutableSharedFlow<AlertsMoreLocale>()
     val alertsEvents = _alertsEvents.asLiveData()
 
     fun loadCurrentLocale(context: Context) = viewModelScope.launch {
@@ -77,7 +77,7 @@ class LocaleListViewModel @Inject constructor(
         } catch (e: InvocationTargetException) {
             Timber.e(e, "InvocationTargetException")
 
-            _alertsEvents.emit(IAlertsLocale.NEED_PERMISSION)
+            _alertsEvents.emit(AlertsMoreLocale.NEED_PERMISSION)
         }
     }
 }

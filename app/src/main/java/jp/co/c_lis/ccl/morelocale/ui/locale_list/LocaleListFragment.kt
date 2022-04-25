@@ -115,9 +115,14 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
             }
         }
 
-        viewModel.alertsEvents.observe(viewLifecycleOwner) {
-            PermissionRequiredDialog.getInstance().apply {
-                show(parentFragmentManager, PermissionRequiredDialog.TAG)
+        viewModel.alertsEvents.observe(viewLifecycleOwner) { typeAlert ->
+            when (typeAlert) {
+                AlertsMoreLocale.NEED_PERMISSION -> {
+                    PermissionRequiredDialog.getInstance().apply {
+                        show(parentFragmentManager, PermissionRequiredDialog.TAG)
+                    }
+                }
+                else -> {}
             }
         }
 
