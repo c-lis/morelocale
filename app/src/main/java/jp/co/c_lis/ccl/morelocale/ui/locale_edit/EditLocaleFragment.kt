@@ -77,7 +77,7 @@ class EditLocaleFragment : Fragment(R.layout.fragment_edit_locale) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        mode = MODE.values()[requireArguments().getInt(KEY_MODE)]
+        mode = MODE.entries.toTypedArray()[requireArguments().getInt(KEY_MODE)]
     }
 
     override fun onAttach(context: Context) {

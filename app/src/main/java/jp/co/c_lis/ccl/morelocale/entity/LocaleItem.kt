@@ -7,10 +7,10 @@ import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
-import java.util.*
+import java.util.Locale
 
-@Entity
 @Parcelize
+@Entity
 data class LocaleItem(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
