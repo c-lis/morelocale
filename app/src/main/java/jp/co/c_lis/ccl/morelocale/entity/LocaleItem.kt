@@ -1,23 +1,38 @@
 package jp.co.c_lis.ccl.morelocale.entity
 
-import android.os.Parcel
 import android.os.Parcelable
+import androidx.recyclerview.widget.DiffUtil
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
-import java.util.Locale
+import kotlinx.parcelize.IgnoredOnParcel
+import kotlinx.parcelize.Parcelize
+import java.util.*
 
 @Entity
+@Parcelize
 data class LocaleItem(
-        @PrimaryKey(autoGenerate = true)
-        val id: Int = 0,
-        val label: String? = null,
-        val language: String? = null,
-        val country: String? = null,
-        val variant: String? = null,
-        var isPreset: Boolean = false,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
+    val label: String? = null,
+    val language: String? = null,
+    val country: String? = null,
+    val variant: String? = null,
+    var isPreset: Boolean = false,
 ) : Parcelable {
+    companion object {
+        val itemDiffCallback = object : DiffUtil.ItemCallback<LocaleItem>() {
+            override fun areItemsTheSame(oldItem: LocaleItem, newItem: LocaleItem): Boolean {
+                return oldItem.id == newItem.id
+            }
 
+            override fun areContentsTheSame(oldItem: LocaleItem, newItem: LocaleItem): Boolean {
+                return oldItem.isPreset == newItem.isPreset
+            }
+        }
+    }
+
+    @IgnoredOnParcel
     @Ignore
     val locale: Locale = if (language != null && country != null && variant != null) {
         Locale(language, country, variant)
@@ -38,38 +53,6 @@ data class LocaleItem(
             val variant = variant ?: "N/A"
             return "$displayName $language $country $variant"
         }
-
-    constructor(parcel: Parcel) : this(
-            parcel.readInt(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readByte() != 0.toByte()) {
-    }
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(id)
-        parcel.writeString(label)
-        parcel.writeString(language)
-        parcel.writeString(country)
-        parcel.writeString(variant)
-        parcel.writeByte(if (isPreset) 1 else 0)
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<LocaleItem> {
-        override fun createFromParcel(parcel: Parcel): LocaleItem {
-            return LocaleItem(parcel)
-        }
-
-        override fun newArray(size: Int): Array<LocaleItem?> {
-            return arrayOfNulls(size)
-        }
-    }
 }
 
 fun createLocale(localeStr: String): LocaleItem {
@@ -83,15 +66,15 @@ fun createLocale(localeStr: String): LocaleItem {
         }
         2 -> {
             LocaleItem(
-                    language = localeTokens[0],
-                    country = localeTokens[1]
+                language = localeTokens[0],
+                country = localeTokens[1]
             )
         }
         else -> {
             LocaleItem(
-                    language = localeTokens[0],
-                    country = localeTokens[1],
-                    variant = localeTokens[2]
+                language = localeTokens[0],
+                country = localeTokens[1],
+                variant = localeTokens[2]
             )
         }
     }
@@ -99,8 +82,8 @@ fun createLocale(localeStr: String): LocaleItem {
 
 fun createLocale(locale: Locale): LocaleItem {
     return LocaleItem(
-            language = locale.language,
-            country = locale.country,
-            variant = locale.variant
+        language = locale.language,
+        country = locale.country,
+        variant = locale.variant
     )
 }

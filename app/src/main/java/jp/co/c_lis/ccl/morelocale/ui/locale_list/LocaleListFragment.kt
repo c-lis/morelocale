@@ -12,7 +12,6 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.c_lis.ccl.morelocale.R
@@ -20,13 +19,11 @@ import jp.co.c_lis.ccl.morelocale.databinding.FragmentLocaleListBinding
 import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
 import jp.co.c_lis.ccl.morelocale.ui.AboutDialog
 import jp.co.c_lis.ccl.morelocale.ui.ConfirmDialog
-import jp.co.c_lis.ccl.morelocale.ui.locale_edit.EditLocaleFragment
 import jp.co.c_lis.ccl.morelocale.ui.help.PermissionRequiredDialog
 import jp.co.c_lis.ccl.morelocale.ui.license.LicenseFragment
+import jp.co.c_lis.ccl.morelocale.ui.locale_edit.EditLocaleFragment
 import jp.co.c_lis.ccl.morelocale.widget.WrapContentLinearLayoutManager
-import jp.co.c_lis.morelocale.MoreLocale
 import timber.log.Timber
-import java.lang.reflect.InvocationTargetException
 
 @AndroidEntryPoint
 class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
@@ -36,8 +33,6 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
     private val viewModel: LocaleListViewModel by viewModels()
 
     companion object {
-        val TAG = LocaleListFragment::class.java.simpleName
-
         fun getInstance(): LocaleListFragment {
             return LocaleListFragment()
         }
@@ -72,9 +67,8 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
         setHasOptionsMenu(true)
 
         adapter = LocaleListAdapter(
-                LayoutInflater.from(context),
-                lifecycleScope,
-                menuCallback
+            LayoutInflater.from(context),
+            menuCallback
         ) { localeItem ->
             Timber.d("Change locale ${localeItem.displayName}")
             setLocale(localeItem)
@@ -82,15 +76,7 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
     }
 
     private fun setLocale(localeItem: LocaleItem) {
-        try {
-            MoreLocale.setLocale(localeItem.locale)
-
-            viewModel.setLocale(localeItem)
-        } catch (e: InvocationTargetException) {
-            Timber.e(e, "InvocationTargetException")
-            PermissionRequiredDialog.getInstance()
-                    .show(parentFragmentManager, PermissionRequiredDialog.TAG)
-        }
+        viewModel.setLocale(localeItem)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -115,19 +101,30 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
             setLocale(localeItem)
         }
 
-        viewModel.currentLocale.observe(viewLifecycleOwner, { currentLocale ->
+        viewModel.currentLocale.observe(viewLifecycleOwner) { currentLocale ->
             binding?.also {
                 it.currentLocale = currentLocale
             }
-        })
+        }
 
-        viewModel.localeList.observe(viewLifecycleOwner, { localeItemList ->
+        viewModel.localeList.observe(viewLifecycleOwner) { localeItemList ->
             adapter?.also {
-                it.localeItemList = localeItemList
-                it.notifyDataSetChanged()
-                binding?.progress?.visibility = View.GONE
+                it.submitList(localeItemList) {
+                    binding?.progress?.visibility = View.GONE
+                }
             }
-        })
+        }
+
+        viewModel.alertsEvents.observe(viewLifecycleOwner) { typeAlert ->
+            when (typeAlert) {
+                AlertsMoreLocale.NEED_PERMISSION -> {
+                    PermissionRequiredDialog.getInstance().apply {
+                        show(parentFragmentManager, PermissionRequiredDialog.TAG)
+                    }
+                }
+                else -> {}
+            }
+        }
 
         binding = FragmentLocaleListBinding.bind(view).also { binding ->
             binding.recyclerView.layoutManager = WrapContentLinearLayoutManager(

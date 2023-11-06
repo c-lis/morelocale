@@ -4,37 +4,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.PopupMenu
-import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import jp.co.c_lis.ccl.morelocale.R
 import jp.co.c_lis.ccl.morelocale.databinding.ListItemLocaleBinding
 import jp.co.c_lis.ccl.morelocale.entity.LocaleItem
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class LocaleListAdapter(
-        private val inflater: LayoutInflater,
-        private val coroutineScope: CoroutineScope,
-        private val menuCallback: MenuCallback? = null,
-        private val onLocaleSelected: (localeItem: LocaleItem) -> Unit,
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    var localeItemList: List<LocaleItem> = ArrayList()
-        set(value) {
-            coroutineScope.launch(Dispatchers.Main) {
-                val diffResult = calculateDiff(field, value)
-                field = value
-                diffResult.dispatchUpdatesTo(this@LocaleListAdapter)
-            }
-        }
-
-    private suspend fun calculateDiff(oldList: List<LocaleItem>, newList: List<LocaleItem>) = withContext(Dispatchers.Default) {
-        return@withContext DiffUtil.calculateDiff(LocaleListDiffCallback(oldList, newList))
-    }
-
-    override fun getItemCount() = localeItemList.size
+    private val inflater: LayoutInflater,
+    private val menuCallback: MenuCallback? = null,
+    private val onLocaleSelected: (localeItem: LocaleItem) -> Unit,
+) : ListAdapter<LocaleItem, RecyclerView.ViewHolder>(LocaleItem.itemDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return LocaleItemViewHolder(
@@ -46,7 +26,7 @@ class LocaleListAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is LocaleItemViewHolder) {
-            holder.bind(localeItemList[position])
+            holder.bind(getItem(position))
         }
     }
 
@@ -107,22 +87,6 @@ class LocaleListAdapter(
 
         fun unbind() {
             binding.unbind()
-        }
-    }
-
-    class LocaleListDiffCallback(
-            private val oldList: List<LocaleItem>,
-            private val newList: List<LocaleItem>) : DiffUtil.Callback() {
-
-        override fun getOldListSize() = oldList.size
-        override fun getNewListSize() = newList.size
-
-        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            return oldList[oldItemPosition] === newList[newItemPosition]
-        }
-
-        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            return oldList[oldItemPosition] == newList[newItemPosition]
         }
     }
 
