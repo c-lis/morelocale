@@ -15,7 +15,7 @@ android {
         applicationId = "jp.co.c_lis.ccl.morelocale"
         namespace = "jp.co.c_lis.ccl.morelocale"
 
-        minSdk = 19
+        minSdk = 20
         maxSdk = 30
         targetSdk = 34
 
