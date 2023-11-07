@@ -27,16 +27,17 @@ import timber.log.Timber
 
 @AndroidEntryPoint
 class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
-
-    private var binding: FragmentLocaleListBinding? = null
-
-    private val viewModel: LocaleListViewModel by viewModels()
-
     companion object {
         fun getInstance(): LocaleListFragment {
             return LocaleListFragment()
         }
     }
+
+    private var binding: FragmentLocaleListBinding? = null
+
+    private val viewModel: LocaleListViewModel by viewModels()
+
+    private val permissionDialog = PermissionRequiredDialog.getInstance()
 
     private val menuCallback = object : LocaleListAdapter.MenuCallback {
         override fun onEdit(localeItem: LocaleItem) {
@@ -116,17 +117,18 @@ class LocaleListFragment : Fragment(R.layout.fragment_locale_list) {
         }
 
         viewModel.alertsEvents.observe(viewLifecycleOwner) { typeAlert ->
+            Timber.d("typeAlert: $typeAlert, ${permissionDialog.isAdded}")
             when (typeAlert) {
                 AlertsMoreLocale.NEED_PERMISSION -> {
-                    PermissionRequiredDialog.getInstance().apply {
-                        show(parentFragmentManager, PermissionRequiredDialog.TAG)
-                    }
+                    permissionDialog.show(parentFragmentManager, PermissionRequiredDialog.TAG)
                 }
+
                 else -> {}
             }
         }
 
         binding = FragmentLocaleListBinding.bind(view).also { binding ->
+            binding.lifecycleOwner = viewLifecycleOwner
             binding.recyclerView.layoutManager = WrapContentLinearLayoutManager(
                     requireContext(), LinearLayoutManager.VERTICAL, false)
             binding.recyclerView.adapter = adapter

@@ -1,5 +1,6 @@
 package jp.co.c_lis.ccl.morelocale.service
 
+import android.annotation.SuppressLint
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -11,6 +12,7 @@ import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.app.PendingIntentCompat
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.c_lis.ccl.morelocale.BuildConfig
 import jp.co.c_lis.ccl.morelocale.equals
@@ -243,6 +245,7 @@ class RestoreLocaleService : Service() {
         notificationManager.createNotificationChannel(channel)
     }
 
+    @SuppressLint("MissingPermission")
     private fun showProgressNotification(context: Context) {
         val notify = createProgressNotification(context)
         NotificationManagerCompat.from(context)
@@ -275,6 +278,7 @@ class RestoreLocaleService : Service() {
 
     }
 
+    @SuppressLint("MissingPermission")
     private fun showCanceledNotification(context: Context) {
         val notify = createCanceledNotification(context)
         NotificationManagerCompat.from(context)
@@ -293,11 +297,13 @@ class RestoreLocaleService : Service() {
                 neverPendingIntent
         )
 
-        val restorePendingIntent = PendingIntent.getService(
+        val restorePendingIntent = PendingIntentCompat.getService(
                 context,
                 REQUEST_CODE_RESTORE,
                 getRestoreIntent(context),
-                PendingIntent.FLAG_UPDATE_CURRENT)
+                PendingIntent.FLAG_UPDATE_CURRENT,
+                false,
+            )
         val restoreAction = NotificationCompat.Action(
                 NO_ICON,
                 getText(R.string.restore),
@@ -316,6 +322,7 @@ class RestoreLocaleService : Service() {
 
     }
 
+    @SuppressLint("MissingPermission")
     private fun showPermissionErrorNotification(context: Context) {
         val notify = createPermissionErrorNotification(context)
         NotificationManagerCompat.from(context)
@@ -323,11 +330,12 @@ class RestoreLocaleService : Service() {
     }
 
     private fun createPermissionErrorNotification(context: Context): Notification {
-        val pendingIntent = PendingIntent.getActivity(
+        val pendingIntent = PendingIntentCompat.getActivity(
                 context,
                 REQUEST_OPEN_FROM_PERMISSION_ERROR,
                 Intent(context, MainActivity::class.java),
-                PendingIntent.FLAG_CANCEL_CURRENT
+                PendingIntent.FLAG_CANCEL_CURRENT,
+                false,
         )
 
         return NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
