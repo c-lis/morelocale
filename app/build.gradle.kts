@@ -15,9 +15,10 @@ android {
         applicationId = "jp.co.c_lis.ccl.morelocale"
         namespace = "jp.co.c_lis.ccl.morelocale"
 
-        minSdk = 20
+        minSdk = 19
         maxSdk = 30
         targetSdk = 34
+        multiDexEnabled = true
 
         versionCode = 14247
         versionName = "2.4.7"
@@ -104,6 +105,7 @@ android {
 dependencies {
     val lifecycleVersion = "2.7.0-beta01"
     val fragmentVersion = "1.7.0-alpha06"
+    val multidexVersion = "2.0.1"
     val roomVersion = "2.6.0"
     val hiltVersion = "2.48.1"
 
@@ -128,6 +130,8 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:$fragmentVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
+
+    implementation("androidx.multidex:multidex:$multidexVersion")
 
     implementation("androidx.room:room-runtime:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
