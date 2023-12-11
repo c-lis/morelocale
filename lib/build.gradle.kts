@@ -6,9 +6,8 @@ android {
     namespace = "jp.co.c_lis.morelocale"
 
     compileSdk = 34
-
     defaultConfig {
-        minSdk = 3
+        minSdk = 19
     }
 
     buildFeatures {
